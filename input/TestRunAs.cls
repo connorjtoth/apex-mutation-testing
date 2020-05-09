@@ -1,4 +1,4 @@
-@IsTest
+@IsTest /* This is a comment */
 private class TestRunAs {
     public static testMethod void testRunAs() {
         String uniqueUserName = 'tester' + DateTime.now().getTime() + '@testing.org';

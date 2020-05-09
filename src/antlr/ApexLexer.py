@@ -1,8 +1,9 @@
-# Generated from apex.g4 by ANTLR 4.7
+# Generated from grammar/Apex.g4 by ANTLR 4.8
 from antlr4 import *
 from io import StringIO
 from typing.io import TextIO
 import sys
+
 
 
 def serializedATN():
@@ -703,12 +704,12 @@ def serializedATN():
         buf.write("\u03ac\u03b0\u03b8\u03bc\u03c2\u03cc\u03d0\u03d6\u03da")
         buf.write("\u03df\u03e2\u03e5\u03ea\u03ed\u03f2\u03f7\u03ff\u040a")
         buf.write("\u040e\u0413\u0417\u0427\u0431\u0437\u043e\u0442\u0448")
-        buf.write("\u0455\u04d9\u04e0\u04e6\u04f1\u04fd\u0511\u0524\3\b\2")
+        buf.write("\u0455\u04d9\u04e0\u04e6\u04f1\u04fd\u0511\u0524\3\2\3")
         buf.write("\2")
         return buf.getvalue()
 
 
-class apexLexer(Lexer):
+class ApexLexer(Lexer):
 
     atn = ATNDeserializer().deserialize(serializedATN())
 
@@ -911,11 +912,11 @@ class apexLexer(Lexer):
                   "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", 
                   "X", "Y", "Z", "SPACE" ]
 
-    grammarFileName = "apex.g4"
+    grammarFileName = "Apex.g4"
 
     def __init__(self, input=None, output:TextIO = sys.stdout):
         super().__init__(input, output)
-        self.checkVersion("4.7")
+        self.checkVersion("4.8")
         self._interp = LexerATNSimulator(self, self.atn, self.decisionsToDFA, PredictionContextCache())
         self._actions = None
         self._predicates = None

@@ -1,9 +1,13 @@
-# Generated from apex.g4 by ANTLR 4.7
+# Generated from grammar/Apex.g4 by ANTLR 4.8
 # encoding: utf-8
 from antlr4 import *
 from io import StringIO
-from typing.io import TextIO
 import sys
+if sys.version_info[1] > 5:
+	from typing import TextIO
+else:
+	from typing.io import TextIO
+
 
 def serializedATN():
     with StringIO() as buf:
@@ -696,9 +700,9 @@ def serializedATN():
         return buf.getvalue()
 
 
-class apexParser ( Parser ):
+class ApexParser ( Parser ):
 
-    grammarFileName = "apex.g4"
+    grammarFileName = "Apex.g4"
 
     atn = ATNDeserializer().deserialize(serializedATN())
 
@@ -1028,9 +1032,10 @@ class apexParser ( Parser ):
 
     def __init__(self, input:TokenStream, output:TextIO = sys.stdout):
         super().__init__(input, output)
-        self.checkVersion("4.7")
+        self.checkVersion("4.8")
         self._interp = ParserATNSimulator(self, self.atn, self.decisionsToDFA, self.sharedContextCache)
         self._predicates = None
+
 
 
 
@@ -1041,28 +1046,28 @@ class apexParser ( Parser ):
             self.parser = parser
 
         def EOF(self):
-            return self.getToken(apexParser.EOF, 0)
+            return self.getToken(ApexParser.EOF, 0)
 
         def packageDeclaration(self):
-            return self.getTypedRuleContext(apexParser.PackageDeclarationContext,0)
+            return self.getTypedRuleContext(ApexParser.PackageDeclarationContext,0)
 
 
         def importDeclaration(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(apexParser.ImportDeclarationContext)
+                return self.getTypedRuleContexts(ApexParser.ImportDeclarationContext)
             else:
-                return self.getTypedRuleContext(apexParser.ImportDeclarationContext,i)
+                return self.getTypedRuleContext(ApexParser.ImportDeclarationContext,i)
 
 
         def typeDeclaration(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(apexParser.TypeDeclarationContext)
+                return self.getTypedRuleContexts(ApexParser.TypeDeclarationContext)
             else:
-                return self.getTypedRuleContext(apexParser.TypeDeclarationContext,i)
+                return self.getTypedRuleContext(ApexParser.TypeDeclarationContext,i)
 
 
         def getRuleIndex(self):
-            return apexParser.RULE_compilationUnit
+            return ApexParser.RULE_compilationUnit
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterCompilationUnit" ):
@@ -1077,7 +1082,7 @@ class apexParser ( Parser ):
 
     def compilationUnit(self):
 
-        localctx = apexParser.CompilationUnitContext(self, self._ctx, self.state)
+        localctx = ApexParser.CompilationUnitContext(self, self._ctx, self.state)
         self.enterRule(localctx, 0, self.RULE_compilationUnit)
         self._la = 0 # Token type
         try:
@@ -1093,7 +1098,7 @@ class apexParser ( Parser ):
             self.state = 222
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==apexParser.IMPORT:
+            while _la==ApexParser.IMPORT:
                 self.state = 219
                 self.importDeclaration()
                 self.state = 224
@@ -1103,7 +1108,7 @@ class apexParser ( Parser ):
             self.state = 228
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << apexParser.OVERRIDE) | (1 << apexParser.VIRTUAL) | (1 << apexParser.ABSTRACT) | (1 << apexParser.CLASS) | (1 << apexParser.ENUM) | (1 << apexParser.FINAL) | (1 << apexParser.INTERFACE) | (1 << apexParser.PRIVATE) | (1 << apexParser.PROTECTED) | (1 << apexParser.PUBLIC) | (1 << apexParser.STATIC) | (1 << apexParser.GLOBAL) | (1 << apexParser.WEBSERVICE) | (1 << apexParser.APEX_WITH_SHARING) | (1 << apexParser.APEX_WITHOUT_SHARING) | (1 << apexParser.TESTMETHOD))) != 0) or _la==apexParser.SEMI or _la==apexParser.AT:
+            while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ApexParser.OVERRIDE) | (1 << ApexParser.VIRTUAL) | (1 << ApexParser.ABSTRACT) | (1 << ApexParser.CLASS) | (1 << ApexParser.ENUM) | (1 << ApexParser.FINAL) | (1 << ApexParser.INTERFACE) | (1 << ApexParser.PRIVATE) | (1 << ApexParser.PROTECTED) | (1 << ApexParser.PUBLIC) | (1 << ApexParser.STATIC) | (1 << ApexParser.GLOBAL) | (1 << ApexParser.WEBSERVICE) | (1 << ApexParser.APEX_WITH_SHARING) | (1 << ApexParser.APEX_WITHOUT_SHARING) | (1 << ApexParser.TESTMETHOD))) != 0) or _la==ApexParser.SEMI or _la==ApexParser.AT:
                 self.state = 225
                 self.typeDeclaration()
                 self.state = 230
@@ -1111,7 +1116,7 @@ class apexParser ( Parser ):
                 _la = self._input.LA(1)
 
             self.state = 231
-            self.match(apexParser.EOF)
+            self.match(ApexParser.EOF)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -1120,6 +1125,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class PackageDeclarationContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -1127,21 +1133,24 @@ class apexParser ( Parser ):
             self.parser = parser
 
         def PACKAGE(self):
-            return self.getToken(apexParser.PACKAGE, 0)
+            return self.getToken(ApexParser.PACKAGE, 0)
 
         def qualifiedName(self):
-            return self.getTypedRuleContext(apexParser.QualifiedNameContext,0)
+            return self.getTypedRuleContext(ApexParser.QualifiedNameContext,0)
 
+
+        def SEMI(self):
+            return self.getToken(ApexParser.SEMI, 0)
 
         def annotation(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(apexParser.AnnotationContext)
+                return self.getTypedRuleContexts(ApexParser.AnnotationContext)
             else:
-                return self.getTypedRuleContext(apexParser.AnnotationContext,i)
+                return self.getTypedRuleContext(ApexParser.AnnotationContext,i)
 
 
         def getRuleIndex(self):
-            return apexParser.RULE_packageDeclaration
+            return ApexParser.RULE_packageDeclaration
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterPackageDeclaration" ):
@@ -1156,7 +1165,7 @@ class apexParser ( Parser ):
 
     def packageDeclaration(self):
 
-        localctx = apexParser.PackageDeclarationContext(self, self._ctx, self.state)
+        localctx = ApexParser.PackageDeclarationContext(self, self._ctx, self.state)
         self.enterRule(localctx, 2, self.RULE_packageDeclaration)
         self._la = 0 # Token type
         try:
@@ -1164,7 +1173,7 @@ class apexParser ( Parser ):
             self.state = 236
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==apexParser.AT:
+            while _la==ApexParser.AT:
                 self.state = 233
                 self.annotation()
                 self.state = 238
@@ -1172,11 +1181,11 @@ class apexParser ( Parser ):
                 _la = self._input.LA(1)
 
             self.state = 239
-            self.match(apexParser.PACKAGE)
+            self.match(ApexParser.PACKAGE)
             self.state = 240
             self.qualifiedName()
             self.state = 241
-            self.match(apexParser.SEMI)
+            self.match(ApexParser.SEMI)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -1185,6 +1194,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class ImportDeclarationContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -1192,17 +1202,26 @@ class apexParser ( Parser ):
             self.parser = parser
 
         def IMPORT(self):
-            return self.getToken(apexParser.IMPORT, 0)
+            return self.getToken(ApexParser.IMPORT, 0)
 
         def qualifiedName(self):
-            return self.getTypedRuleContext(apexParser.QualifiedNameContext,0)
+            return self.getTypedRuleContext(ApexParser.QualifiedNameContext,0)
 
+
+        def SEMI(self):
+            return self.getToken(ApexParser.SEMI, 0)
 
         def STATIC(self):
-            return self.getToken(apexParser.STATIC, 0)
+            return self.getToken(ApexParser.STATIC, 0)
+
+        def DOT(self):
+            return self.getToken(ApexParser.DOT, 0)
+
+        def MUL(self):
+            return self.getToken(ApexParser.MUL, 0)
 
         def getRuleIndex(self):
-            return apexParser.RULE_importDeclaration
+            return ApexParser.RULE_importDeclaration
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterImportDeclaration" ):
@@ -1217,19 +1236,19 @@ class apexParser ( Parser ):
 
     def importDeclaration(self):
 
-        localctx = apexParser.ImportDeclarationContext(self, self._ctx, self.state)
+        localctx = ApexParser.ImportDeclarationContext(self, self._ctx, self.state)
         self.enterRule(localctx, 4, self.RULE_importDeclaration)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 243
-            self.match(apexParser.IMPORT)
+            self.match(ApexParser.IMPORT)
             self.state = 245
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==apexParser.STATIC:
+            if _la==ApexParser.STATIC:
                 self.state = 244
-                self.match(apexParser.STATIC)
+                self.match(ApexParser.STATIC)
 
 
             self.state = 247
@@ -1237,15 +1256,15 @@ class apexParser ( Parser ):
             self.state = 250
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==apexParser.DOT:
+            if _la==ApexParser.DOT:
                 self.state = 248
-                self.match(apexParser.DOT)
+                self.match(ApexParser.DOT)
                 self.state = 249
-                self.match(apexParser.MUL)
+                self.match(ApexParser.MUL)
 
 
             self.state = 252
-            self.match(apexParser.SEMI)
+            self.match(ApexParser.SEMI)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -1254,6 +1273,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class TypeDeclarationContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -1261,30 +1281,33 @@ class apexParser ( Parser ):
             self.parser = parser
 
         def classDeclaration(self):
-            return self.getTypedRuleContext(apexParser.ClassDeclarationContext,0)
+            return self.getTypedRuleContext(ApexParser.ClassDeclarationContext,0)
 
 
         def classOrInterfaceModifier(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(apexParser.ClassOrInterfaceModifierContext)
+                return self.getTypedRuleContexts(ApexParser.ClassOrInterfaceModifierContext)
             else:
-                return self.getTypedRuleContext(apexParser.ClassOrInterfaceModifierContext,i)
+                return self.getTypedRuleContext(ApexParser.ClassOrInterfaceModifierContext,i)
 
 
         def enumDeclaration(self):
-            return self.getTypedRuleContext(apexParser.EnumDeclarationContext,0)
+            return self.getTypedRuleContext(ApexParser.EnumDeclarationContext,0)
 
 
         def interfaceDeclaration(self):
-            return self.getTypedRuleContext(apexParser.InterfaceDeclarationContext,0)
+            return self.getTypedRuleContext(ApexParser.InterfaceDeclarationContext,0)
 
 
         def annotationTypeDeclaration(self):
-            return self.getTypedRuleContext(apexParser.AnnotationTypeDeclarationContext,0)
+            return self.getTypedRuleContext(ApexParser.AnnotationTypeDeclarationContext,0)
 
+
+        def SEMI(self):
+            return self.getToken(ApexParser.SEMI, 0)
 
         def getRuleIndex(self):
-            return apexParser.RULE_typeDeclaration
+            return ApexParser.RULE_typeDeclaration
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterTypeDeclaration" ):
@@ -1299,7 +1322,7 @@ class apexParser ( Parser ):
 
     def typeDeclaration(self):
 
-        localctx = apexParser.TypeDeclarationContext(self, self._ctx, self.state)
+        localctx = ApexParser.TypeDeclarationContext(self, self._ctx, self.state)
         self.enterRule(localctx, 6, self.RULE_typeDeclaration)
         self._la = 0 # Token type
         try:
@@ -1311,7 +1334,7 @@ class apexParser ( Parser ):
                 self.state = 257
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << apexParser.OVERRIDE) | (1 << apexParser.VIRTUAL) | (1 << apexParser.ABSTRACT) | (1 << apexParser.FINAL) | (1 << apexParser.PRIVATE) | (1 << apexParser.PROTECTED) | (1 << apexParser.PUBLIC) | (1 << apexParser.STATIC) | (1 << apexParser.GLOBAL) | (1 << apexParser.WEBSERVICE) | (1 << apexParser.APEX_WITH_SHARING) | (1 << apexParser.APEX_WITHOUT_SHARING) | (1 << apexParser.TESTMETHOD))) != 0) or _la==apexParser.AT:
+                while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ApexParser.OVERRIDE) | (1 << ApexParser.VIRTUAL) | (1 << ApexParser.ABSTRACT) | (1 << ApexParser.FINAL) | (1 << ApexParser.PRIVATE) | (1 << ApexParser.PROTECTED) | (1 << ApexParser.PUBLIC) | (1 << ApexParser.STATIC) | (1 << ApexParser.GLOBAL) | (1 << ApexParser.WEBSERVICE) | (1 << ApexParser.APEX_WITH_SHARING) | (1 << ApexParser.APEX_WITHOUT_SHARING) | (1 << ApexParser.TESTMETHOD))) != 0) or _la==ApexParser.AT:
                     self.state = 254
                     self.classOrInterfaceModifier()
                     self.state = 259
@@ -1327,7 +1350,7 @@ class apexParser ( Parser ):
                 self.state = 264
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << apexParser.OVERRIDE) | (1 << apexParser.VIRTUAL) | (1 << apexParser.ABSTRACT) | (1 << apexParser.FINAL) | (1 << apexParser.PRIVATE) | (1 << apexParser.PROTECTED) | (1 << apexParser.PUBLIC) | (1 << apexParser.STATIC) | (1 << apexParser.GLOBAL) | (1 << apexParser.WEBSERVICE) | (1 << apexParser.APEX_WITH_SHARING) | (1 << apexParser.APEX_WITHOUT_SHARING) | (1 << apexParser.TESTMETHOD))) != 0) or _la==apexParser.AT:
+                while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ApexParser.OVERRIDE) | (1 << ApexParser.VIRTUAL) | (1 << ApexParser.ABSTRACT) | (1 << ApexParser.FINAL) | (1 << ApexParser.PRIVATE) | (1 << ApexParser.PROTECTED) | (1 << ApexParser.PUBLIC) | (1 << ApexParser.STATIC) | (1 << ApexParser.GLOBAL) | (1 << ApexParser.WEBSERVICE) | (1 << ApexParser.APEX_WITH_SHARING) | (1 << ApexParser.APEX_WITHOUT_SHARING) | (1 << ApexParser.TESTMETHOD))) != 0) or _la==ApexParser.AT:
                     self.state = 261
                     self.classOrInterfaceModifier()
                     self.state = 266
@@ -1343,7 +1366,7 @@ class apexParser ( Parser ):
                 self.state = 271
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << apexParser.OVERRIDE) | (1 << apexParser.VIRTUAL) | (1 << apexParser.ABSTRACT) | (1 << apexParser.FINAL) | (1 << apexParser.PRIVATE) | (1 << apexParser.PROTECTED) | (1 << apexParser.PUBLIC) | (1 << apexParser.STATIC) | (1 << apexParser.GLOBAL) | (1 << apexParser.WEBSERVICE) | (1 << apexParser.APEX_WITH_SHARING) | (1 << apexParser.APEX_WITHOUT_SHARING) | (1 << apexParser.TESTMETHOD))) != 0) or _la==apexParser.AT:
+                while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ApexParser.OVERRIDE) | (1 << ApexParser.VIRTUAL) | (1 << ApexParser.ABSTRACT) | (1 << ApexParser.FINAL) | (1 << ApexParser.PRIVATE) | (1 << ApexParser.PROTECTED) | (1 << ApexParser.PUBLIC) | (1 << ApexParser.STATIC) | (1 << ApexParser.GLOBAL) | (1 << ApexParser.WEBSERVICE) | (1 << ApexParser.APEX_WITH_SHARING) | (1 << ApexParser.APEX_WITHOUT_SHARING) | (1 << ApexParser.TESTMETHOD))) != 0) or _la==ApexParser.AT:
                     self.state = 268
                     self.classOrInterfaceModifier()
                     self.state = 273
@@ -1374,7 +1397,7 @@ class apexParser ( Parser ):
             elif la_ == 5:
                 self.enterOuterAlt(localctx, 5)
                 self.state = 282
-                self.match(apexParser.SEMI)
+                self.match(ApexParser.SEMI)
                 pass
 
 
@@ -1386,6 +1409,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class ModifierContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -1393,20 +1417,20 @@ class apexParser ( Parser ):
             self.parser = parser
 
         def classOrInterfaceModifier(self):
-            return self.getTypedRuleContext(apexParser.ClassOrInterfaceModifierContext,0)
+            return self.getTypedRuleContext(ApexParser.ClassOrInterfaceModifierContext,0)
 
 
         def NATIVE(self):
-            return self.getToken(apexParser.NATIVE, 0)
+            return self.getToken(ApexParser.NATIVE, 0)
 
         def SYNCHRONIZED(self):
-            return self.getToken(apexParser.SYNCHRONIZED, 0)
+            return self.getToken(ApexParser.SYNCHRONIZED, 0)
 
         def TRANSIENT(self):
-            return self.getToken(apexParser.TRANSIENT, 0)
+            return self.getToken(ApexParser.TRANSIENT, 0)
 
         def getRuleIndex(self):
-            return apexParser.RULE_modifier
+            return ApexParser.RULE_modifier
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterModifier" ):
@@ -1421,23 +1445,23 @@ class apexParser ( Parser ):
 
     def modifier(self):
 
-        localctx = apexParser.ModifierContext(self, self._ctx, self.state)
+        localctx = ApexParser.ModifierContext(self, self._ctx, self.state)
         self.enterRule(localctx, 8, self.RULE_modifier)
         self._la = 0 # Token type
         try:
             self.state = 287
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [apexParser.OVERRIDE, apexParser.VIRTUAL, apexParser.ABSTRACT, apexParser.FINAL, apexParser.PRIVATE, apexParser.PROTECTED, apexParser.PUBLIC, apexParser.STATIC, apexParser.GLOBAL, apexParser.WEBSERVICE, apexParser.APEX_WITH_SHARING, apexParser.APEX_WITHOUT_SHARING, apexParser.TESTMETHOD, apexParser.AT]:
+            if token in [ApexParser.OVERRIDE, ApexParser.VIRTUAL, ApexParser.ABSTRACT, ApexParser.FINAL, ApexParser.PRIVATE, ApexParser.PROTECTED, ApexParser.PUBLIC, ApexParser.STATIC, ApexParser.GLOBAL, ApexParser.WEBSERVICE, ApexParser.APEX_WITH_SHARING, ApexParser.APEX_WITHOUT_SHARING, ApexParser.TESTMETHOD, ApexParser.AT]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 285
                 self.classOrInterfaceModifier()
                 pass
-            elif token in [apexParser.NATIVE, apexParser.SYNCHRONIZED, apexParser.TRANSIENT]:
+            elif token in [ApexParser.NATIVE, ApexParser.SYNCHRONIZED, ApexParser.TRANSIENT]:
                 self.enterOuterAlt(localctx, 2)
                 self.state = 286
                 _la = self._input.LA(1)
-                if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << apexParser.NATIVE) | (1 << apexParser.SYNCHRONIZED) | (1 << apexParser.TRANSIENT))) != 0)):
+                if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ApexParser.NATIVE) | (1 << ApexParser.SYNCHRONIZED) | (1 << ApexParser.TRANSIENT))) != 0)):
                     self._errHandler.recoverInline(self)
                 else:
                     self._errHandler.reportMatch(self)
@@ -1454,6 +1478,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class ClassOrInterfaceModifierContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -1461,50 +1486,50 @@ class apexParser ( Parser ):
             self.parser = parser
 
         def annotation(self):
-            return self.getTypedRuleContext(apexParser.AnnotationContext,0)
+            return self.getTypedRuleContext(ApexParser.AnnotationContext,0)
 
 
         def PUBLIC(self):
-            return self.getToken(apexParser.PUBLIC, 0)
+            return self.getToken(ApexParser.PUBLIC, 0)
 
         def PROTECTED(self):
-            return self.getToken(apexParser.PROTECTED, 0)
+            return self.getToken(ApexParser.PROTECTED, 0)
 
         def PRIVATE(self):
-            return self.getToken(apexParser.PRIVATE, 0)
+            return self.getToken(ApexParser.PRIVATE, 0)
 
         def STATIC(self):
-            return self.getToken(apexParser.STATIC, 0)
+            return self.getToken(ApexParser.STATIC, 0)
 
         def ABSTRACT(self):
-            return self.getToken(apexParser.ABSTRACT, 0)
+            return self.getToken(ApexParser.ABSTRACT, 0)
 
         def FINAL(self):
-            return self.getToken(apexParser.FINAL, 0)
+            return self.getToken(ApexParser.FINAL, 0)
 
         def GLOBAL(self):
-            return self.getToken(apexParser.GLOBAL, 0)
+            return self.getToken(ApexParser.GLOBAL, 0)
 
         def WEBSERVICE(self):
-            return self.getToken(apexParser.WEBSERVICE, 0)
+            return self.getToken(ApexParser.WEBSERVICE, 0)
 
         def OVERRIDE(self):
-            return self.getToken(apexParser.OVERRIDE, 0)
+            return self.getToken(ApexParser.OVERRIDE, 0)
 
         def VIRTUAL(self):
-            return self.getToken(apexParser.VIRTUAL, 0)
+            return self.getToken(ApexParser.VIRTUAL, 0)
 
         def TESTMETHOD(self):
-            return self.getToken(apexParser.TESTMETHOD, 0)
+            return self.getToken(ApexParser.TESTMETHOD, 0)
 
         def APEX_WITH_SHARING(self):
-            return self.getToken(apexParser.APEX_WITH_SHARING, 0)
+            return self.getToken(ApexParser.APEX_WITH_SHARING, 0)
 
         def APEX_WITHOUT_SHARING(self):
-            return self.getToken(apexParser.APEX_WITHOUT_SHARING, 0)
+            return self.getToken(ApexParser.APEX_WITHOUT_SHARING, 0)
 
         def getRuleIndex(self):
-            return apexParser.RULE_classOrInterfaceModifier
+            return ApexParser.RULE_classOrInterfaceModifier
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterClassOrInterfaceModifier" ):
@@ -1519,23 +1544,23 @@ class apexParser ( Parser ):
 
     def classOrInterfaceModifier(self):
 
-        localctx = apexParser.ClassOrInterfaceModifierContext(self, self._ctx, self.state)
+        localctx = ApexParser.ClassOrInterfaceModifierContext(self, self._ctx, self.state)
         self.enterRule(localctx, 10, self.RULE_classOrInterfaceModifier)
         self._la = 0 # Token type
         try:
             self.state = 291
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [apexParser.AT]:
+            if token in [ApexParser.AT]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 289
                 self.annotation()
                 pass
-            elif token in [apexParser.OVERRIDE, apexParser.VIRTUAL, apexParser.ABSTRACT, apexParser.FINAL, apexParser.PRIVATE, apexParser.PROTECTED, apexParser.PUBLIC, apexParser.STATIC, apexParser.GLOBAL, apexParser.WEBSERVICE, apexParser.APEX_WITH_SHARING, apexParser.APEX_WITHOUT_SHARING, apexParser.TESTMETHOD]:
+            elif token in [ApexParser.OVERRIDE, ApexParser.VIRTUAL, ApexParser.ABSTRACT, ApexParser.FINAL, ApexParser.PRIVATE, ApexParser.PROTECTED, ApexParser.PUBLIC, ApexParser.STATIC, ApexParser.GLOBAL, ApexParser.WEBSERVICE, ApexParser.APEX_WITH_SHARING, ApexParser.APEX_WITHOUT_SHARING, ApexParser.TESTMETHOD]:
                 self.enterOuterAlt(localctx, 2)
                 self.state = 290
                 _la = self._input.LA(1)
-                if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << apexParser.OVERRIDE) | (1 << apexParser.VIRTUAL) | (1 << apexParser.ABSTRACT) | (1 << apexParser.FINAL) | (1 << apexParser.PRIVATE) | (1 << apexParser.PROTECTED) | (1 << apexParser.PUBLIC) | (1 << apexParser.STATIC) | (1 << apexParser.GLOBAL) | (1 << apexParser.WEBSERVICE) | (1 << apexParser.APEX_WITH_SHARING) | (1 << apexParser.APEX_WITHOUT_SHARING) | (1 << apexParser.TESTMETHOD))) != 0)):
+                if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ApexParser.OVERRIDE) | (1 << ApexParser.VIRTUAL) | (1 << ApexParser.ABSTRACT) | (1 << ApexParser.FINAL) | (1 << ApexParser.PRIVATE) | (1 << ApexParser.PROTECTED) | (1 << ApexParser.PUBLIC) | (1 << ApexParser.STATIC) | (1 << ApexParser.GLOBAL) | (1 << ApexParser.WEBSERVICE) | (1 << ApexParser.APEX_WITH_SHARING) | (1 << ApexParser.APEX_WITHOUT_SHARING) | (1 << ApexParser.TESTMETHOD))) != 0)):
                     self._errHandler.recoverInline(self)
                 else:
                     self._errHandler.reportMatch(self)
@@ -1552,6 +1577,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class VariableModifierContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -1559,14 +1585,14 @@ class apexParser ( Parser ):
             self.parser = parser
 
         def FINAL(self):
-            return self.getToken(apexParser.FINAL, 0)
+            return self.getToken(ApexParser.FINAL, 0)
 
         def annotation(self):
-            return self.getTypedRuleContext(apexParser.AnnotationContext,0)
+            return self.getTypedRuleContext(ApexParser.AnnotationContext,0)
 
 
         def getRuleIndex(self):
-            return apexParser.RULE_variableModifier
+            return ApexParser.RULE_variableModifier
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterVariableModifier" ):
@@ -1581,18 +1607,18 @@ class apexParser ( Parser ):
 
     def variableModifier(self):
 
-        localctx = apexParser.VariableModifierContext(self, self._ctx, self.state)
+        localctx = ApexParser.VariableModifierContext(self, self._ctx, self.state)
         self.enterRule(localctx, 12, self.RULE_variableModifier)
         try:
             self.state = 295
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [apexParser.FINAL]:
+            if token in [ApexParser.FINAL]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 293
-                self.match(apexParser.FINAL)
+                self.match(ApexParser.FINAL)
                 pass
-            elif token in [apexParser.AT]:
+            elif token in [ApexParser.AT]:
                 self.enterOuterAlt(localctx, 2)
                 self.state = 294
                 self.annotation()
@@ -1608,6 +1634,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class ClassDeclarationContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -1615,35 +1642,35 @@ class apexParser ( Parser ):
             self.parser = parser
 
         def CLASS(self):
-            return self.getToken(apexParser.CLASS, 0)
+            return self.getToken(ApexParser.CLASS, 0)
 
         def Identifier(self):
-            return self.getToken(apexParser.Identifier, 0)
+            return self.getToken(ApexParser.Identifier, 0)
 
         def classBody(self):
-            return self.getTypedRuleContext(apexParser.ClassBodyContext,0)
+            return self.getTypedRuleContext(ApexParser.ClassBodyContext,0)
 
 
         def typeParameters(self):
-            return self.getTypedRuleContext(apexParser.TypeParametersContext,0)
+            return self.getTypedRuleContext(ApexParser.TypeParametersContext,0)
 
 
         def EXTENDS(self):
-            return self.getToken(apexParser.EXTENDS, 0)
+            return self.getToken(ApexParser.EXTENDS, 0)
 
         def typeType(self):
-            return self.getTypedRuleContext(apexParser.TypeTypeContext,0)
+            return self.getTypedRuleContext(ApexParser.TypeTypeContext,0)
 
 
         def IMPLEMENTS(self):
-            return self.getToken(apexParser.IMPLEMENTS, 0)
+            return self.getToken(ApexParser.IMPLEMENTS, 0)
 
         def typeList(self):
-            return self.getTypedRuleContext(apexParser.TypeListContext,0)
+            return self.getTypedRuleContext(ApexParser.TypeListContext,0)
 
 
         def getRuleIndex(self):
-            return apexParser.RULE_classDeclaration
+            return ApexParser.RULE_classDeclaration
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterClassDeclaration" ):
@@ -1658,19 +1685,19 @@ class apexParser ( Parser ):
 
     def classDeclaration(self):
 
-        localctx = apexParser.ClassDeclarationContext(self, self._ctx, self.state)
+        localctx = ApexParser.ClassDeclarationContext(self, self._ctx, self.state)
         self.enterRule(localctx, 14, self.RULE_classDeclaration)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 297
-            self.match(apexParser.CLASS)
+            self.match(ApexParser.CLASS)
             self.state = 298
-            self.match(apexParser.Identifier)
+            self.match(ApexParser.Identifier)
             self.state = 300
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==apexParser.LT:
+            if _la==ApexParser.LT:
                 self.state = 299
                 self.typeParameters()
 
@@ -1678,9 +1705,9 @@ class apexParser ( Parser ):
             self.state = 304
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==apexParser.EXTENDS:
+            if _la==ApexParser.EXTENDS:
                 self.state = 302
-                self.match(apexParser.EXTENDS)
+                self.match(ApexParser.EXTENDS)
                 self.state = 303
                 self.typeType()
 
@@ -1688,9 +1715,9 @@ class apexParser ( Parser ):
             self.state = 308
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==apexParser.IMPLEMENTS:
+            if _la==ApexParser.IMPLEMENTS:
                 self.state = 306
-                self.match(apexParser.IMPLEMENTS)
+                self.match(ApexParser.IMPLEMENTS)
                 self.state = 307
                 self.typeList()
 
@@ -1705,21 +1732,34 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class TypeParametersContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def LT(self):
+            return self.getToken(ApexParser.LT, 0)
+
         def typeParameter(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(apexParser.TypeParameterContext)
+                return self.getTypedRuleContexts(ApexParser.TypeParameterContext)
             else:
-                return self.getTypedRuleContext(apexParser.TypeParameterContext,i)
+                return self.getTypedRuleContext(ApexParser.TypeParameterContext,i)
 
+
+        def GT(self):
+            return self.getToken(ApexParser.GT, 0)
+
+        def COMMA(self, i:int=None):
+            if i is None:
+                return self.getTokens(ApexParser.COMMA)
+            else:
+                return self.getToken(ApexParser.COMMA, i)
 
         def getRuleIndex(self):
-            return apexParser.RULE_typeParameters
+            return ApexParser.RULE_typeParameters
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterTypeParameters" ):
@@ -1734,21 +1774,21 @@ class apexParser ( Parser ):
 
     def typeParameters(self):
 
-        localctx = apexParser.TypeParametersContext(self, self._ctx, self.state)
+        localctx = ApexParser.TypeParametersContext(self, self._ctx, self.state)
         self.enterRule(localctx, 16, self.RULE_typeParameters)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 312
-            self.match(apexParser.LT)
+            self.match(ApexParser.LT)
             self.state = 313
             self.typeParameter()
             self.state = 318
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==apexParser.COMMA:
+            while _la==ApexParser.COMMA:
                 self.state = 314
-                self.match(apexParser.COMMA)
+                self.match(ApexParser.COMMA)
                 self.state = 315
                 self.typeParameter()
                 self.state = 320
@@ -1756,7 +1796,7 @@ class apexParser ( Parser ):
                 _la = self._input.LA(1)
 
             self.state = 321
-            self.match(apexParser.GT)
+            self.match(ApexParser.GT)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -1765,6 +1805,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class TypeParameterContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -1772,17 +1813,17 @@ class apexParser ( Parser ):
             self.parser = parser
 
         def Identifier(self):
-            return self.getToken(apexParser.Identifier, 0)
+            return self.getToken(ApexParser.Identifier, 0)
 
         def EXTENDS(self):
-            return self.getToken(apexParser.EXTENDS, 0)
+            return self.getToken(ApexParser.EXTENDS, 0)
 
         def typeBound(self):
-            return self.getTypedRuleContext(apexParser.TypeBoundContext,0)
+            return self.getTypedRuleContext(ApexParser.TypeBoundContext,0)
 
 
         def getRuleIndex(self):
-            return apexParser.RULE_typeParameter
+            return ApexParser.RULE_typeParameter
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterTypeParameter" ):
@@ -1797,19 +1838,19 @@ class apexParser ( Parser ):
 
     def typeParameter(self):
 
-        localctx = apexParser.TypeParameterContext(self, self._ctx, self.state)
+        localctx = ApexParser.TypeParameterContext(self, self._ctx, self.state)
         self.enterRule(localctx, 18, self.RULE_typeParameter)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 323
-            self.match(apexParser.Identifier)
+            self.match(ApexParser.Identifier)
             self.state = 326
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==apexParser.EXTENDS:
+            if _la==ApexParser.EXTENDS:
                 self.state = 324
-                self.match(apexParser.EXTENDS)
+                self.match(ApexParser.EXTENDS)
                 self.state = 325
                 self.typeBound()
 
@@ -1822,6 +1863,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class TypeBoundContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -1830,13 +1872,19 @@ class apexParser ( Parser ):
 
         def typeType(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(apexParser.TypeTypeContext)
+                return self.getTypedRuleContexts(ApexParser.TypeTypeContext)
             else:
-                return self.getTypedRuleContext(apexParser.TypeTypeContext,i)
+                return self.getTypedRuleContext(ApexParser.TypeTypeContext,i)
 
+
+        def BITAND(self, i:int=None):
+            if i is None:
+                return self.getTokens(ApexParser.BITAND)
+            else:
+                return self.getToken(ApexParser.BITAND, i)
 
         def getRuleIndex(self):
-            return apexParser.RULE_typeBound
+            return ApexParser.RULE_typeBound
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterTypeBound" ):
@@ -1851,7 +1899,7 @@ class apexParser ( Parser ):
 
     def typeBound(self):
 
-        localctx = apexParser.TypeBoundContext(self, self._ctx, self.state)
+        localctx = ApexParser.TypeBoundContext(self, self._ctx, self.state)
         self.enterRule(localctx, 20, self.RULE_typeBound)
         self._la = 0 # Token type
         try:
@@ -1861,9 +1909,9 @@ class apexParser ( Parser ):
             self.state = 333
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==apexParser.BITAND:
+            while _la==ApexParser.BITAND:
                 self.state = 329
-                self.match(apexParser.BITAND)
+                self.match(ApexParser.BITAND)
                 self.state = 330
                 self.typeType()
                 self.state = 335
@@ -1878,6 +1926,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class EnumDeclarationContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -1885,28 +1934,37 @@ class apexParser ( Parser ):
             self.parser = parser
 
         def ENUM(self):
-            return self.getToken(apexParser.ENUM, 0)
+            return self.getToken(ApexParser.ENUM, 0)
 
         def Identifier(self):
-            return self.getToken(apexParser.Identifier, 0)
+            return self.getToken(ApexParser.Identifier, 0)
+
+        def LBRACE(self):
+            return self.getToken(ApexParser.LBRACE, 0)
+
+        def RBRACE(self):
+            return self.getToken(ApexParser.RBRACE, 0)
 
         def IMPLEMENTS(self):
-            return self.getToken(apexParser.IMPLEMENTS, 0)
+            return self.getToken(ApexParser.IMPLEMENTS, 0)
 
         def typeList(self):
-            return self.getTypedRuleContext(apexParser.TypeListContext,0)
+            return self.getTypedRuleContext(ApexParser.TypeListContext,0)
 
 
         def enumConstants(self):
-            return self.getTypedRuleContext(apexParser.EnumConstantsContext,0)
+            return self.getTypedRuleContext(ApexParser.EnumConstantsContext,0)
 
+
+        def COMMA(self):
+            return self.getToken(ApexParser.COMMA, 0)
 
         def enumBodyDeclarations(self):
-            return self.getTypedRuleContext(apexParser.EnumBodyDeclarationsContext,0)
+            return self.getTypedRuleContext(ApexParser.EnumBodyDeclarationsContext,0)
 
 
         def getRuleIndex(self):
-            return apexParser.RULE_enumDeclaration
+            return ApexParser.RULE_enumDeclaration
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterEnumDeclaration" ):
@@ -1921,31 +1979,31 @@ class apexParser ( Parser ):
 
     def enumDeclaration(self):
 
-        localctx = apexParser.EnumDeclarationContext(self, self._ctx, self.state)
+        localctx = ApexParser.EnumDeclarationContext(self, self._ctx, self.state)
         self.enterRule(localctx, 22, self.RULE_enumDeclaration)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 336
-            self.match(apexParser.ENUM)
+            self.match(ApexParser.ENUM)
             self.state = 337
-            self.match(apexParser.Identifier)
+            self.match(ApexParser.Identifier)
             self.state = 340
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==apexParser.IMPLEMENTS:
+            if _la==ApexParser.IMPLEMENTS:
                 self.state = 338
-                self.match(apexParser.IMPLEMENTS)
+                self.match(ApexParser.IMPLEMENTS)
                 self.state = 339
                 self.typeList()
 
 
             self.state = 342
-            self.match(apexParser.LBRACE)
+            self.match(ApexParser.LBRACE)
             self.state = 344
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==apexParser.Identifier or _la==apexParser.AT:
+            if _la==ApexParser.Identifier or _la==ApexParser.AT:
                 self.state = 343
                 self.enumConstants()
 
@@ -1953,21 +2011,21 @@ class apexParser ( Parser ):
             self.state = 347
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==apexParser.COMMA:
+            if _la==ApexParser.COMMA:
                 self.state = 346
-                self.match(apexParser.COMMA)
+                self.match(ApexParser.COMMA)
 
 
             self.state = 350
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==apexParser.SEMI:
+            if _la==ApexParser.SEMI:
                 self.state = 349
                 self.enumBodyDeclarations()
 
 
             self.state = 352
-            self.match(apexParser.RBRACE)
+            self.match(ApexParser.RBRACE)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -1975,6 +2033,7 @@ class apexParser ( Parser ):
         finally:
             self.exitRule()
         return localctx
+
 
     class EnumConstantsContext(ParserRuleContext):
 
@@ -1984,13 +2043,19 @@ class apexParser ( Parser ):
 
         def enumConstant(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(apexParser.EnumConstantContext)
+                return self.getTypedRuleContexts(ApexParser.EnumConstantContext)
             else:
-                return self.getTypedRuleContext(apexParser.EnumConstantContext,i)
+                return self.getTypedRuleContext(ApexParser.EnumConstantContext,i)
 
+
+        def COMMA(self, i:int=None):
+            if i is None:
+                return self.getTokens(ApexParser.COMMA)
+            else:
+                return self.getToken(ApexParser.COMMA, i)
 
         def getRuleIndex(self):
-            return apexParser.RULE_enumConstants
+            return ApexParser.RULE_enumConstants
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterEnumConstants" ):
@@ -2005,7 +2070,7 @@ class apexParser ( Parser ):
 
     def enumConstants(self):
 
-        localctx = apexParser.EnumConstantsContext(self, self._ctx, self.state)
+        localctx = ApexParser.EnumConstantsContext(self, self._ctx, self.state)
         self.enterRule(localctx, 24, self.RULE_enumConstants)
         try:
             self.enterOuterAlt(localctx, 1)
@@ -2017,7 +2082,7 @@ class apexParser ( Parser ):
             while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                 if _alt==1:
                     self.state = 355
-                    self.match(apexParser.COMMA)
+                    self.match(ApexParser.COMMA)
                     self.state = 356
                     self.enumConstant() 
                 self.state = 361
@@ -2032,6 +2097,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class EnumConstantContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -2039,25 +2105,25 @@ class apexParser ( Parser ):
             self.parser = parser
 
         def Identifier(self):
-            return self.getToken(apexParser.Identifier, 0)
+            return self.getToken(ApexParser.Identifier, 0)
 
         def annotation(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(apexParser.AnnotationContext)
+                return self.getTypedRuleContexts(ApexParser.AnnotationContext)
             else:
-                return self.getTypedRuleContext(apexParser.AnnotationContext,i)
+                return self.getTypedRuleContext(ApexParser.AnnotationContext,i)
 
 
         def arguments(self):
-            return self.getTypedRuleContext(apexParser.ArgumentsContext,0)
+            return self.getTypedRuleContext(ApexParser.ArgumentsContext,0)
 
 
         def classBody(self):
-            return self.getTypedRuleContext(apexParser.ClassBodyContext,0)
+            return self.getTypedRuleContext(ApexParser.ClassBodyContext,0)
 
 
         def getRuleIndex(self):
-            return apexParser.RULE_enumConstant
+            return ApexParser.RULE_enumConstant
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterEnumConstant" ):
@@ -2072,7 +2138,7 @@ class apexParser ( Parser ):
 
     def enumConstant(self):
 
-        localctx = apexParser.EnumConstantContext(self, self._ctx, self.state)
+        localctx = ApexParser.EnumConstantContext(self, self._ctx, self.state)
         self.enterRule(localctx, 26, self.RULE_enumConstant)
         self._la = 0 # Token type
         try:
@@ -2080,7 +2146,7 @@ class apexParser ( Parser ):
             self.state = 365
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==apexParser.AT:
+            while _la==ApexParser.AT:
                 self.state = 362
                 self.annotation()
                 self.state = 367
@@ -2088,11 +2154,11 @@ class apexParser ( Parser ):
                 _la = self._input.LA(1)
 
             self.state = 368
-            self.match(apexParser.Identifier)
+            self.match(ApexParser.Identifier)
             self.state = 370
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==apexParser.LPAREN:
+            if _la==ApexParser.LPAREN:
                 self.state = 369
                 self.arguments()
 
@@ -2100,7 +2166,7 @@ class apexParser ( Parser ):
             self.state = 373
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==apexParser.LBRACE:
+            if _la==ApexParser.LBRACE:
                 self.state = 372
                 self.classBody()
 
@@ -2113,21 +2179,25 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class EnumBodyDeclarationsContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def SEMI(self):
+            return self.getToken(ApexParser.SEMI, 0)
+
         def classBodyDeclaration(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(apexParser.ClassBodyDeclarationContext)
+                return self.getTypedRuleContexts(ApexParser.ClassBodyDeclarationContext)
             else:
-                return self.getTypedRuleContext(apexParser.ClassBodyDeclarationContext,i)
+                return self.getTypedRuleContext(ApexParser.ClassBodyDeclarationContext,i)
 
 
         def getRuleIndex(self):
-            return apexParser.RULE_enumBodyDeclarations
+            return ApexParser.RULE_enumBodyDeclarations
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterEnumBodyDeclarations" ):
@@ -2142,17 +2212,17 @@ class apexParser ( Parser ):
 
     def enumBodyDeclarations(self):
 
-        localctx = apexParser.EnumBodyDeclarationsContext(self, self._ctx, self.state)
+        localctx = ApexParser.EnumBodyDeclarationsContext(self, self._ctx, self.state)
         self.enterRule(localctx, 28, self.RULE_enumBodyDeclarations)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 375
-            self.match(apexParser.SEMI)
+            self.match(ApexParser.SEMI)
             self.state = 379
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << apexParser.OVERRIDE) | (1 << apexParser.VIRTUAL) | (1 << apexParser.SET) | (1 << apexParser.ABSTRACT) | (1 << apexParser.BYTE) | (1 << apexParser.CHAR) | (1 << apexParser.CLASS) | (1 << apexParser.ENUM) | (1 << apexParser.FINAL) | (1 << apexParser.FLOAT) | (1 << apexParser.INT) | (1 << apexParser.INTERFACE) | (1 << apexParser.NATIVE) | (1 << apexParser.PRIVATE) | (1 << apexParser.PROTECTED) | (1 << apexParser.PUBLIC) | (1 << apexParser.SHORT) | (1 << apexParser.STATIC) | (1 << apexParser.SYNCHRONIZED) | (1 << apexParser.TRANSIENT) | (1 << apexParser.VOID) | (1 << apexParser.GLOBAL) | (1 << apexParser.WEBSERVICE) | (1 << apexParser.APEX_WITH_SHARING) | (1 << apexParser.APEX_WITHOUT_SHARING) | (1 << apexParser.TESTMETHOD))) != 0) or ((((_la - 70)) & ~0x3f) == 0 and ((1 << (_la - 70)) & ((1 << (apexParser.LBRACE - 70)) | (1 << (apexParser.SEMI - 70)) | (1 << (apexParser.LT - 70)) | (1 << (apexParser.Identifier - 70)) | (1 << (apexParser.AT - 70)))) != 0):
+            while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ApexParser.OVERRIDE) | (1 << ApexParser.VIRTUAL) | (1 << ApexParser.SET) | (1 << ApexParser.ABSTRACT) | (1 << ApexParser.BYTE) | (1 << ApexParser.CHAR) | (1 << ApexParser.CLASS) | (1 << ApexParser.ENUM) | (1 << ApexParser.FINAL) | (1 << ApexParser.FLOAT) | (1 << ApexParser.INT) | (1 << ApexParser.INTERFACE) | (1 << ApexParser.NATIVE) | (1 << ApexParser.PRIVATE) | (1 << ApexParser.PROTECTED) | (1 << ApexParser.PUBLIC) | (1 << ApexParser.SHORT) | (1 << ApexParser.STATIC) | (1 << ApexParser.SYNCHRONIZED) | (1 << ApexParser.TRANSIENT) | (1 << ApexParser.VOID) | (1 << ApexParser.GLOBAL) | (1 << ApexParser.WEBSERVICE) | (1 << ApexParser.APEX_WITH_SHARING) | (1 << ApexParser.APEX_WITHOUT_SHARING) | (1 << ApexParser.TESTMETHOD))) != 0) or ((((_la - 70)) & ~0x3f) == 0 and ((1 << (_la - 70)) & ((1 << (ApexParser.LBRACE - 70)) | (1 << (ApexParser.SEMI - 70)) | (1 << (ApexParser.LT - 70)) | (1 << (ApexParser.Identifier - 70)) | (1 << (ApexParser.AT - 70)))) != 0):
                 self.state = 376
                 self.classBodyDeclaration()
                 self.state = 381
@@ -2167,6 +2237,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class InterfaceDeclarationContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -2174,28 +2245,28 @@ class apexParser ( Parser ):
             self.parser = parser
 
         def INTERFACE(self):
-            return self.getToken(apexParser.INTERFACE, 0)
+            return self.getToken(ApexParser.INTERFACE, 0)
 
         def Identifier(self):
-            return self.getToken(apexParser.Identifier, 0)
+            return self.getToken(ApexParser.Identifier, 0)
 
         def interfaceBody(self):
-            return self.getTypedRuleContext(apexParser.InterfaceBodyContext,0)
+            return self.getTypedRuleContext(ApexParser.InterfaceBodyContext,0)
 
 
         def typeParameters(self):
-            return self.getTypedRuleContext(apexParser.TypeParametersContext,0)
+            return self.getTypedRuleContext(ApexParser.TypeParametersContext,0)
 
 
         def EXTENDS(self):
-            return self.getToken(apexParser.EXTENDS, 0)
+            return self.getToken(ApexParser.EXTENDS, 0)
 
         def typeList(self):
-            return self.getTypedRuleContext(apexParser.TypeListContext,0)
+            return self.getTypedRuleContext(ApexParser.TypeListContext,0)
 
 
         def getRuleIndex(self):
-            return apexParser.RULE_interfaceDeclaration
+            return ApexParser.RULE_interfaceDeclaration
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterInterfaceDeclaration" ):
@@ -2210,19 +2281,19 @@ class apexParser ( Parser ):
 
     def interfaceDeclaration(self):
 
-        localctx = apexParser.InterfaceDeclarationContext(self, self._ctx, self.state)
+        localctx = ApexParser.InterfaceDeclarationContext(self, self._ctx, self.state)
         self.enterRule(localctx, 30, self.RULE_interfaceDeclaration)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 382
-            self.match(apexParser.INTERFACE)
+            self.match(ApexParser.INTERFACE)
             self.state = 383
-            self.match(apexParser.Identifier)
+            self.match(ApexParser.Identifier)
             self.state = 385
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==apexParser.LT:
+            if _la==ApexParser.LT:
                 self.state = 384
                 self.typeParameters()
 
@@ -2230,9 +2301,9 @@ class apexParser ( Parser ):
             self.state = 389
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==apexParser.EXTENDS:
+            if _la==ApexParser.EXTENDS:
                 self.state = 387
-                self.match(apexParser.EXTENDS)
+                self.match(ApexParser.EXTENDS)
                 self.state = 388
                 self.typeList()
 
@@ -2247,6 +2318,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class TypeListContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -2255,13 +2327,19 @@ class apexParser ( Parser ):
 
         def typeType(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(apexParser.TypeTypeContext)
+                return self.getTypedRuleContexts(ApexParser.TypeTypeContext)
             else:
-                return self.getTypedRuleContext(apexParser.TypeTypeContext,i)
+                return self.getTypedRuleContext(ApexParser.TypeTypeContext,i)
 
+
+        def COMMA(self, i:int=None):
+            if i is None:
+                return self.getTokens(ApexParser.COMMA)
+            else:
+                return self.getToken(ApexParser.COMMA, i)
 
         def getRuleIndex(self):
-            return apexParser.RULE_typeList
+            return ApexParser.RULE_typeList
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterTypeList" ):
@@ -2276,7 +2354,7 @@ class apexParser ( Parser ):
 
     def typeList(self):
 
-        localctx = apexParser.TypeListContext(self, self._ctx, self.state)
+        localctx = ApexParser.TypeListContext(self, self._ctx, self.state)
         self.enterRule(localctx, 32, self.RULE_typeList)
         self._la = 0 # Token type
         try:
@@ -2286,9 +2364,9 @@ class apexParser ( Parser ):
             self.state = 398
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==apexParser.COMMA:
+            while _la==ApexParser.COMMA:
                 self.state = 394
-                self.match(apexParser.COMMA)
+                self.match(ApexParser.COMMA)
                 self.state = 395
                 self.typeType()
                 self.state = 400
@@ -2303,21 +2381,28 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class ClassBodyContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def LBRACE(self):
+            return self.getToken(ApexParser.LBRACE, 0)
+
+        def RBRACE(self):
+            return self.getToken(ApexParser.RBRACE, 0)
+
         def classBodyDeclaration(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(apexParser.ClassBodyDeclarationContext)
+                return self.getTypedRuleContexts(ApexParser.ClassBodyDeclarationContext)
             else:
-                return self.getTypedRuleContext(apexParser.ClassBodyDeclarationContext,i)
+                return self.getTypedRuleContext(ApexParser.ClassBodyDeclarationContext,i)
 
 
         def getRuleIndex(self):
-            return apexParser.RULE_classBody
+            return ApexParser.RULE_classBody
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterClassBody" ):
@@ -2332,17 +2417,17 @@ class apexParser ( Parser ):
 
     def classBody(self):
 
-        localctx = apexParser.ClassBodyContext(self, self._ctx, self.state)
+        localctx = ApexParser.ClassBodyContext(self, self._ctx, self.state)
         self.enterRule(localctx, 34, self.RULE_classBody)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 401
-            self.match(apexParser.LBRACE)
+            self.match(ApexParser.LBRACE)
             self.state = 405
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << apexParser.OVERRIDE) | (1 << apexParser.VIRTUAL) | (1 << apexParser.SET) | (1 << apexParser.ABSTRACT) | (1 << apexParser.BYTE) | (1 << apexParser.CHAR) | (1 << apexParser.CLASS) | (1 << apexParser.ENUM) | (1 << apexParser.FINAL) | (1 << apexParser.FLOAT) | (1 << apexParser.INT) | (1 << apexParser.INTERFACE) | (1 << apexParser.NATIVE) | (1 << apexParser.PRIVATE) | (1 << apexParser.PROTECTED) | (1 << apexParser.PUBLIC) | (1 << apexParser.SHORT) | (1 << apexParser.STATIC) | (1 << apexParser.SYNCHRONIZED) | (1 << apexParser.TRANSIENT) | (1 << apexParser.VOID) | (1 << apexParser.GLOBAL) | (1 << apexParser.WEBSERVICE) | (1 << apexParser.APEX_WITH_SHARING) | (1 << apexParser.APEX_WITHOUT_SHARING) | (1 << apexParser.TESTMETHOD))) != 0) or ((((_la - 70)) & ~0x3f) == 0 and ((1 << (_la - 70)) & ((1 << (apexParser.LBRACE - 70)) | (1 << (apexParser.SEMI - 70)) | (1 << (apexParser.LT - 70)) | (1 << (apexParser.Identifier - 70)) | (1 << (apexParser.AT - 70)))) != 0):
+            while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ApexParser.OVERRIDE) | (1 << ApexParser.VIRTUAL) | (1 << ApexParser.SET) | (1 << ApexParser.ABSTRACT) | (1 << ApexParser.BYTE) | (1 << ApexParser.CHAR) | (1 << ApexParser.CLASS) | (1 << ApexParser.ENUM) | (1 << ApexParser.FINAL) | (1 << ApexParser.FLOAT) | (1 << ApexParser.INT) | (1 << ApexParser.INTERFACE) | (1 << ApexParser.NATIVE) | (1 << ApexParser.PRIVATE) | (1 << ApexParser.PROTECTED) | (1 << ApexParser.PUBLIC) | (1 << ApexParser.SHORT) | (1 << ApexParser.STATIC) | (1 << ApexParser.SYNCHRONIZED) | (1 << ApexParser.TRANSIENT) | (1 << ApexParser.VOID) | (1 << ApexParser.GLOBAL) | (1 << ApexParser.WEBSERVICE) | (1 << ApexParser.APEX_WITH_SHARING) | (1 << ApexParser.APEX_WITHOUT_SHARING) | (1 << ApexParser.TESTMETHOD))) != 0) or ((((_la - 70)) & ~0x3f) == 0 and ((1 << (_la - 70)) & ((1 << (ApexParser.LBRACE - 70)) | (1 << (ApexParser.SEMI - 70)) | (1 << (ApexParser.LT - 70)) | (1 << (ApexParser.Identifier - 70)) | (1 << (ApexParser.AT - 70)))) != 0):
                 self.state = 402
                 self.classBodyDeclaration()
                 self.state = 407
@@ -2350,7 +2435,7 @@ class apexParser ( Parser ):
                 _la = self._input.LA(1)
 
             self.state = 408
-            self.match(apexParser.RBRACE)
+            self.match(ApexParser.RBRACE)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -2359,21 +2444,28 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class InterfaceBodyContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def LBRACE(self):
+            return self.getToken(ApexParser.LBRACE, 0)
+
+        def RBRACE(self):
+            return self.getToken(ApexParser.RBRACE, 0)
+
         def interfaceBodyDeclaration(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(apexParser.InterfaceBodyDeclarationContext)
+                return self.getTypedRuleContexts(ApexParser.InterfaceBodyDeclarationContext)
             else:
-                return self.getTypedRuleContext(apexParser.InterfaceBodyDeclarationContext,i)
+                return self.getTypedRuleContext(ApexParser.InterfaceBodyDeclarationContext,i)
 
 
         def getRuleIndex(self):
-            return apexParser.RULE_interfaceBody
+            return ApexParser.RULE_interfaceBody
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterInterfaceBody" ):
@@ -2388,17 +2480,17 @@ class apexParser ( Parser ):
 
     def interfaceBody(self):
 
-        localctx = apexParser.InterfaceBodyContext(self, self._ctx, self.state)
+        localctx = ApexParser.InterfaceBodyContext(self, self._ctx, self.state)
         self.enterRule(localctx, 36, self.RULE_interfaceBody)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 410
-            self.match(apexParser.LBRACE)
+            self.match(ApexParser.LBRACE)
             self.state = 414
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << apexParser.OVERRIDE) | (1 << apexParser.VIRTUAL) | (1 << apexParser.SET) | (1 << apexParser.ABSTRACT) | (1 << apexParser.BYTE) | (1 << apexParser.CHAR) | (1 << apexParser.CLASS) | (1 << apexParser.ENUM) | (1 << apexParser.FINAL) | (1 << apexParser.FLOAT) | (1 << apexParser.INT) | (1 << apexParser.INTERFACE) | (1 << apexParser.NATIVE) | (1 << apexParser.PRIVATE) | (1 << apexParser.PROTECTED) | (1 << apexParser.PUBLIC) | (1 << apexParser.SHORT) | (1 << apexParser.STATIC) | (1 << apexParser.SYNCHRONIZED) | (1 << apexParser.TRANSIENT) | (1 << apexParser.VOID) | (1 << apexParser.GLOBAL) | (1 << apexParser.WEBSERVICE) | (1 << apexParser.APEX_WITH_SHARING) | (1 << apexParser.APEX_WITHOUT_SHARING) | (1 << apexParser.TESTMETHOD))) != 0) or ((((_la - 74)) & ~0x3f) == 0 and ((1 << (_la - 74)) & ((1 << (apexParser.SEMI - 74)) | (1 << (apexParser.LT - 74)) | (1 << (apexParser.Identifier - 74)) | (1 << (apexParser.AT - 74)))) != 0):
+            while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ApexParser.OVERRIDE) | (1 << ApexParser.VIRTUAL) | (1 << ApexParser.SET) | (1 << ApexParser.ABSTRACT) | (1 << ApexParser.BYTE) | (1 << ApexParser.CHAR) | (1 << ApexParser.CLASS) | (1 << ApexParser.ENUM) | (1 << ApexParser.FINAL) | (1 << ApexParser.FLOAT) | (1 << ApexParser.INT) | (1 << ApexParser.INTERFACE) | (1 << ApexParser.NATIVE) | (1 << ApexParser.PRIVATE) | (1 << ApexParser.PROTECTED) | (1 << ApexParser.PUBLIC) | (1 << ApexParser.SHORT) | (1 << ApexParser.STATIC) | (1 << ApexParser.SYNCHRONIZED) | (1 << ApexParser.TRANSIENT) | (1 << ApexParser.VOID) | (1 << ApexParser.GLOBAL) | (1 << ApexParser.WEBSERVICE) | (1 << ApexParser.APEX_WITH_SHARING) | (1 << ApexParser.APEX_WITHOUT_SHARING) | (1 << ApexParser.TESTMETHOD))) != 0) or ((((_la - 74)) & ~0x3f) == 0 and ((1 << (_la - 74)) & ((1 << (ApexParser.SEMI - 74)) | (1 << (ApexParser.LT - 74)) | (1 << (ApexParser.Identifier - 74)) | (1 << (ApexParser.AT - 74)))) != 0):
                 self.state = 411
                 self.interfaceBodyDeclaration()
                 self.state = 416
@@ -2406,7 +2498,7 @@ class apexParser ( Parser ):
                 _la = self._input.LA(1)
 
             self.state = 417
-            self.match(apexParser.RBRACE)
+            self.match(ApexParser.RBRACE)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -2415,32 +2507,36 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class ClassBodyDeclarationContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def SEMI(self):
+            return self.getToken(ApexParser.SEMI, 0)
+
         def block(self):
-            return self.getTypedRuleContext(apexParser.BlockContext,0)
+            return self.getTypedRuleContext(ApexParser.BlockContext,0)
 
 
         def STATIC(self):
-            return self.getToken(apexParser.STATIC, 0)
+            return self.getToken(ApexParser.STATIC, 0)
 
         def memberDeclaration(self):
-            return self.getTypedRuleContext(apexParser.MemberDeclarationContext,0)
+            return self.getTypedRuleContext(ApexParser.MemberDeclarationContext,0)
 
 
         def modifier(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(apexParser.ModifierContext)
+                return self.getTypedRuleContexts(ApexParser.ModifierContext)
             else:
-                return self.getTypedRuleContext(apexParser.ModifierContext,i)
+                return self.getTypedRuleContext(ApexParser.ModifierContext,i)
 
 
         def getRuleIndex(self):
-            return apexParser.RULE_classBodyDeclaration
+            return ApexParser.RULE_classBodyDeclaration
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterClassBodyDeclaration" ):
@@ -2455,7 +2551,7 @@ class apexParser ( Parser ):
 
     def classBodyDeclaration(self):
 
-        localctx = apexParser.ClassBodyDeclarationContext(self, self._ctx, self.state)
+        localctx = ApexParser.ClassBodyDeclarationContext(self, self._ctx, self.state)
         self.enterRule(localctx, 38, self.RULE_classBodyDeclaration)
         self._la = 0 # Token type
         try:
@@ -2465,7 +2561,7 @@ class apexParser ( Parser ):
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 419
-                self.match(apexParser.SEMI)
+                self.match(ApexParser.SEMI)
                 pass
 
             elif la_ == 2:
@@ -2473,9 +2569,9 @@ class apexParser ( Parser ):
                 self.state = 421
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if _la==apexParser.STATIC:
+                if _la==ApexParser.STATIC:
                     self.state = 420
-                    self.match(apexParser.STATIC)
+                    self.match(ApexParser.STATIC)
 
 
                 self.state = 423
@@ -2508,6 +2604,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class MemberDeclarationContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -2515,47 +2612,47 @@ class apexParser ( Parser ):
             self.parser = parser
 
         def methodDeclaration(self):
-            return self.getTypedRuleContext(apexParser.MethodDeclarationContext,0)
+            return self.getTypedRuleContext(ApexParser.MethodDeclarationContext,0)
 
 
         def genericMethodDeclaration(self):
-            return self.getTypedRuleContext(apexParser.GenericMethodDeclarationContext,0)
+            return self.getTypedRuleContext(ApexParser.GenericMethodDeclarationContext,0)
 
 
         def fieldDeclaration(self):
-            return self.getTypedRuleContext(apexParser.FieldDeclarationContext,0)
+            return self.getTypedRuleContext(ApexParser.FieldDeclarationContext,0)
 
 
         def constructorDeclaration(self):
-            return self.getTypedRuleContext(apexParser.ConstructorDeclarationContext,0)
+            return self.getTypedRuleContext(ApexParser.ConstructorDeclarationContext,0)
 
 
         def genericConstructorDeclaration(self):
-            return self.getTypedRuleContext(apexParser.GenericConstructorDeclarationContext,0)
+            return self.getTypedRuleContext(ApexParser.GenericConstructorDeclarationContext,0)
 
 
         def interfaceDeclaration(self):
-            return self.getTypedRuleContext(apexParser.InterfaceDeclarationContext,0)
+            return self.getTypedRuleContext(ApexParser.InterfaceDeclarationContext,0)
 
 
         def annotationTypeDeclaration(self):
-            return self.getTypedRuleContext(apexParser.AnnotationTypeDeclarationContext,0)
+            return self.getTypedRuleContext(ApexParser.AnnotationTypeDeclarationContext,0)
 
 
         def classDeclaration(self):
-            return self.getTypedRuleContext(apexParser.ClassDeclarationContext,0)
+            return self.getTypedRuleContext(ApexParser.ClassDeclarationContext,0)
 
 
         def enumDeclaration(self):
-            return self.getTypedRuleContext(apexParser.EnumDeclarationContext,0)
+            return self.getTypedRuleContext(ApexParser.EnumDeclarationContext,0)
 
 
         def propertyDeclaration(self):
-            return self.getTypedRuleContext(apexParser.PropertyDeclarationContext,0)
+            return self.getTypedRuleContext(ApexParser.PropertyDeclarationContext,0)
 
 
         def getRuleIndex(self):
-            return apexParser.RULE_memberDeclaration
+            return ApexParser.RULE_memberDeclaration
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterMemberDeclaration" ):
@@ -2570,7 +2667,7 @@ class apexParser ( Parser ):
 
     def memberDeclaration(self):
 
-        localctx = apexParser.MemberDeclarationContext(self, self._ctx, self.state)
+        localctx = ApexParser.MemberDeclarationContext(self, self._ctx, self.state)
         self.enterRule(localctx, 40, self.RULE_memberDeclaration)
         try:
             self.state = 443
@@ -2645,6 +2742,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class MethodDeclarationContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -2652,35 +2750,50 @@ class apexParser ( Parser ):
             self.parser = parser
 
         def Identifier(self):
-            return self.getToken(apexParser.Identifier, 0)
+            return self.getToken(ApexParser.Identifier, 0)
 
         def formalParameters(self):
-            return self.getTypedRuleContext(apexParser.FormalParametersContext,0)
+            return self.getTypedRuleContext(ApexParser.FormalParametersContext,0)
 
 
         def typeType(self):
-            return self.getTypedRuleContext(apexParser.TypeTypeContext,0)
+            return self.getTypedRuleContext(ApexParser.TypeTypeContext,0)
 
 
         def VOID(self):
-            return self.getToken(apexParser.VOID, 0)
+            return self.getToken(ApexParser.VOID, 0)
 
         def methodBody(self):
-            return self.getTypedRuleContext(apexParser.MethodBodyContext,0)
+            return self.getTypedRuleContext(ApexParser.MethodBodyContext,0)
 
+
+        def SEMI(self):
+            return self.getToken(ApexParser.SEMI, 0)
 
         def OVERRIDE(self):
-            return self.getToken(apexParser.OVERRIDE, 0)
+            return self.getToken(ApexParser.OVERRIDE, 0)
+
+        def LBRACK(self, i:int=None):
+            if i is None:
+                return self.getTokens(ApexParser.LBRACK)
+            else:
+                return self.getToken(ApexParser.LBRACK, i)
+
+        def RBRACK(self, i:int=None):
+            if i is None:
+                return self.getTokens(ApexParser.RBRACK)
+            else:
+                return self.getToken(ApexParser.RBRACK, i)
 
         def THROWS(self):
-            return self.getToken(apexParser.THROWS, 0)
+            return self.getToken(ApexParser.THROWS, 0)
 
         def qualifiedNameList(self):
-            return self.getTypedRuleContext(apexParser.QualifiedNameListContext,0)
+            return self.getTypedRuleContext(ApexParser.QualifiedNameListContext,0)
 
 
         def getRuleIndex(self):
-            return apexParser.RULE_methodDeclaration
+            return ApexParser.RULE_methodDeclaration
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterMethodDeclaration" ):
@@ -2695,7 +2808,7 @@ class apexParser ( Parser ):
 
     def methodDeclaration(self):
 
-        localctx = apexParser.MethodDeclarationContext(self, self._ctx, self.state)
+        localctx = ApexParser.MethodDeclarationContext(self, self._ctx, self.state)
         self.enterRule(localctx, 42, self.RULE_methodDeclaration)
         self._la = 0 # Token type
         try:
@@ -2703,37 +2816,37 @@ class apexParser ( Parser ):
             self.state = 446
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==apexParser.OVERRIDE:
+            if _la==ApexParser.OVERRIDE:
                 self.state = 445
-                self.match(apexParser.OVERRIDE)
+                self.match(ApexParser.OVERRIDE)
 
 
             self.state = 450
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [apexParser.SET, apexParser.BYTE, apexParser.CHAR, apexParser.FLOAT, apexParser.INT, apexParser.SHORT, apexParser.Identifier]:
+            if token in [ApexParser.SET, ApexParser.BYTE, ApexParser.CHAR, ApexParser.FLOAT, ApexParser.INT, ApexParser.SHORT, ApexParser.Identifier]:
                 self.state = 448
                 self.typeType()
                 pass
-            elif token in [apexParser.VOID]:
+            elif token in [ApexParser.VOID]:
                 self.state = 449
-                self.match(apexParser.VOID)
+                self.match(ApexParser.VOID)
                 pass
             else:
                 raise NoViableAltException(self)
 
             self.state = 452
-            self.match(apexParser.Identifier)
+            self.match(ApexParser.Identifier)
             self.state = 453
             self.formalParameters()
             self.state = 458
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==apexParser.LBRACK:
+            while _la==ApexParser.LBRACK:
                 self.state = 454
-                self.match(apexParser.LBRACK)
+                self.match(ApexParser.LBRACK)
                 self.state = 455
-                self.match(apexParser.RBRACK)
+                self.match(ApexParser.RBRACK)
                 self.state = 460
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
@@ -2741,9 +2854,9 @@ class apexParser ( Parser ):
             self.state = 463
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==apexParser.THROWS:
+            if _la==ApexParser.THROWS:
                 self.state = 461
-                self.match(apexParser.THROWS)
+                self.match(ApexParser.THROWS)
                 self.state = 462
                 self.qualifiedNameList()
 
@@ -2751,13 +2864,13 @@ class apexParser ( Parser ):
             self.state = 467
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [apexParser.LBRACE]:
+            if token in [ApexParser.LBRACE]:
                 self.state = 465
                 self.methodBody()
                 pass
-            elif token in [apexParser.SEMI]:
+            elif token in [ApexParser.SEMI]:
                 self.state = 466
-                self.match(apexParser.SEMI)
+                self.match(ApexParser.SEMI)
                 pass
             else:
                 raise NoViableAltException(self)
@@ -2770,6 +2883,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class GenericMethodDeclarationContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -2777,15 +2891,15 @@ class apexParser ( Parser ):
             self.parser = parser
 
         def typeParameters(self):
-            return self.getTypedRuleContext(apexParser.TypeParametersContext,0)
+            return self.getTypedRuleContext(ApexParser.TypeParametersContext,0)
 
 
         def methodDeclaration(self):
-            return self.getTypedRuleContext(apexParser.MethodDeclarationContext,0)
+            return self.getTypedRuleContext(ApexParser.MethodDeclarationContext,0)
 
 
         def getRuleIndex(self):
-            return apexParser.RULE_genericMethodDeclaration
+            return ApexParser.RULE_genericMethodDeclaration
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterGenericMethodDeclaration" ):
@@ -2800,7 +2914,7 @@ class apexParser ( Parser ):
 
     def genericMethodDeclaration(self):
 
-        localctx = apexParser.GenericMethodDeclarationContext(self, self._ctx, self.state)
+        localctx = ApexParser.GenericMethodDeclarationContext(self, self._ctx, self.state)
         self.enterRule(localctx, 44, self.RULE_genericMethodDeclaration)
         try:
             self.enterOuterAlt(localctx, 1)
@@ -2816,6 +2930,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class ConstructorDeclarationContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -2823,25 +2938,25 @@ class apexParser ( Parser ):
             self.parser = parser
 
         def Identifier(self):
-            return self.getToken(apexParser.Identifier, 0)
+            return self.getToken(ApexParser.Identifier, 0)
 
         def formalParameters(self):
-            return self.getTypedRuleContext(apexParser.FormalParametersContext,0)
+            return self.getTypedRuleContext(ApexParser.FormalParametersContext,0)
 
 
         def constructorBody(self):
-            return self.getTypedRuleContext(apexParser.ConstructorBodyContext,0)
+            return self.getTypedRuleContext(ApexParser.ConstructorBodyContext,0)
 
 
         def THROWS(self):
-            return self.getToken(apexParser.THROWS, 0)
+            return self.getToken(ApexParser.THROWS, 0)
 
         def qualifiedNameList(self):
-            return self.getTypedRuleContext(apexParser.QualifiedNameListContext,0)
+            return self.getTypedRuleContext(ApexParser.QualifiedNameListContext,0)
 
 
         def getRuleIndex(self):
-            return apexParser.RULE_constructorDeclaration
+            return ApexParser.RULE_constructorDeclaration
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterConstructorDeclaration" ):
@@ -2856,21 +2971,21 @@ class apexParser ( Parser ):
 
     def constructorDeclaration(self):
 
-        localctx = apexParser.ConstructorDeclarationContext(self, self._ctx, self.state)
+        localctx = ApexParser.ConstructorDeclarationContext(self, self._ctx, self.state)
         self.enterRule(localctx, 46, self.RULE_constructorDeclaration)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 472
-            self.match(apexParser.Identifier)
+            self.match(ApexParser.Identifier)
             self.state = 473
             self.formalParameters()
             self.state = 476
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==apexParser.THROWS:
+            if _la==ApexParser.THROWS:
                 self.state = 474
-                self.match(apexParser.THROWS)
+                self.match(ApexParser.THROWS)
                 self.state = 475
                 self.qualifiedNameList()
 
@@ -2885,6 +3000,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class GenericConstructorDeclarationContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -2892,15 +3008,15 @@ class apexParser ( Parser ):
             self.parser = parser
 
         def typeParameters(self):
-            return self.getTypedRuleContext(apexParser.TypeParametersContext,0)
+            return self.getTypedRuleContext(ApexParser.TypeParametersContext,0)
 
 
         def constructorDeclaration(self):
-            return self.getTypedRuleContext(apexParser.ConstructorDeclarationContext,0)
+            return self.getTypedRuleContext(ApexParser.ConstructorDeclarationContext,0)
 
 
         def getRuleIndex(self):
-            return apexParser.RULE_genericConstructorDeclaration
+            return ApexParser.RULE_genericConstructorDeclaration
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterGenericConstructorDeclaration" ):
@@ -2915,7 +3031,7 @@ class apexParser ( Parser ):
 
     def genericConstructorDeclaration(self):
 
-        localctx = apexParser.GenericConstructorDeclarationContext(self, self._ctx, self.state)
+        localctx = ApexParser.GenericConstructorDeclarationContext(self, self._ctx, self.state)
         self.enterRule(localctx, 48, self.RULE_genericConstructorDeclaration)
         try:
             self.enterOuterAlt(localctx, 1)
@@ -2931,6 +3047,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class FieldDeclarationContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -2938,15 +3055,18 @@ class apexParser ( Parser ):
             self.parser = parser
 
         def typeType(self):
-            return self.getTypedRuleContext(apexParser.TypeTypeContext,0)
+            return self.getTypedRuleContext(ApexParser.TypeTypeContext,0)
 
 
         def variableDeclarators(self):
-            return self.getTypedRuleContext(apexParser.VariableDeclaratorsContext,0)
+            return self.getTypedRuleContext(ApexParser.VariableDeclaratorsContext,0)
 
+
+        def SEMI(self):
+            return self.getToken(ApexParser.SEMI, 0)
 
         def getRuleIndex(self):
-            return apexParser.RULE_fieldDeclaration
+            return ApexParser.RULE_fieldDeclaration
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterFieldDeclaration" ):
@@ -2961,7 +3081,7 @@ class apexParser ( Parser ):
 
     def fieldDeclaration(self):
 
-        localctx = apexParser.FieldDeclarationContext(self, self._ctx, self.state)
+        localctx = ApexParser.FieldDeclarationContext(self, self._ctx, self.state)
         self.enterRule(localctx, 50, self.RULE_fieldDeclaration)
         try:
             self.enterOuterAlt(localctx, 1)
@@ -2970,7 +3090,7 @@ class apexParser ( Parser ):
             self.state = 484
             self.variableDeclarators()
             self.state = 485
-            self.match(apexParser.SEMI)
+            self.match(ApexParser.SEMI)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -2979,6 +3099,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class PropertyDeclarationContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -2986,19 +3107,19 @@ class apexParser ( Parser ):
             self.parser = parser
 
         def typeType(self):
-            return self.getTypedRuleContext(apexParser.TypeTypeContext,0)
+            return self.getTypedRuleContext(ApexParser.TypeTypeContext,0)
 
 
         def variableDeclarators(self):
-            return self.getTypedRuleContext(apexParser.VariableDeclaratorsContext,0)
+            return self.getTypedRuleContext(ApexParser.VariableDeclaratorsContext,0)
 
 
         def propertyBodyDeclaration(self):
-            return self.getTypedRuleContext(apexParser.PropertyBodyDeclarationContext,0)
+            return self.getTypedRuleContext(ApexParser.PropertyBodyDeclarationContext,0)
 
 
         def getRuleIndex(self):
-            return apexParser.RULE_propertyDeclaration
+            return ApexParser.RULE_propertyDeclaration
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterPropertyDeclaration" ):
@@ -3013,7 +3134,7 @@ class apexParser ( Parser ):
 
     def propertyDeclaration(self):
 
-        localctx = apexParser.PropertyDeclarationContext(self, self._ctx, self.state)
+        localctx = ApexParser.PropertyDeclarationContext(self, self._ctx, self.state)
         self.enterRule(localctx, 52, self.RULE_propertyDeclaration)
         try:
             self.enterOuterAlt(localctx, 1)
@@ -3031,21 +3152,28 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class PropertyBodyDeclarationContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def LBRACE(self):
+            return self.getToken(ApexParser.LBRACE, 0)
+
         def propertyBlock(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(apexParser.PropertyBlockContext)
+                return self.getTypedRuleContexts(ApexParser.PropertyBlockContext)
             else:
-                return self.getTypedRuleContext(apexParser.PropertyBlockContext,i)
+                return self.getTypedRuleContext(ApexParser.PropertyBlockContext,i)
 
+
+        def RBRACE(self):
+            return self.getToken(ApexParser.RBRACE, 0)
 
         def getRuleIndex(self):
-            return apexParser.RULE_propertyBodyDeclaration
+            return ApexParser.RULE_propertyBodyDeclaration
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterPropertyBodyDeclaration" ):
@@ -3060,25 +3188,25 @@ class apexParser ( Parser ):
 
     def propertyBodyDeclaration(self):
 
-        localctx = apexParser.PropertyBodyDeclarationContext(self, self._ctx, self.state)
+        localctx = ApexParser.PropertyBodyDeclarationContext(self, self._ctx, self.state)
         self.enterRule(localctx, 54, self.RULE_propertyBodyDeclaration)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 491
-            self.match(apexParser.LBRACE)
+            self.match(ApexParser.LBRACE)
             self.state = 492
             self.propertyBlock()
             self.state = 494
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << apexParser.OVERRIDE) | (1 << apexParser.VIRTUAL) | (1 << apexParser.SET) | (1 << apexParser.GET) | (1 << apexParser.ABSTRACT) | (1 << apexParser.FINAL) | (1 << apexParser.NATIVE) | (1 << apexParser.PRIVATE) | (1 << apexParser.PROTECTED) | (1 << apexParser.PUBLIC) | (1 << apexParser.STATIC) | (1 << apexParser.SYNCHRONIZED) | (1 << apexParser.TRANSIENT) | (1 << apexParser.GLOBAL) | (1 << apexParser.WEBSERVICE) | (1 << apexParser.APEX_WITH_SHARING) | (1 << apexParser.APEX_WITHOUT_SHARING) | (1 << apexParser.TESTMETHOD))) != 0) or _la==apexParser.AT:
+            if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ApexParser.OVERRIDE) | (1 << ApexParser.VIRTUAL) | (1 << ApexParser.SET) | (1 << ApexParser.GET) | (1 << ApexParser.ABSTRACT) | (1 << ApexParser.FINAL) | (1 << ApexParser.NATIVE) | (1 << ApexParser.PRIVATE) | (1 << ApexParser.PROTECTED) | (1 << ApexParser.PUBLIC) | (1 << ApexParser.STATIC) | (1 << ApexParser.SYNCHRONIZED) | (1 << ApexParser.TRANSIENT) | (1 << ApexParser.GLOBAL) | (1 << ApexParser.WEBSERVICE) | (1 << ApexParser.APEX_WITH_SHARING) | (1 << ApexParser.APEX_WITHOUT_SHARING) | (1 << ApexParser.TESTMETHOD))) != 0) or _la==ApexParser.AT:
                 self.state = 493
                 self.propertyBlock()
 
 
             self.state = 496
-            self.match(apexParser.RBRACE)
+            self.match(ApexParser.RBRACE)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -3087,6 +3215,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class InterfaceBodyDeclarationContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -3094,18 +3223,21 @@ class apexParser ( Parser ):
             self.parser = parser
 
         def interfaceMemberDeclaration(self):
-            return self.getTypedRuleContext(apexParser.InterfaceMemberDeclarationContext,0)
+            return self.getTypedRuleContext(ApexParser.InterfaceMemberDeclarationContext,0)
 
 
         def modifier(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(apexParser.ModifierContext)
+                return self.getTypedRuleContexts(ApexParser.ModifierContext)
             else:
-                return self.getTypedRuleContext(apexParser.ModifierContext,i)
+                return self.getTypedRuleContext(ApexParser.ModifierContext,i)
 
+
+        def SEMI(self):
+            return self.getToken(ApexParser.SEMI, 0)
 
         def getRuleIndex(self):
-            return apexParser.RULE_interfaceBodyDeclaration
+            return ApexParser.RULE_interfaceBodyDeclaration
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterInterfaceBodyDeclaration" ):
@@ -3120,13 +3252,13 @@ class apexParser ( Parser ):
 
     def interfaceBodyDeclaration(self):
 
-        localctx = apexParser.InterfaceBodyDeclarationContext(self, self._ctx, self.state)
+        localctx = ApexParser.InterfaceBodyDeclarationContext(self, self._ctx, self.state)
         self.enterRule(localctx, 56, self.RULE_interfaceBodyDeclaration)
         try:
             self.state = 506
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [apexParser.OVERRIDE, apexParser.VIRTUAL, apexParser.SET, apexParser.ABSTRACT, apexParser.BYTE, apexParser.CHAR, apexParser.CLASS, apexParser.ENUM, apexParser.FINAL, apexParser.FLOAT, apexParser.INT, apexParser.INTERFACE, apexParser.NATIVE, apexParser.PRIVATE, apexParser.PROTECTED, apexParser.PUBLIC, apexParser.SHORT, apexParser.STATIC, apexParser.SYNCHRONIZED, apexParser.TRANSIENT, apexParser.VOID, apexParser.GLOBAL, apexParser.WEBSERVICE, apexParser.APEX_WITH_SHARING, apexParser.APEX_WITHOUT_SHARING, apexParser.TESTMETHOD, apexParser.LT, apexParser.Identifier, apexParser.AT]:
+            if token in [ApexParser.OVERRIDE, ApexParser.VIRTUAL, ApexParser.SET, ApexParser.ABSTRACT, ApexParser.BYTE, ApexParser.CHAR, ApexParser.CLASS, ApexParser.ENUM, ApexParser.FINAL, ApexParser.FLOAT, ApexParser.INT, ApexParser.INTERFACE, ApexParser.NATIVE, ApexParser.PRIVATE, ApexParser.PROTECTED, ApexParser.PUBLIC, ApexParser.SHORT, ApexParser.STATIC, ApexParser.SYNCHRONIZED, ApexParser.TRANSIENT, ApexParser.VOID, ApexParser.GLOBAL, ApexParser.WEBSERVICE, ApexParser.APEX_WITH_SHARING, ApexParser.APEX_WITHOUT_SHARING, ApexParser.TESTMETHOD, ApexParser.LT, ApexParser.Identifier, ApexParser.AT]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 501
                 self._errHandler.sync(self)
@@ -3142,10 +3274,10 @@ class apexParser ( Parser ):
                 self.state = 504
                 self.interfaceMemberDeclaration()
                 pass
-            elif token in [apexParser.SEMI]:
+            elif token in [ApexParser.SEMI]:
                 self.enterOuterAlt(localctx, 2)
                 self.state = 505
-                self.match(apexParser.SEMI)
+                self.match(ApexParser.SEMI)
                 pass
             else:
                 raise NoViableAltException(self)
@@ -3158,6 +3290,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class InterfaceMemberDeclarationContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -3165,35 +3298,35 @@ class apexParser ( Parser ):
             self.parser = parser
 
         def constDeclaration(self):
-            return self.getTypedRuleContext(apexParser.ConstDeclarationContext,0)
+            return self.getTypedRuleContext(ApexParser.ConstDeclarationContext,0)
 
 
         def interfaceMethodDeclaration(self):
-            return self.getTypedRuleContext(apexParser.InterfaceMethodDeclarationContext,0)
+            return self.getTypedRuleContext(ApexParser.InterfaceMethodDeclarationContext,0)
 
 
         def genericInterfaceMethodDeclaration(self):
-            return self.getTypedRuleContext(apexParser.GenericInterfaceMethodDeclarationContext,0)
+            return self.getTypedRuleContext(ApexParser.GenericInterfaceMethodDeclarationContext,0)
 
 
         def interfaceDeclaration(self):
-            return self.getTypedRuleContext(apexParser.InterfaceDeclarationContext,0)
+            return self.getTypedRuleContext(ApexParser.InterfaceDeclarationContext,0)
 
 
         def annotationTypeDeclaration(self):
-            return self.getTypedRuleContext(apexParser.AnnotationTypeDeclarationContext,0)
+            return self.getTypedRuleContext(ApexParser.AnnotationTypeDeclarationContext,0)
 
 
         def classDeclaration(self):
-            return self.getTypedRuleContext(apexParser.ClassDeclarationContext,0)
+            return self.getTypedRuleContext(ApexParser.ClassDeclarationContext,0)
 
 
         def enumDeclaration(self):
-            return self.getTypedRuleContext(apexParser.EnumDeclarationContext,0)
+            return self.getTypedRuleContext(ApexParser.EnumDeclarationContext,0)
 
 
         def getRuleIndex(self):
-            return apexParser.RULE_interfaceMemberDeclaration
+            return ApexParser.RULE_interfaceMemberDeclaration
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterInterfaceMemberDeclaration" ):
@@ -3208,7 +3341,7 @@ class apexParser ( Parser ):
 
     def interfaceMemberDeclaration(self):
 
-        localctx = apexParser.InterfaceMemberDeclarationContext(self, self._ctx, self.state)
+        localctx = ApexParser.InterfaceMemberDeclarationContext(self, self._ctx, self.state)
         self.enterRule(localctx, 58, self.RULE_interfaceMemberDeclaration)
         try:
             self.state = 515
@@ -3265,6 +3398,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class ConstDeclarationContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -3272,18 +3406,27 @@ class apexParser ( Parser ):
             self.parser = parser
 
         def typeType(self):
-            return self.getTypedRuleContext(apexParser.TypeTypeContext,0)
+            return self.getTypedRuleContext(ApexParser.TypeTypeContext,0)
 
 
         def constantDeclarator(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(apexParser.ConstantDeclaratorContext)
+                return self.getTypedRuleContexts(ApexParser.ConstantDeclaratorContext)
             else:
-                return self.getTypedRuleContext(apexParser.ConstantDeclaratorContext,i)
+                return self.getTypedRuleContext(ApexParser.ConstantDeclaratorContext,i)
 
+
+        def SEMI(self):
+            return self.getToken(ApexParser.SEMI, 0)
+
+        def COMMA(self, i:int=None):
+            if i is None:
+                return self.getTokens(ApexParser.COMMA)
+            else:
+                return self.getToken(ApexParser.COMMA, i)
 
         def getRuleIndex(self):
-            return apexParser.RULE_constDeclaration
+            return ApexParser.RULE_constDeclaration
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterConstDeclaration" ):
@@ -3298,7 +3441,7 @@ class apexParser ( Parser ):
 
     def constDeclaration(self):
 
-        localctx = apexParser.ConstDeclarationContext(self, self._ctx, self.state)
+        localctx = ApexParser.ConstDeclarationContext(self, self._ctx, self.state)
         self.enterRule(localctx, 60, self.RULE_constDeclaration)
         self._la = 0 # Token type
         try:
@@ -3310,9 +3453,9 @@ class apexParser ( Parser ):
             self.state = 523
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==apexParser.COMMA:
+            while _la==ApexParser.COMMA:
                 self.state = 519
-                self.match(apexParser.COMMA)
+                self.match(ApexParser.COMMA)
                 self.state = 520
                 self.constantDeclarator()
                 self.state = 525
@@ -3320,7 +3463,7 @@ class apexParser ( Parser ):
                 _la = self._input.LA(1)
 
             self.state = 526
-            self.match(apexParser.SEMI)
+            self.match(ApexParser.SEMI)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -3329,6 +3472,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class ConstantDeclaratorContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -3336,14 +3480,29 @@ class apexParser ( Parser ):
             self.parser = parser
 
         def Identifier(self):
-            return self.getToken(apexParser.Identifier, 0)
+            return self.getToken(ApexParser.Identifier, 0)
+
+        def ASSIGN(self):
+            return self.getToken(ApexParser.ASSIGN, 0)
 
         def variableInitializer(self):
-            return self.getTypedRuleContext(apexParser.VariableInitializerContext,0)
+            return self.getTypedRuleContext(ApexParser.VariableInitializerContext,0)
 
+
+        def LBRACK(self, i:int=None):
+            if i is None:
+                return self.getTokens(ApexParser.LBRACK)
+            else:
+                return self.getToken(ApexParser.LBRACK, i)
+
+        def RBRACK(self, i:int=None):
+            if i is None:
+                return self.getTokens(ApexParser.RBRACK)
+            else:
+                return self.getToken(ApexParser.RBRACK, i)
 
         def getRuleIndex(self):
-            return apexParser.RULE_constantDeclarator
+            return ApexParser.RULE_constantDeclarator
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterConstantDeclarator" ):
@@ -3358,27 +3517,27 @@ class apexParser ( Parser ):
 
     def constantDeclarator(self):
 
-        localctx = apexParser.ConstantDeclaratorContext(self, self._ctx, self.state)
+        localctx = ApexParser.ConstantDeclaratorContext(self, self._ctx, self.state)
         self.enterRule(localctx, 62, self.RULE_constantDeclarator)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 528
-            self.match(apexParser.Identifier)
+            self.match(ApexParser.Identifier)
             self.state = 533
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==apexParser.LBRACK:
+            while _la==ApexParser.LBRACK:
                 self.state = 529
-                self.match(apexParser.LBRACK)
+                self.match(ApexParser.LBRACK)
                 self.state = 530
-                self.match(apexParser.RBRACK)
+                self.match(ApexParser.RBRACK)
                 self.state = 535
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
             self.state = 536
-            self.match(apexParser.ASSIGN)
+            self.match(ApexParser.ASSIGN)
             self.state = 537
             self.variableInitializer()
         except RecognitionException as re:
@@ -3389,6 +3548,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class InterfaceMethodDeclarationContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -3396,28 +3556,43 @@ class apexParser ( Parser ):
             self.parser = parser
 
         def Identifier(self):
-            return self.getToken(apexParser.Identifier, 0)
+            return self.getToken(ApexParser.Identifier, 0)
 
         def formalParameters(self):
-            return self.getTypedRuleContext(apexParser.FormalParametersContext,0)
+            return self.getTypedRuleContext(ApexParser.FormalParametersContext,0)
 
+
+        def SEMI(self):
+            return self.getToken(ApexParser.SEMI, 0)
 
         def typeType(self):
-            return self.getTypedRuleContext(apexParser.TypeTypeContext,0)
+            return self.getTypedRuleContext(ApexParser.TypeTypeContext,0)
 
 
         def VOID(self):
-            return self.getToken(apexParser.VOID, 0)
+            return self.getToken(ApexParser.VOID, 0)
+
+        def LBRACK(self, i:int=None):
+            if i is None:
+                return self.getTokens(ApexParser.LBRACK)
+            else:
+                return self.getToken(ApexParser.LBRACK, i)
+
+        def RBRACK(self, i:int=None):
+            if i is None:
+                return self.getTokens(ApexParser.RBRACK)
+            else:
+                return self.getToken(ApexParser.RBRACK, i)
 
         def THROWS(self):
-            return self.getToken(apexParser.THROWS, 0)
+            return self.getToken(ApexParser.THROWS, 0)
 
         def qualifiedNameList(self):
-            return self.getTypedRuleContext(apexParser.QualifiedNameListContext,0)
+            return self.getTypedRuleContext(ApexParser.QualifiedNameListContext,0)
 
 
         def getRuleIndex(self):
-            return apexParser.RULE_interfaceMethodDeclaration
+            return ApexParser.RULE_interfaceMethodDeclaration
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterInterfaceMethodDeclaration" ):
@@ -3432,7 +3607,7 @@ class apexParser ( Parser ):
 
     def interfaceMethodDeclaration(self):
 
-        localctx = apexParser.InterfaceMethodDeclarationContext(self, self._ctx, self.state)
+        localctx = ApexParser.InterfaceMethodDeclarationContext(self, self._ctx, self.state)
         self.enterRule(localctx, 64, self.RULE_interfaceMethodDeclaration)
         self._la = 0 # Token type
         try:
@@ -3440,29 +3615,29 @@ class apexParser ( Parser ):
             self.state = 541
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [apexParser.SET, apexParser.BYTE, apexParser.CHAR, apexParser.FLOAT, apexParser.INT, apexParser.SHORT, apexParser.Identifier]:
+            if token in [ApexParser.SET, ApexParser.BYTE, ApexParser.CHAR, ApexParser.FLOAT, ApexParser.INT, ApexParser.SHORT, ApexParser.Identifier]:
                 self.state = 539
                 self.typeType()
                 pass
-            elif token in [apexParser.VOID]:
+            elif token in [ApexParser.VOID]:
                 self.state = 540
-                self.match(apexParser.VOID)
+                self.match(ApexParser.VOID)
                 pass
             else:
                 raise NoViableAltException(self)
 
             self.state = 543
-            self.match(apexParser.Identifier)
+            self.match(ApexParser.Identifier)
             self.state = 544
             self.formalParameters()
             self.state = 549
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==apexParser.LBRACK:
+            while _la==ApexParser.LBRACK:
                 self.state = 545
-                self.match(apexParser.LBRACK)
+                self.match(ApexParser.LBRACK)
                 self.state = 546
-                self.match(apexParser.RBRACK)
+                self.match(ApexParser.RBRACK)
                 self.state = 551
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
@@ -3470,15 +3645,15 @@ class apexParser ( Parser ):
             self.state = 554
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==apexParser.THROWS:
+            if _la==ApexParser.THROWS:
                 self.state = 552
-                self.match(apexParser.THROWS)
+                self.match(ApexParser.THROWS)
                 self.state = 553
                 self.qualifiedNameList()
 
 
             self.state = 556
-            self.match(apexParser.SEMI)
+            self.match(ApexParser.SEMI)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -3487,6 +3662,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class GenericInterfaceMethodDeclarationContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -3494,15 +3670,15 @@ class apexParser ( Parser ):
             self.parser = parser
 
         def typeParameters(self):
-            return self.getTypedRuleContext(apexParser.TypeParametersContext,0)
+            return self.getTypedRuleContext(ApexParser.TypeParametersContext,0)
 
 
         def interfaceMethodDeclaration(self):
-            return self.getTypedRuleContext(apexParser.InterfaceMethodDeclarationContext,0)
+            return self.getTypedRuleContext(ApexParser.InterfaceMethodDeclarationContext,0)
 
 
         def getRuleIndex(self):
-            return apexParser.RULE_genericInterfaceMethodDeclaration
+            return ApexParser.RULE_genericInterfaceMethodDeclaration
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterGenericInterfaceMethodDeclaration" ):
@@ -3517,7 +3693,7 @@ class apexParser ( Parser ):
 
     def genericInterfaceMethodDeclaration(self):
 
-        localctx = apexParser.GenericInterfaceMethodDeclarationContext(self, self._ctx, self.state)
+        localctx = ApexParser.GenericInterfaceMethodDeclarationContext(self, self._ctx, self.state)
         self.enterRule(localctx, 66, self.RULE_genericInterfaceMethodDeclaration)
         try:
             self.enterOuterAlt(localctx, 1)
@@ -3533,6 +3709,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class VariableDeclaratorsContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -3541,13 +3718,19 @@ class apexParser ( Parser ):
 
         def variableDeclarator(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(apexParser.VariableDeclaratorContext)
+                return self.getTypedRuleContexts(ApexParser.VariableDeclaratorContext)
             else:
-                return self.getTypedRuleContext(apexParser.VariableDeclaratorContext,i)
+                return self.getTypedRuleContext(ApexParser.VariableDeclaratorContext,i)
 
+
+        def COMMA(self, i:int=None):
+            if i is None:
+                return self.getTokens(ApexParser.COMMA)
+            else:
+                return self.getToken(ApexParser.COMMA, i)
 
         def getRuleIndex(self):
-            return apexParser.RULE_variableDeclarators
+            return ApexParser.RULE_variableDeclarators
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterVariableDeclarators" ):
@@ -3562,7 +3745,7 @@ class apexParser ( Parser ):
 
     def variableDeclarators(self):
 
-        localctx = apexParser.VariableDeclaratorsContext(self, self._ctx, self.state)
+        localctx = ApexParser.VariableDeclaratorsContext(self, self._ctx, self.state)
         self.enterRule(localctx, 68, self.RULE_variableDeclarators)
         self._la = 0 # Token type
         try:
@@ -3572,9 +3755,9 @@ class apexParser ( Parser ):
             self.state = 566
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==apexParser.COMMA:
+            while _la==ApexParser.COMMA:
                 self.state = 562
-                self.match(apexParser.COMMA)
+                self.match(ApexParser.COMMA)
                 self.state = 563
                 self.variableDeclarator()
                 self.state = 568
@@ -3589,6 +3772,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class VariableDeclaratorContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -3596,15 +3780,18 @@ class apexParser ( Parser ):
             self.parser = parser
 
         def variableDeclaratorId(self):
-            return self.getTypedRuleContext(apexParser.VariableDeclaratorIdContext,0)
+            return self.getTypedRuleContext(ApexParser.VariableDeclaratorIdContext,0)
 
+
+        def ASSIGN(self):
+            return self.getToken(ApexParser.ASSIGN, 0)
 
         def variableInitializer(self):
-            return self.getTypedRuleContext(apexParser.VariableInitializerContext,0)
+            return self.getTypedRuleContext(ApexParser.VariableInitializerContext,0)
 
 
         def getRuleIndex(self):
-            return apexParser.RULE_variableDeclarator
+            return ApexParser.RULE_variableDeclarator
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterVariableDeclarator" ):
@@ -3619,7 +3806,7 @@ class apexParser ( Parser ):
 
     def variableDeclarator(self):
 
-        localctx = apexParser.VariableDeclaratorContext(self, self._ctx, self.state)
+        localctx = ApexParser.VariableDeclaratorContext(self, self._ctx, self.state)
         self.enterRule(localctx, 70, self.RULE_variableDeclarator)
         self._la = 0 # Token type
         try:
@@ -3629,9 +3816,9 @@ class apexParser ( Parser ):
             self.state = 572
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==apexParser.ASSIGN:
+            if _la==ApexParser.ASSIGN:
                 self.state = 570
-                self.match(apexParser.ASSIGN)
+                self.match(ApexParser.ASSIGN)
                 self.state = 571
                 self.variableInitializer()
 
@@ -3644,6 +3831,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class VariableDeclaratorIdContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -3651,10 +3839,22 @@ class apexParser ( Parser ):
             self.parser = parser
 
         def Identifier(self):
-            return self.getToken(apexParser.Identifier, 0)
+            return self.getToken(ApexParser.Identifier, 0)
+
+        def LBRACK(self, i:int=None):
+            if i is None:
+                return self.getTokens(ApexParser.LBRACK)
+            else:
+                return self.getToken(ApexParser.LBRACK, i)
+
+        def RBRACK(self, i:int=None):
+            if i is None:
+                return self.getTokens(ApexParser.RBRACK)
+            else:
+                return self.getToken(ApexParser.RBRACK, i)
 
         def getRuleIndex(self):
-            return apexParser.RULE_variableDeclaratorId
+            return ApexParser.RULE_variableDeclaratorId
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterVariableDeclaratorId" ):
@@ -3669,21 +3869,21 @@ class apexParser ( Parser ):
 
     def variableDeclaratorId(self):
 
-        localctx = apexParser.VariableDeclaratorIdContext(self, self._ctx, self.state)
+        localctx = ApexParser.VariableDeclaratorIdContext(self, self._ctx, self.state)
         self.enterRule(localctx, 72, self.RULE_variableDeclaratorId)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 574
-            self.match(apexParser.Identifier)
+            self.match(ApexParser.Identifier)
             self.state = 579
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==apexParser.LBRACK:
+            while _la==ApexParser.LBRACK:
                 self.state = 575
-                self.match(apexParser.LBRACK)
+                self.match(ApexParser.LBRACK)
                 self.state = 576
-                self.match(apexParser.RBRACK)
+                self.match(ApexParser.RBRACK)
                 self.state = 581
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
@@ -3696,6 +3896,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class VariableInitializerContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -3703,15 +3904,15 @@ class apexParser ( Parser ):
             self.parser = parser
 
         def arrayInitializer(self):
-            return self.getTypedRuleContext(apexParser.ArrayInitializerContext,0)
+            return self.getTypedRuleContext(ApexParser.ArrayInitializerContext,0)
 
 
         def expression(self):
-            return self.getTypedRuleContext(apexParser.ExpressionContext,0)
+            return self.getTypedRuleContext(ApexParser.ExpressionContext,0)
 
 
         def getRuleIndex(self):
-            return apexParser.RULE_variableInitializer
+            return ApexParser.RULE_variableInitializer
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterVariableInitializer" ):
@@ -3726,18 +3927,18 @@ class apexParser ( Parser ):
 
     def variableInitializer(self):
 
-        localctx = apexParser.VariableInitializerContext(self, self._ctx, self.state)
+        localctx = ApexParser.VariableInitializerContext(self, self._ctx, self.state)
         self.enterRule(localctx, 74, self.RULE_variableInitializer)
         try:
             self.state = 584
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [apexParser.LBRACE]:
+            if token in [ApexParser.LBRACE]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 582
                 self.arrayInitializer()
                 pass
-            elif token in [apexParser.SoqlLiteral, apexParser.SET, apexParser.BYTE, apexParser.CHAR, apexParser.FLOAT, apexParser.INT, apexParser.NEW, apexParser.SHORT, apexParser.SUPER, apexParser.THIS, apexParser.VOID, apexParser.IntegerLiteral, apexParser.FloatingPointLiteral, apexParser.BooleanLiteral, apexParser.CharacterLiteral, apexParser.StringLiteral, apexParser.NullLiteral, apexParser.LPAREN, apexParser.LT, apexParser.BANG, apexParser.TILDE, apexParser.INC, apexParser.DEC, apexParser.ADD, apexParser.SUB, apexParser.Identifier]:
+            elif token in [ApexParser.SoqlLiteral, ApexParser.SET, ApexParser.BYTE, ApexParser.CHAR, ApexParser.FLOAT, ApexParser.INT, ApexParser.NEW, ApexParser.SHORT, ApexParser.SUPER, ApexParser.THIS, ApexParser.VOID, ApexParser.IntegerLiteral, ApexParser.FloatingPointLiteral, ApexParser.BooleanLiteral, ApexParser.CharacterLiteral, ApexParser.StringLiteral, ApexParser.NullLiteral, ApexParser.LPAREN, ApexParser.LT, ApexParser.BANG, ApexParser.TILDE, ApexParser.INC, ApexParser.DEC, ApexParser.ADD, ApexParser.SUB, ApexParser.Identifier]:
                 self.enterOuterAlt(localctx, 2)
                 self.state = 583
                 self.expression(0)
@@ -3753,21 +3954,34 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class ArrayInitializerContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def LBRACE(self):
+            return self.getToken(ApexParser.LBRACE, 0)
+
+        def RBRACE(self):
+            return self.getToken(ApexParser.RBRACE, 0)
+
         def variableInitializer(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(apexParser.VariableInitializerContext)
+                return self.getTypedRuleContexts(ApexParser.VariableInitializerContext)
             else:
-                return self.getTypedRuleContext(apexParser.VariableInitializerContext,i)
+                return self.getTypedRuleContext(ApexParser.VariableInitializerContext,i)
 
+
+        def COMMA(self, i:int=None):
+            if i is None:
+                return self.getTokens(ApexParser.COMMA)
+            else:
+                return self.getToken(ApexParser.COMMA, i)
 
         def getRuleIndex(self):
-            return apexParser.RULE_arrayInitializer
+            return ApexParser.RULE_arrayInitializer
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterArrayInitializer" ):
@@ -3782,17 +3996,17 @@ class apexParser ( Parser ):
 
     def arrayInitializer(self):
 
-        localctx = apexParser.ArrayInitializerContext(self, self._ctx, self.state)
+        localctx = ApexParser.ArrayInitializerContext(self, self._ctx, self.state)
         self.enterRule(localctx, 76, self.RULE_arrayInitializer)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 586
-            self.match(apexParser.LBRACE)
+            self.match(ApexParser.LBRACE)
             self.state = 598
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << apexParser.SoqlLiteral) | (1 << apexParser.SET) | (1 << apexParser.BYTE) | (1 << apexParser.CHAR) | (1 << apexParser.FLOAT) | (1 << apexParser.INT) | (1 << apexParser.NEW) | (1 << apexParser.SHORT) | (1 << apexParser.SUPER) | (1 << apexParser.THIS) | (1 << apexParser.VOID) | (1 << apexParser.IntegerLiteral) | (1 << apexParser.FloatingPointLiteral))) != 0) or ((((_la - 64)) & ~0x3f) == 0 and ((1 << (_la - 64)) & ((1 << (apexParser.BooleanLiteral - 64)) | (1 << (apexParser.CharacterLiteral - 64)) | (1 << (apexParser.StringLiteral - 64)) | (1 << (apexParser.NullLiteral - 64)) | (1 << (apexParser.LPAREN - 64)) | (1 << (apexParser.LBRACE - 64)) | (1 << (apexParser.LT - 64)) | (1 << (apexParser.BANG - 64)) | (1 << (apexParser.TILDE - 64)) | (1 << (apexParser.INC - 64)) | (1 << (apexParser.DEC - 64)) | (1 << (apexParser.ADD - 64)) | (1 << (apexParser.SUB - 64)) | (1 << (apexParser.Identifier - 64)))) != 0):
+            if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ApexParser.SoqlLiteral) | (1 << ApexParser.SET) | (1 << ApexParser.BYTE) | (1 << ApexParser.CHAR) | (1 << ApexParser.FLOAT) | (1 << ApexParser.INT) | (1 << ApexParser.NEW) | (1 << ApexParser.SHORT) | (1 << ApexParser.SUPER) | (1 << ApexParser.THIS) | (1 << ApexParser.VOID) | (1 << ApexParser.IntegerLiteral) | (1 << ApexParser.FloatingPointLiteral))) != 0) or ((((_la - 64)) & ~0x3f) == 0 and ((1 << (_la - 64)) & ((1 << (ApexParser.BooleanLiteral - 64)) | (1 << (ApexParser.CharacterLiteral - 64)) | (1 << (ApexParser.StringLiteral - 64)) | (1 << (ApexParser.NullLiteral - 64)) | (1 << (ApexParser.LPAREN - 64)) | (1 << (ApexParser.LBRACE - 64)) | (1 << (ApexParser.LT - 64)) | (1 << (ApexParser.BANG - 64)) | (1 << (ApexParser.TILDE - 64)) | (1 << (ApexParser.INC - 64)) | (1 << (ApexParser.DEC - 64)) | (1 << (ApexParser.ADD - 64)) | (1 << (ApexParser.SUB - 64)) | (1 << (ApexParser.Identifier - 64)))) != 0):
                 self.state = 587
                 self.variableInitializer()
                 self.state = 592
@@ -3801,7 +4015,7 @@ class apexParser ( Parser ):
                 while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                     if _alt==1:
                         self.state = 588
-                        self.match(apexParser.COMMA)
+                        self.match(ApexParser.COMMA)
                         self.state = 589
                         self.variableInitializer() 
                     self.state = 594
@@ -3811,15 +4025,15 @@ class apexParser ( Parser ):
                 self.state = 596
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if _la==apexParser.COMMA:
+                if _la==ApexParser.COMMA:
                     self.state = 595
-                    self.match(apexParser.COMMA)
+                    self.match(ApexParser.COMMA)
 
 
 
 
             self.state = 600
-            self.match(apexParser.RBRACE)
+            self.match(ApexParser.RBRACE)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -3828,6 +4042,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class EnumConstantNameContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -3835,10 +4050,10 @@ class apexParser ( Parser ):
             self.parser = parser
 
         def Identifier(self):
-            return self.getToken(apexParser.Identifier, 0)
+            return self.getToken(ApexParser.Identifier, 0)
 
         def getRuleIndex(self):
-            return apexParser.RULE_enumConstantName
+            return ApexParser.RULE_enumConstantName
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterEnumConstantName" ):
@@ -3853,12 +4068,12 @@ class apexParser ( Parser ):
 
     def enumConstantName(self):
 
-        localctx = apexParser.EnumConstantNameContext(self, self._ctx, self.state)
+        localctx = ApexParser.EnumConstantNameContext(self, self._ctx, self.state)
         self.enterRule(localctx, 78, self.RULE_enumConstantName)
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 602
-            self.match(apexParser.Identifier)
+            self.match(ApexParser.Identifier)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -3867,6 +4082,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class TypeTypeContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -3874,15 +4090,27 @@ class apexParser ( Parser ):
             self.parser = parser
 
         def classOrInterfaceType(self):
-            return self.getTypedRuleContext(apexParser.ClassOrInterfaceTypeContext,0)
+            return self.getTypedRuleContext(ApexParser.ClassOrInterfaceTypeContext,0)
 
+
+        def LBRACK(self, i:int=None):
+            if i is None:
+                return self.getTokens(ApexParser.LBRACK)
+            else:
+                return self.getToken(ApexParser.LBRACK, i)
+
+        def RBRACK(self, i:int=None):
+            if i is None:
+                return self.getTokens(ApexParser.RBRACK)
+            else:
+                return self.getToken(ApexParser.RBRACK, i)
 
         def primitiveType(self):
-            return self.getTypedRuleContext(apexParser.PrimitiveTypeContext,0)
+            return self.getTypedRuleContext(ApexParser.PrimitiveTypeContext,0)
 
 
         def getRuleIndex(self):
-            return apexParser.RULE_typeType
+            return ApexParser.RULE_typeType
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterTypeType" ):
@@ -3897,13 +4125,13 @@ class apexParser ( Parser ):
 
     def typeType(self):
 
-        localctx = apexParser.TypeTypeContext(self, self._ctx, self.state)
+        localctx = ApexParser.TypeTypeContext(self, self._ctx, self.state)
         self.enterRule(localctx, 80, self.RULE_typeType)
         try:
             self.state = 620
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [apexParser.SET, apexParser.Identifier]:
+            if token in [ApexParser.SET, ApexParser.Identifier]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 604
                 self.classOrInterfaceType()
@@ -3913,15 +4141,15 @@ class apexParser ( Parser ):
                 while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                     if _alt==1:
                         self.state = 605
-                        self.match(apexParser.LBRACK)
+                        self.match(ApexParser.LBRACK)
                         self.state = 606
-                        self.match(apexParser.RBRACK) 
+                        self.match(ApexParser.RBRACK) 
                     self.state = 611
                     self._errHandler.sync(self)
                     _alt = self._interp.adaptivePredict(self._input,60,self._ctx)
 
                 pass
-            elif token in [apexParser.BYTE, apexParser.CHAR, apexParser.FLOAT, apexParser.INT, apexParser.SHORT]:
+            elif token in [ApexParser.BYTE, ApexParser.CHAR, ApexParser.FLOAT, ApexParser.INT, ApexParser.SHORT]:
                 self.enterOuterAlt(localctx, 2)
                 self.state = 612
                 self.primitiveType()
@@ -3931,9 +4159,9 @@ class apexParser ( Parser ):
                 while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                     if _alt==1:
                         self.state = 613
-                        self.match(apexParser.LBRACK)
+                        self.match(ApexParser.LBRACK)
                         self.state = 614
-                        self.match(apexParser.RBRACK) 
+                        self.match(ApexParser.RBRACK) 
                     self.state = 619
                     self._errHandler.sync(self)
                     _alt = self._interp.adaptivePredict(self._input,61,self._ctx)
@@ -3950,6 +4178,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class ClassOrInterfaceTypeContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -3958,22 +4187,28 @@ class apexParser ( Parser ):
 
         def Identifier(self, i:int=None):
             if i is None:
-                return self.getTokens(apexParser.Identifier)
+                return self.getTokens(ApexParser.Identifier)
             else:
-                return self.getToken(apexParser.Identifier, i)
+                return self.getToken(ApexParser.Identifier, i)
 
         def typeArguments(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(apexParser.TypeArgumentsContext)
+                return self.getTypedRuleContexts(ApexParser.TypeArgumentsContext)
             else:
-                return self.getTypedRuleContext(apexParser.TypeArgumentsContext,i)
+                return self.getTypedRuleContext(ApexParser.TypeArgumentsContext,i)
 
+
+        def DOT(self, i:int=None):
+            if i is None:
+                return self.getTokens(ApexParser.DOT)
+            else:
+                return self.getToken(ApexParser.DOT, i)
 
         def SET(self):
-            return self.getToken(apexParser.SET, 0)
+            return self.getToken(ApexParser.SET, 0)
 
         def getRuleIndex(self):
-            return apexParser.RULE_classOrInterfaceType
+            return ApexParser.RULE_classOrInterfaceType
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterClassOrInterfaceType" ):
@@ -3988,16 +4223,16 @@ class apexParser ( Parser ):
 
     def classOrInterfaceType(self):
 
-        localctx = apexParser.ClassOrInterfaceTypeContext(self, self._ctx, self.state)
+        localctx = ApexParser.ClassOrInterfaceTypeContext(self, self._ctx, self.state)
         self.enterRule(localctx, 82, self.RULE_classOrInterfaceType)
         try:
             self.state = 638
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [apexParser.Identifier]:
+            if token in [ApexParser.Identifier]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 622
-                self.match(apexParser.Identifier)
+                self.match(ApexParser.Identifier)
                 self.state = 624
                 self._errHandler.sync(self)
                 la_ = self._interp.adaptivePredict(self._input,63,self._ctx)
@@ -4012,9 +4247,9 @@ class apexParser ( Parser ):
                 while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                     if _alt==1:
                         self.state = 626
-                        self.match(apexParser.DOT)
+                        self.match(ApexParser.DOT)
                         self.state = 627
-                        self.match(apexParser.Identifier)
+                        self.match(ApexParser.Identifier)
                         self.state = 629
                         self._errHandler.sync(self)
                         la_ = self._interp.adaptivePredict(self._input,64,self._ctx)
@@ -4028,10 +4263,10 @@ class apexParser ( Parser ):
                     _alt = self._interp.adaptivePredict(self._input,65,self._ctx)
 
                 pass
-            elif token in [apexParser.SET]:
+            elif token in [ApexParser.SET]:
                 self.enterOuterAlt(localctx, 2)
                 self.state = 636
-                self.match(apexParser.SET)
+                self.match(ApexParser.SET)
                 self.state = 637
                 self.typeArguments()
                 pass
@@ -4046,6 +4281,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class PrimitiveTypeContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -4053,22 +4289,22 @@ class apexParser ( Parser ):
             self.parser = parser
 
         def CHAR(self):
-            return self.getToken(apexParser.CHAR, 0)
+            return self.getToken(ApexParser.CHAR, 0)
 
         def BYTE(self):
-            return self.getToken(apexParser.BYTE, 0)
+            return self.getToken(ApexParser.BYTE, 0)
 
         def SHORT(self):
-            return self.getToken(apexParser.SHORT, 0)
+            return self.getToken(ApexParser.SHORT, 0)
 
         def INT(self):
-            return self.getToken(apexParser.INT, 0)
+            return self.getToken(ApexParser.INT, 0)
 
         def FLOAT(self):
-            return self.getToken(apexParser.FLOAT, 0)
+            return self.getToken(ApexParser.FLOAT, 0)
 
         def getRuleIndex(self):
-            return apexParser.RULE_primitiveType
+            return ApexParser.RULE_primitiveType
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterPrimitiveType" ):
@@ -4083,14 +4319,14 @@ class apexParser ( Parser ):
 
     def primitiveType(self):
 
-        localctx = apexParser.PrimitiveTypeContext(self, self._ctx, self.state)
+        localctx = ApexParser.PrimitiveTypeContext(self, self._ctx, self.state)
         self.enterRule(localctx, 84, self.RULE_primitiveType)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 640
             _la = self._input.LA(1)
-            if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << apexParser.BYTE) | (1 << apexParser.CHAR) | (1 << apexParser.FLOAT) | (1 << apexParser.INT) | (1 << apexParser.SHORT))) != 0)):
+            if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ApexParser.BYTE) | (1 << ApexParser.CHAR) | (1 << ApexParser.FLOAT) | (1 << ApexParser.INT) | (1 << ApexParser.SHORT))) != 0)):
                 self._errHandler.recoverInline(self)
             else:
                 self._errHandler.reportMatch(self)
@@ -4103,21 +4339,34 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class TypeArgumentsContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def LT(self):
+            return self.getToken(ApexParser.LT, 0)
+
         def typeArgument(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(apexParser.TypeArgumentContext)
+                return self.getTypedRuleContexts(ApexParser.TypeArgumentContext)
             else:
-                return self.getTypedRuleContext(apexParser.TypeArgumentContext,i)
+                return self.getTypedRuleContext(ApexParser.TypeArgumentContext,i)
 
+
+        def GT(self):
+            return self.getToken(ApexParser.GT, 0)
+
+        def COMMA(self, i:int=None):
+            if i is None:
+                return self.getTokens(ApexParser.COMMA)
+            else:
+                return self.getToken(ApexParser.COMMA, i)
 
         def getRuleIndex(self):
-            return apexParser.RULE_typeArguments
+            return ApexParser.RULE_typeArguments
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterTypeArguments" ):
@@ -4132,21 +4381,21 @@ class apexParser ( Parser ):
 
     def typeArguments(self):
 
-        localctx = apexParser.TypeArgumentsContext(self, self._ctx, self.state)
+        localctx = ApexParser.TypeArgumentsContext(self, self._ctx, self.state)
         self.enterRule(localctx, 86, self.RULE_typeArguments)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 642
-            self.match(apexParser.LT)
+            self.match(ApexParser.LT)
             self.state = 643
             self.typeArgument()
             self.state = 648
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==apexParser.COMMA:
+            while _la==ApexParser.COMMA:
                 self.state = 644
-                self.match(apexParser.COMMA)
+                self.match(ApexParser.COMMA)
                 self.state = 645
                 self.typeArgument()
                 self.state = 650
@@ -4154,7 +4403,7 @@ class apexParser ( Parser ):
                 _la = self._input.LA(1)
 
             self.state = 651
-            self.match(apexParser.GT)
+            self.match(ApexParser.GT)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -4163,6 +4412,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class TypeArgumentContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -4170,17 +4420,20 @@ class apexParser ( Parser ):
             self.parser = parser
 
         def typeType(self):
-            return self.getTypedRuleContext(apexParser.TypeTypeContext,0)
+            return self.getTypedRuleContext(ApexParser.TypeTypeContext,0)
 
+
+        def QUESTION(self):
+            return self.getToken(ApexParser.QUESTION, 0)
 
         def EXTENDS(self):
-            return self.getToken(apexParser.EXTENDS, 0)
+            return self.getToken(ApexParser.EXTENDS, 0)
 
         def SUPER(self):
-            return self.getToken(apexParser.SUPER, 0)
+            return self.getToken(ApexParser.SUPER, 0)
 
         def getRuleIndex(self):
-            return apexParser.RULE_typeArgument
+            return ApexParser.RULE_typeArgument
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterTypeArgument" ):
@@ -4195,29 +4448,29 @@ class apexParser ( Parser ):
 
     def typeArgument(self):
 
-        localctx = apexParser.TypeArgumentContext(self, self._ctx, self.state)
+        localctx = ApexParser.TypeArgumentContext(self, self._ctx, self.state)
         self.enterRule(localctx, 88, self.RULE_typeArgument)
         self._la = 0 # Token type
         try:
             self.state = 659
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [apexParser.SET, apexParser.BYTE, apexParser.CHAR, apexParser.FLOAT, apexParser.INT, apexParser.SHORT, apexParser.Identifier]:
+            if token in [ApexParser.SET, ApexParser.BYTE, ApexParser.CHAR, ApexParser.FLOAT, ApexParser.INT, ApexParser.SHORT, ApexParser.Identifier]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 653
                 self.typeType()
                 pass
-            elif token in [apexParser.QUESTION]:
+            elif token in [ApexParser.QUESTION]:
                 self.enterOuterAlt(localctx, 2)
                 self.state = 654
-                self.match(apexParser.QUESTION)
+                self.match(ApexParser.QUESTION)
                 self.state = 657
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if _la==apexParser.EXTENDS or _la==apexParser.SUPER:
+                if _la==ApexParser.EXTENDS or _la==ApexParser.SUPER:
                     self.state = 655
                     _la = self._input.LA(1)
-                    if not(_la==apexParser.EXTENDS or _la==apexParser.SUPER):
+                    if not(_la==ApexParser.EXTENDS or _la==ApexParser.SUPER):
                         self._errHandler.recoverInline(self)
                     else:
                         self._errHandler.reportMatch(self)
@@ -4238,6 +4491,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class QualifiedNameListContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -4246,13 +4500,19 @@ class apexParser ( Parser ):
 
         def qualifiedName(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(apexParser.QualifiedNameContext)
+                return self.getTypedRuleContexts(ApexParser.QualifiedNameContext)
             else:
-                return self.getTypedRuleContext(apexParser.QualifiedNameContext,i)
+                return self.getTypedRuleContext(ApexParser.QualifiedNameContext,i)
 
+
+        def COMMA(self, i:int=None):
+            if i is None:
+                return self.getTokens(ApexParser.COMMA)
+            else:
+                return self.getToken(ApexParser.COMMA, i)
 
         def getRuleIndex(self):
-            return apexParser.RULE_qualifiedNameList
+            return ApexParser.RULE_qualifiedNameList
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterQualifiedNameList" ):
@@ -4267,7 +4527,7 @@ class apexParser ( Parser ):
 
     def qualifiedNameList(self):
 
-        localctx = apexParser.QualifiedNameListContext(self, self._ctx, self.state)
+        localctx = ApexParser.QualifiedNameListContext(self, self._ctx, self.state)
         self.enterRule(localctx, 90, self.RULE_qualifiedNameList)
         self._la = 0 # Token type
         try:
@@ -4277,9 +4537,9 @@ class apexParser ( Parser ):
             self.state = 666
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==apexParser.COMMA:
+            while _la==ApexParser.COMMA:
                 self.state = 662
-                self.match(apexParser.COMMA)
+                self.match(ApexParser.COMMA)
                 self.state = 663
                 self.qualifiedName()
                 self.state = 668
@@ -4294,18 +4554,25 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class FormalParametersContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def LPAREN(self):
+            return self.getToken(ApexParser.LPAREN, 0)
+
+        def RPAREN(self):
+            return self.getToken(ApexParser.RPAREN, 0)
+
         def formalParameterList(self):
-            return self.getTypedRuleContext(apexParser.FormalParameterListContext,0)
+            return self.getTypedRuleContext(ApexParser.FormalParameterListContext,0)
 
 
         def getRuleIndex(self):
-            return apexParser.RULE_formalParameters
+            return ApexParser.RULE_formalParameters
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterFormalParameters" ):
@@ -4320,23 +4587,23 @@ class apexParser ( Parser ):
 
     def formalParameters(self):
 
-        localctx = apexParser.FormalParametersContext(self, self._ctx, self.state)
+        localctx = ApexParser.FormalParametersContext(self, self._ctx, self.state)
         self.enterRule(localctx, 92, self.RULE_formalParameters)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 669
-            self.match(apexParser.LPAREN)
+            self.match(ApexParser.LPAREN)
             self.state = 671
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << apexParser.SET) | (1 << apexParser.BYTE) | (1 << apexParser.CHAR) | (1 << apexParser.FINAL) | (1 << apexParser.FLOAT) | (1 << apexParser.INT) | (1 << apexParser.SHORT))) != 0) or _la==apexParser.Identifier or _la==apexParser.AT:
+            if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ApexParser.SET) | (1 << ApexParser.BYTE) | (1 << ApexParser.CHAR) | (1 << ApexParser.FINAL) | (1 << ApexParser.FLOAT) | (1 << ApexParser.INT) | (1 << ApexParser.SHORT))) != 0) or _la==ApexParser.Identifier or _la==ApexParser.AT:
                 self.state = 670
                 self.formalParameterList()
 
 
             self.state = 673
-            self.match(apexParser.RPAREN)
+            self.match(ApexParser.RPAREN)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -4344,6 +4611,7 @@ class apexParser ( Parser ):
         finally:
             self.exitRule()
         return localctx
+
 
     class FormalParameterListContext(ParserRuleContext):
 
@@ -4353,17 +4621,23 @@ class apexParser ( Parser ):
 
         def formalParameter(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(apexParser.FormalParameterContext)
+                return self.getTypedRuleContexts(ApexParser.FormalParameterContext)
             else:
-                return self.getTypedRuleContext(apexParser.FormalParameterContext,i)
+                return self.getTypedRuleContext(ApexParser.FormalParameterContext,i)
 
+
+        def COMMA(self, i:int=None):
+            if i is None:
+                return self.getTokens(ApexParser.COMMA)
+            else:
+                return self.getToken(ApexParser.COMMA, i)
 
         def lastFormalParameter(self):
-            return self.getTypedRuleContext(apexParser.LastFormalParameterContext,0)
+            return self.getTypedRuleContext(ApexParser.LastFormalParameterContext,0)
 
 
         def getRuleIndex(self):
-            return apexParser.RULE_formalParameterList
+            return ApexParser.RULE_formalParameterList
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterFormalParameterList" ):
@@ -4378,7 +4652,7 @@ class apexParser ( Parser ):
 
     def formalParameterList(self):
 
-        localctx = apexParser.FormalParameterListContext(self, self._ctx, self.state)
+        localctx = ApexParser.FormalParameterListContext(self, self._ctx, self.state)
         self.enterRule(localctx, 94, self.RULE_formalParameterList)
         self._la = 0 # Token type
         try:
@@ -4395,7 +4669,7 @@ class apexParser ( Parser ):
                 while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                     if _alt==1:
                         self.state = 676
-                        self.match(apexParser.COMMA)
+                        self.match(ApexParser.COMMA)
                         self.state = 677
                         self.formalParameter() 
                     self.state = 682
@@ -4405,9 +4679,9 @@ class apexParser ( Parser ):
                 self.state = 685
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if _la==apexParser.COMMA:
+                if _la==ApexParser.COMMA:
                     self.state = 683
-                    self.match(apexParser.COMMA)
+                    self.match(ApexParser.COMMA)
                     self.state = 684
                     self.lastFormalParameter()
 
@@ -4429,6 +4703,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class FormalParameterContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -4436,22 +4711,22 @@ class apexParser ( Parser ):
             self.parser = parser
 
         def typeType(self):
-            return self.getTypedRuleContext(apexParser.TypeTypeContext,0)
+            return self.getTypedRuleContext(ApexParser.TypeTypeContext,0)
 
 
         def variableDeclaratorId(self):
-            return self.getTypedRuleContext(apexParser.VariableDeclaratorIdContext,0)
+            return self.getTypedRuleContext(ApexParser.VariableDeclaratorIdContext,0)
 
 
         def variableModifier(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(apexParser.VariableModifierContext)
+                return self.getTypedRuleContexts(ApexParser.VariableModifierContext)
             else:
-                return self.getTypedRuleContext(apexParser.VariableModifierContext,i)
+                return self.getTypedRuleContext(ApexParser.VariableModifierContext,i)
 
 
         def getRuleIndex(self):
-            return apexParser.RULE_formalParameter
+            return ApexParser.RULE_formalParameter
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterFormalParameter" ):
@@ -4466,7 +4741,7 @@ class apexParser ( Parser ):
 
     def formalParameter(self):
 
-        localctx = apexParser.FormalParameterContext(self, self._ctx, self.state)
+        localctx = ApexParser.FormalParameterContext(self, self._ctx, self.state)
         self.enterRule(localctx, 96, self.RULE_formalParameter)
         self._la = 0 # Token type
         try:
@@ -4474,7 +4749,7 @@ class apexParser ( Parser ):
             self.state = 693
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==apexParser.FINAL or _la==apexParser.AT:
+            while _la==ApexParser.FINAL or _la==ApexParser.AT:
                 self.state = 690
                 self.variableModifier()
                 self.state = 695
@@ -4493,6 +4768,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class LastFormalParameterContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -4500,22 +4776,25 @@ class apexParser ( Parser ):
             self.parser = parser
 
         def typeType(self):
-            return self.getTypedRuleContext(apexParser.TypeTypeContext,0)
+            return self.getTypedRuleContext(ApexParser.TypeTypeContext,0)
 
+
+        def ELLIPSIS(self):
+            return self.getToken(ApexParser.ELLIPSIS, 0)
 
         def variableDeclaratorId(self):
-            return self.getTypedRuleContext(apexParser.VariableDeclaratorIdContext,0)
+            return self.getTypedRuleContext(ApexParser.VariableDeclaratorIdContext,0)
 
 
         def variableModifier(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(apexParser.VariableModifierContext)
+                return self.getTypedRuleContexts(ApexParser.VariableModifierContext)
             else:
-                return self.getTypedRuleContext(apexParser.VariableModifierContext,i)
+                return self.getTypedRuleContext(ApexParser.VariableModifierContext,i)
 
 
         def getRuleIndex(self):
-            return apexParser.RULE_lastFormalParameter
+            return ApexParser.RULE_lastFormalParameter
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterLastFormalParameter" ):
@@ -4530,7 +4809,7 @@ class apexParser ( Parser ):
 
     def lastFormalParameter(self):
 
-        localctx = apexParser.LastFormalParameterContext(self, self._ctx, self.state)
+        localctx = ApexParser.LastFormalParameterContext(self, self._ctx, self.state)
         self.enterRule(localctx, 98, self.RULE_lastFormalParameter)
         self._la = 0 # Token type
         try:
@@ -4538,7 +4817,7 @@ class apexParser ( Parser ):
             self.state = 702
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==apexParser.FINAL or _la==apexParser.AT:
+            while _la==ApexParser.FINAL or _la==ApexParser.AT:
                 self.state = 699
                 self.variableModifier()
                 self.state = 704
@@ -4548,7 +4827,7 @@ class apexParser ( Parser ):
             self.state = 705
             self.typeType()
             self.state = 706
-            self.match(apexParser.ELLIPSIS)
+            self.match(ApexParser.ELLIPSIS)
             self.state = 707
             self.variableDeclaratorId()
         except RecognitionException as re:
@@ -4559,6 +4838,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class MethodBodyContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -4566,11 +4846,11 @@ class apexParser ( Parser ):
             self.parser = parser
 
         def block(self):
-            return self.getTypedRuleContext(apexParser.BlockContext,0)
+            return self.getTypedRuleContext(ApexParser.BlockContext,0)
 
 
         def getRuleIndex(self):
-            return apexParser.RULE_methodBody
+            return ApexParser.RULE_methodBody
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterMethodBody" ):
@@ -4585,7 +4865,7 @@ class apexParser ( Parser ):
 
     def methodBody(self):
 
-        localctx = apexParser.MethodBodyContext(self, self._ctx, self.state)
+        localctx = ApexParser.MethodBodyContext(self, self._ctx, self.state)
         self.enterRule(localctx, 100, self.RULE_methodBody)
         try:
             self.enterOuterAlt(localctx, 1)
@@ -4599,6 +4879,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class ConstructorBodyContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -4606,11 +4887,11 @@ class apexParser ( Parser ):
             self.parser = parser
 
         def block(self):
-            return self.getTypedRuleContext(apexParser.BlockContext,0)
+            return self.getTypedRuleContext(ApexParser.BlockContext,0)
 
 
         def getRuleIndex(self):
-            return apexParser.RULE_constructorBody
+            return ApexParser.RULE_constructorBody
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterConstructorBody" ):
@@ -4625,7 +4906,7 @@ class apexParser ( Parser ):
 
     def constructorBody(self):
 
-        localctx = apexParser.ConstructorBodyContext(self, self._ctx, self.state)
+        localctx = ApexParser.ConstructorBodyContext(self, self._ctx, self.state)
         self.enterRule(localctx, 102, self.RULE_constructorBody)
         try:
             self.enterOuterAlt(localctx, 1)
@@ -4639,6 +4920,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class QualifiedNameContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -4647,12 +4929,18 @@ class apexParser ( Parser ):
 
         def Identifier(self, i:int=None):
             if i is None:
-                return self.getTokens(apexParser.Identifier)
+                return self.getTokens(ApexParser.Identifier)
             else:
-                return self.getToken(apexParser.Identifier, i)
+                return self.getToken(ApexParser.Identifier, i)
+
+        def DOT(self, i:int=None):
+            if i is None:
+                return self.getTokens(ApexParser.DOT)
+            else:
+                return self.getToken(ApexParser.DOT, i)
 
         def getRuleIndex(self):
-            return apexParser.RULE_qualifiedName
+            return ApexParser.RULE_qualifiedName
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterQualifiedName" ):
@@ -4667,21 +4955,21 @@ class apexParser ( Parser ):
 
     def qualifiedName(self):
 
-        localctx = apexParser.QualifiedNameContext(self, self._ctx, self.state)
+        localctx = ApexParser.QualifiedNameContext(self, self._ctx, self.state)
         self.enterRule(localctx, 104, self.RULE_qualifiedName)
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 713
-            self.match(apexParser.Identifier)
+            self.match(ApexParser.Identifier)
             self.state = 718
             self._errHandler.sync(self)
             _alt = self._interp.adaptivePredict(self._input,77,self._ctx)
             while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                 if _alt==1:
                     self.state = 714
-                    self.match(apexParser.DOT)
+                    self.match(ApexParser.DOT)
                     self.state = 715
-                    self.match(apexParser.Identifier) 
+                    self.match(ApexParser.Identifier) 
                 self.state = 720
                 self._errHandler.sync(self)
                 _alt = self._interp.adaptivePredict(self._input,77,self._ctx)
@@ -4694,6 +4982,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class LiteralContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -4701,25 +4990,25 @@ class apexParser ( Parser ):
             self.parser = parser
 
         def IntegerLiteral(self):
-            return self.getToken(apexParser.IntegerLiteral, 0)
+            return self.getToken(ApexParser.IntegerLiteral, 0)
 
         def FloatingPointLiteral(self):
-            return self.getToken(apexParser.FloatingPointLiteral, 0)
+            return self.getToken(ApexParser.FloatingPointLiteral, 0)
 
         def CharacterLiteral(self):
-            return self.getToken(apexParser.CharacterLiteral, 0)
+            return self.getToken(ApexParser.CharacterLiteral, 0)
 
         def StringLiteral(self):
-            return self.getToken(apexParser.StringLiteral, 0)
+            return self.getToken(ApexParser.StringLiteral, 0)
 
         def BooleanLiteral(self):
-            return self.getToken(apexParser.BooleanLiteral, 0)
+            return self.getToken(ApexParser.BooleanLiteral, 0)
 
         def NullLiteral(self):
-            return self.getToken(apexParser.NullLiteral, 0)
+            return self.getToken(ApexParser.NullLiteral, 0)
 
         def getRuleIndex(self):
-            return apexParser.RULE_literal
+            return ApexParser.RULE_literal
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterLiteral" ):
@@ -4734,14 +5023,14 @@ class apexParser ( Parser ):
 
     def literal(self):
 
-        localctx = apexParser.LiteralContext(self, self._ctx, self.state)
+        localctx = ApexParser.LiteralContext(self, self._ctx, self.state)
         self.enterRule(localctx, 106, self.RULE_literal)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 721
             _la = self._input.LA(1)
-            if not(((((_la - 62)) & ~0x3f) == 0 and ((1 << (_la - 62)) & ((1 << (apexParser.IntegerLiteral - 62)) | (1 << (apexParser.FloatingPointLiteral - 62)) | (1 << (apexParser.BooleanLiteral - 62)) | (1 << (apexParser.CharacterLiteral - 62)) | (1 << (apexParser.StringLiteral - 62)) | (1 << (apexParser.NullLiteral - 62)))) != 0)):
+            if not(((((_la - 62)) & ~0x3f) == 0 and ((1 << (_la - 62)) & ((1 << (ApexParser.IntegerLiteral - 62)) | (1 << (ApexParser.FloatingPointLiteral - 62)) | (1 << (ApexParser.BooleanLiteral - 62)) | (1 << (ApexParser.CharacterLiteral - 62)) | (1 << (ApexParser.StringLiteral - 62)) | (1 << (ApexParser.NullLiteral - 62)))) != 0)):
                 self._errHandler.recoverInline(self)
             else:
                 self._errHandler.reportMatch(self)
@@ -4754,26 +5043,36 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class AnnotationContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def annotationName(self):
-            return self.getTypedRuleContext(apexParser.AnnotationNameContext,0)
+        def AT(self):
+            return self.getToken(ApexParser.AT, 0)
 
+        def annotationName(self):
+            return self.getTypedRuleContext(ApexParser.AnnotationNameContext,0)
+
+
+        def LPAREN(self):
+            return self.getToken(ApexParser.LPAREN, 0)
+
+        def RPAREN(self):
+            return self.getToken(ApexParser.RPAREN, 0)
 
         def elementValuePairs(self):
-            return self.getTypedRuleContext(apexParser.ElementValuePairsContext,0)
+            return self.getTypedRuleContext(ApexParser.ElementValuePairsContext,0)
 
 
         def elementValue(self):
-            return self.getTypedRuleContext(apexParser.ElementValueContext,0)
+            return self.getTypedRuleContext(ApexParser.ElementValueContext,0)
 
 
         def getRuleIndex(self):
-            return apexParser.RULE_annotation
+            return ApexParser.RULE_annotation
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterAnnotation" ):
@@ -4788,21 +5087,21 @@ class apexParser ( Parser ):
 
     def annotation(self):
 
-        localctx = apexParser.AnnotationContext(self, self._ctx, self.state)
+        localctx = ApexParser.AnnotationContext(self, self._ctx, self.state)
         self.enterRule(localctx, 108, self.RULE_annotation)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 723
-            self.match(apexParser.AT)
+            self.match(ApexParser.AT)
             self.state = 724
             self.annotationName()
             self.state = 731
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==apexParser.LPAREN:
+            if _la==ApexParser.LPAREN:
                 self.state = 725
-                self.match(apexParser.LPAREN)
+                self.match(ApexParser.LPAREN)
                 self.state = 728
                 self._errHandler.sync(self)
                 la_ = self._interp.adaptivePredict(self._input,78,self._ctx)
@@ -4816,7 +5115,7 @@ class apexParser ( Parser ):
 
 
                 self.state = 730
-                self.match(apexParser.RPAREN)
+                self.match(ApexParser.RPAREN)
 
 
         except RecognitionException as re:
@@ -4827,6 +5126,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class AnnotationNameContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -4834,11 +5134,11 @@ class apexParser ( Parser ):
             self.parser = parser
 
         def qualifiedName(self):
-            return self.getTypedRuleContext(apexParser.QualifiedNameContext,0)
+            return self.getTypedRuleContext(ApexParser.QualifiedNameContext,0)
 
 
         def getRuleIndex(self):
-            return apexParser.RULE_annotationName
+            return ApexParser.RULE_annotationName
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterAnnotationName" ):
@@ -4853,7 +5153,7 @@ class apexParser ( Parser ):
 
     def annotationName(self):
 
-        localctx = apexParser.AnnotationNameContext(self, self._ctx, self.state)
+        localctx = ApexParser.AnnotationNameContext(self, self._ctx, self.state)
         self.enterRule(localctx, 110, self.RULE_annotationName)
         try:
             self.enterOuterAlt(localctx, 1)
@@ -4867,6 +5167,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class ElementValuePairsContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -4875,13 +5176,19 @@ class apexParser ( Parser ):
 
         def elementValuePair(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(apexParser.ElementValuePairContext)
+                return self.getTypedRuleContexts(ApexParser.ElementValuePairContext)
             else:
-                return self.getTypedRuleContext(apexParser.ElementValuePairContext,i)
+                return self.getTypedRuleContext(ApexParser.ElementValuePairContext,i)
 
+
+        def COMMA(self, i:int=None):
+            if i is None:
+                return self.getTokens(ApexParser.COMMA)
+            else:
+                return self.getToken(ApexParser.COMMA, i)
 
         def getRuleIndex(self):
-            return apexParser.RULE_elementValuePairs
+            return ApexParser.RULE_elementValuePairs
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterElementValuePairs" ):
@@ -4896,7 +5203,7 @@ class apexParser ( Parser ):
 
     def elementValuePairs(self):
 
-        localctx = apexParser.ElementValuePairsContext(self, self._ctx, self.state)
+        localctx = ApexParser.ElementValuePairsContext(self, self._ctx, self.state)
         self.enterRule(localctx, 112, self.RULE_elementValuePairs)
         self._la = 0 # Token type
         try:
@@ -4906,9 +5213,9 @@ class apexParser ( Parser ):
             self.state = 740
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==apexParser.COMMA:
+            while _la==ApexParser.COMMA:
                 self.state = 736
-                self.match(apexParser.COMMA)
+                self.match(ApexParser.COMMA)
                 self.state = 737
                 self.elementValuePair()
                 self.state = 742
@@ -4923,6 +5230,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class ElementValuePairContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -4930,14 +5238,17 @@ class apexParser ( Parser ):
             self.parser = parser
 
         def Identifier(self):
-            return self.getToken(apexParser.Identifier, 0)
+            return self.getToken(ApexParser.Identifier, 0)
+
+        def ASSIGN(self):
+            return self.getToken(ApexParser.ASSIGN, 0)
 
         def elementValue(self):
-            return self.getTypedRuleContext(apexParser.ElementValueContext,0)
+            return self.getTypedRuleContext(ApexParser.ElementValueContext,0)
 
 
         def getRuleIndex(self):
-            return apexParser.RULE_elementValuePair
+            return ApexParser.RULE_elementValuePair
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterElementValuePair" ):
@@ -4952,14 +5263,14 @@ class apexParser ( Parser ):
 
     def elementValuePair(self):
 
-        localctx = apexParser.ElementValuePairContext(self, self._ctx, self.state)
+        localctx = ApexParser.ElementValuePairContext(self, self._ctx, self.state)
         self.enterRule(localctx, 114, self.RULE_elementValuePair)
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 743
-            self.match(apexParser.Identifier)
+            self.match(ApexParser.Identifier)
             self.state = 744
-            self.match(apexParser.ASSIGN)
+            self.match(ApexParser.ASSIGN)
             self.state = 745
             self.elementValue()
         except RecognitionException as re:
@@ -4970,6 +5281,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class ElementValueContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -4977,19 +5289,19 @@ class apexParser ( Parser ):
             self.parser = parser
 
         def expression(self):
-            return self.getTypedRuleContext(apexParser.ExpressionContext,0)
+            return self.getTypedRuleContext(ApexParser.ExpressionContext,0)
 
 
         def annotation(self):
-            return self.getTypedRuleContext(apexParser.AnnotationContext,0)
+            return self.getTypedRuleContext(ApexParser.AnnotationContext,0)
 
 
         def elementValueArrayInitializer(self):
-            return self.getTypedRuleContext(apexParser.ElementValueArrayInitializerContext,0)
+            return self.getTypedRuleContext(ApexParser.ElementValueArrayInitializerContext,0)
 
 
         def getRuleIndex(self):
-            return apexParser.RULE_elementValue
+            return ApexParser.RULE_elementValue
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterElementValue" ):
@@ -5004,23 +5316,23 @@ class apexParser ( Parser ):
 
     def elementValue(self):
 
-        localctx = apexParser.ElementValueContext(self, self._ctx, self.state)
+        localctx = ApexParser.ElementValueContext(self, self._ctx, self.state)
         self.enterRule(localctx, 116, self.RULE_elementValue)
         try:
             self.state = 750
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [apexParser.SoqlLiteral, apexParser.SET, apexParser.BYTE, apexParser.CHAR, apexParser.FLOAT, apexParser.INT, apexParser.NEW, apexParser.SHORT, apexParser.SUPER, apexParser.THIS, apexParser.VOID, apexParser.IntegerLiteral, apexParser.FloatingPointLiteral, apexParser.BooleanLiteral, apexParser.CharacterLiteral, apexParser.StringLiteral, apexParser.NullLiteral, apexParser.LPAREN, apexParser.LT, apexParser.BANG, apexParser.TILDE, apexParser.INC, apexParser.DEC, apexParser.ADD, apexParser.SUB, apexParser.Identifier]:
+            if token in [ApexParser.SoqlLiteral, ApexParser.SET, ApexParser.BYTE, ApexParser.CHAR, ApexParser.FLOAT, ApexParser.INT, ApexParser.NEW, ApexParser.SHORT, ApexParser.SUPER, ApexParser.THIS, ApexParser.VOID, ApexParser.IntegerLiteral, ApexParser.FloatingPointLiteral, ApexParser.BooleanLiteral, ApexParser.CharacterLiteral, ApexParser.StringLiteral, ApexParser.NullLiteral, ApexParser.LPAREN, ApexParser.LT, ApexParser.BANG, ApexParser.TILDE, ApexParser.INC, ApexParser.DEC, ApexParser.ADD, ApexParser.SUB, ApexParser.Identifier]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 747
                 self.expression(0)
                 pass
-            elif token in [apexParser.AT]:
+            elif token in [ApexParser.AT]:
                 self.enterOuterAlt(localctx, 2)
                 self.state = 748
                 self.annotation()
                 pass
-            elif token in [apexParser.LBRACE]:
+            elif token in [ApexParser.LBRACE]:
                 self.enterOuterAlt(localctx, 3)
                 self.state = 749
                 self.elementValueArrayInitializer()
@@ -5036,21 +5348,34 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class ElementValueArrayInitializerContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def LBRACE(self):
+            return self.getToken(ApexParser.LBRACE, 0)
+
+        def RBRACE(self):
+            return self.getToken(ApexParser.RBRACE, 0)
+
         def elementValue(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(apexParser.ElementValueContext)
+                return self.getTypedRuleContexts(ApexParser.ElementValueContext)
             else:
-                return self.getTypedRuleContext(apexParser.ElementValueContext,i)
+                return self.getTypedRuleContext(ApexParser.ElementValueContext,i)
 
+
+        def COMMA(self, i:int=None):
+            if i is None:
+                return self.getTokens(ApexParser.COMMA)
+            else:
+                return self.getToken(ApexParser.COMMA, i)
 
         def getRuleIndex(self):
-            return apexParser.RULE_elementValueArrayInitializer
+            return ApexParser.RULE_elementValueArrayInitializer
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterElementValueArrayInitializer" ):
@@ -5065,17 +5390,17 @@ class apexParser ( Parser ):
 
     def elementValueArrayInitializer(self):
 
-        localctx = apexParser.ElementValueArrayInitializerContext(self, self._ctx, self.state)
+        localctx = ApexParser.ElementValueArrayInitializerContext(self, self._ctx, self.state)
         self.enterRule(localctx, 118, self.RULE_elementValueArrayInitializer)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 752
-            self.match(apexParser.LBRACE)
+            self.match(ApexParser.LBRACE)
             self.state = 761
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << apexParser.SoqlLiteral) | (1 << apexParser.SET) | (1 << apexParser.BYTE) | (1 << apexParser.CHAR) | (1 << apexParser.FLOAT) | (1 << apexParser.INT) | (1 << apexParser.NEW) | (1 << apexParser.SHORT) | (1 << apexParser.SUPER) | (1 << apexParser.THIS) | (1 << apexParser.VOID) | (1 << apexParser.IntegerLiteral) | (1 << apexParser.FloatingPointLiteral))) != 0) or ((((_la - 64)) & ~0x3f) == 0 and ((1 << (_la - 64)) & ((1 << (apexParser.BooleanLiteral - 64)) | (1 << (apexParser.CharacterLiteral - 64)) | (1 << (apexParser.StringLiteral - 64)) | (1 << (apexParser.NullLiteral - 64)) | (1 << (apexParser.LPAREN - 64)) | (1 << (apexParser.LBRACE - 64)) | (1 << (apexParser.LT - 64)) | (1 << (apexParser.BANG - 64)) | (1 << (apexParser.TILDE - 64)) | (1 << (apexParser.INC - 64)) | (1 << (apexParser.DEC - 64)) | (1 << (apexParser.ADD - 64)) | (1 << (apexParser.SUB - 64)) | (1 << (apexParser.Identifier - 64)) | (1 << (apexParser.AT - 64)))) != 0):
+            if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ApexParser.SoqlLiteral) | (1 << ApexParser.SET) | (1 << ApexParser.BYTE) | (1 << ApexParser.CHAR) | (1 << ApexParser.FLOAT) | (1 << ApexParser.INT) | (1 << ApexParser.NEW) | (1 << ApexParser.SHORT) | (1 << ApexParser.SUPER) | (1 << ApexParser.THIS) | (1 << ApexParser.VOID) | (1 << ApexParser.IntegerLiteral) | (1 << ApexParser.FloatingPointLiteral))) != 0) or ((((_la - 64)) & ~0x3f) == 0 and ((1 << (_la - 64)) & ((1 << (ApexParser.BooleanLiteral - 64)) | (1 << (ApexParser.CharacterLiteral - 64)) | (1 << (ApexParser.StringLiteral - 64)) | (1 << (ApexParser.NullLiteral - 64)) | (1 << (ApexParser.LPAREN - 64)) | (1 << (ApexParser.LBRACE - 64)) | (1 << (ApexParser.LT - 64)) | (1 << (ApexParser.BANG - 64)) | (1 << (ApexParser.TILDE - 64)) | (1 << (ApexParser.INC - 64)) | (1 << (ApexParser.DEC - 64)) | (1 << (ApexParser.ADD - 64)) | (1 << (ApexParser.SUB - 64)) | (1 << (ApexParser.Identifier - 64)) | (1 << (ApexParser.AT - 64)))) != 0):
                 self.state = 753
                 self.elementValue()
                 self.state = 758
@@ -5084,7 +5409,7 @@ class apexParser ( Parser ):
                 while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                     if _alt==1:
                         self.state = 754
-                        self.match(apexParser.COMMA)
+                        self.match(ApexParser.COMMA)
                         self.state = 755
                         self.elementValue() 
                     self.state = 760
@@ -5096,13 +5421,13 @@ class apexParser ( Parser ):
             self.state = 764
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==apexParser.COMMA:
+            if _la==ApexParser.COMMA:
                 self.state = 763
-                self.match(apexParser.COMMA)
+                self.match(ApexParser.COMMA)
 
 
             self.state = 766
-            self.match(apexParser.RBRACE)
+            self.match(ApexParser.RBRACE)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -5111,24 +5436,28 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class AnnotationTypeDeclarationContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def AT(self):
+            return self.getToken(ApexParser.AT, 0)
+
         def INTERFACE(self):
-            return self.getToken(apexParser.INTERFACE, 0)
+            return self.getToken(ApexParser.INTERFACE, 0)
 
         def Identifier(self):
-            return self.getToken(apexParser.Identifier, 0)
+            return self.getToken(ApexParser.Identifier, 0)
 
         def annotationTypeBody(self):
-            return self.getTypedRuleContext(apexParser.AnnotationTypeBodyContext,0)
+            return self.getTypedRuleContext(ApexParser.AnnotationTypeBodyContext,0)
 
 
         def getRuleIndex(self):
-            return apexParser.RULE_annotationTypeDeclaration
+            return ApexParser.RULE_annotationTypeDeclaration
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterAnnotationTypeDeclaration" ):
@@ -5143,16 +5472,16 @@ class apexParser ( Parser ):
 
     def annotationTypeDeclaration(self):
 
-        localctx = apexParser.AnnotationTypeDeclarationContext(self, self._ctx, self.state)
+        localctx = ApexParser.AnnotationTypeDeclarationContext(self, self._ctx, self.state)
         self.enterRule(localctx, 120, self.RULE_annotationTypeDeclaration)
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 768
-            self.match(apexParser.AT)
+            self.match(ApexParser.AT)
             self.state = 769
-            self.match(apexParser.INTERFACE)
+            self.match(ApexParser.INTERFACE)
             self.state = 770
-            self.match(apexParser.Identifier)
+            self.match(ApexParser.Identifier)
             self.state = 771
             self.annotationTypeBody()
         except RecognitionException as re:
@@ -5163,21 +5492,28 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class AnnotationTypeBodyContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def LBRACE(self):
+            return self.getToken(ApexParser.LBRACE, 0)
+
+        def RBRACE(self):
+            return self.getToken(ApexParser.RBRACE, 0)
+
         def annotationTypeElementDeclaration(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(apexParser.AnnotationTypeElementDeclarationContext)
+                return self.getTypedRuleContexts(ApexParser.AnnotationTypeElementDeclarationContext)
             else:
-                return self.getTypedRuleContext(apexParser.AnnotationTypeElementDeclarationContext,i)
+                return self.getTypedRuleContext(ApexParser.AnnotationTypeElementDeclarationContext,i)
 
 
         def getRuleIndex(self):
-            return apexParser.RULE_annotationTypeBody
+            return ApexParser.RULE_annotationTypeBody
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterAnnotationTypeBody" ):
@@ -5192,17 +5528,17 @@ class apexParser ( Parser ):
 
     def annotationTypeBody(self):
 
-        localctx = apexParser.AnnotationTypeBodyContext(self, self._ctx, self.state)
+        localctx = ApexParser.AnnotationTypeBodyContext(self, self._ctx, self.state)
         self.enterRule(localctx, 122, self.RULE_annotationTypeBody)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 773
-            self.match(apexParser.LBRACE)
+            self.match(ApexParser.LBRACE)
             self.state = 777
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << apexParser.OVERRIDE) | (1 << apexParser.VIRTUAL) | (1 << apexParser.SET) | (1 << apexParser.ABSTRACT) | (1 << apexParser.BYTE) | (1 << apexParser.CHAR) | (1 << apexParser.CLASS) | (1 << apexParser.ENUM) | (1 << apexParser.FINAL) | (1 << apexParser.FLOAT) | (1 << apexParser.INT) | (1 << apexParser.INTERFACE) | (1 << apexParser.NATIVE) | (1 << apexParser.PRIVATE) | (1 << apexParser.PROTECTED) | (1 << apexParser.PUBLIC) | (1 << apexParser.SHORT) | (1 << apexParser.STATIC) | (1 << apexParser.SYNCHRONIZED) | (1 << apexParser.TRANSIENT) | (1 << apexParser.GLOBAL) | (1 << apexParser.WEBSERVICE) | (1 << apexParser.APEX_WITH_SHARING) | (1 << apexParser.APEX_WITHOUT_SHARING) | (1 << apexParser.TESTMETHOD))) != 0) or ((((_la - 74)) & ~0x3f) == 0 and ((1 << (_la - 74)) & ((1 << (apexParser.SEMI - 74)) | (1 << (apexParser.Identifier - 74)) | (1 << (apexParser.AT - 74)))) != 0):
+            while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ApexParser.OVERRIDE) | (1 << ApexParser.VIRTUAL) | (1 << ApexParser.SET) | (1 << ApexParser.ABSTRACT) | (1 << ApexParser.BYTE) | (1 << ApexParser.CHAR) | (1 << ApexParser.CLASS) | (1 << ApexParser.ENUM) | (1 << ApexParser.FINAL) | (1 << ApexParser.FLOAT) | (1 << ApexParser.INT) | (1 << ApexParser.INTERFACE) | (1 << ApexParser.NATIVE) | (1 << ApexParser.PRIVATE) | (1 << ApexParser.PROTECTED) | (1 << ApexParser.PUBLIC) | (1 << ApexParser.SHORT) | (1 << ApexParser.STATIC) | (1 << ApexParser.SYNCHRONIZED) | (1 << ApexParser.TRANSIENT) | (1 << ApexParser.GLOBAL) | (1 << ApexParser.WEBSERVICE) | (1 << ApexParser.APEX_WITH_SHARING) | (1 << ApexParser.APEX_WITHOUT_SHARING) | (1 << ApexParser.TESTMETHOD))) != 0) or ((((_la - 74)) & ~0x3f) == 0 and ((1 << (_la - 74)) & ((1 << (ApexParser.SEMI - 74)) | (1 << (ApexParser.Identifier - 74)) | (1 << (ApexParser.AT - 74)))) != 0):
                 self.state = 774
                 self.annotationTypeElementDeclaration()
                 self.state = 779
@@ -5210,7 +5546,7 @@ class apexParser ( Parser ):
                 _la = self._input.LA(1)
 
             self.state = 780
-            self.match(apexParser.RBRACE)
+            self.match(ApexParser.RBRACE)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -5219,6 +5555,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class AnnotationTypeElementDeclarationContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -5226,18 +5563,21 @@ class apexParser ( Parser ):
             self.parser = parser
 
         def annotationTypeElementRest(self):
-            return self.getTypedRuleContext(apexParser.AnnotationTypeElementRestContext,0)
+            return self.getTypedRuleContext(ApexParser.AnnotationTypeElementRestContext,0)
 
 
         def modifier(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(apexParser.ModifierContext)
+                return self.getTypedRuleContexts(ApexParser.ModifierContext)
             else:
-                return self.getTypedRuleContext(apexParser.ModifierContext,i)
+                return self.getTypedRuleContext(ApexParser.ModifierContext,i)
 
+
+        def SEMI(self):
+            return self.getToken(ApexParser.SEMI, 0)
 
         def getRuleIndex(self):
-            return apexParser.RULE_annotationTypeElementDeclaration
+            return ApexParser.RULE_annotationTypeElementDeclaration
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterAnnotationTypeElementDeclaration" ):
@@ -5252,13 +5592,13 @@ class apexParser ( Parser ):
 
     def annotationTypeElementDeclaration(self):
 
-        localctx = apexParser.AnnotationTypeElementDeclarationContext(self, self._ctx, self.state)
+        localctx = ApexParser.AnnotationTypeElementDeclarationContext(self, self._ctx, self.state)
         self.enterRule(localctx, 124, self.RULE_annotationTypeElementDeclaration)
         try:
             self.state = 790
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [apexParser.OVERRIDE, apexParser.VIRTUAL, apexParser.SET, apexParser.ABSTRACT, apexParser.BYTE, apexParser.CHAR, apexParser.CLASS, apexParser.ENUM, apexParser.FINAL, apexParser.FLOAT, apexParser.INT, apexParser.INTERFACE, apexParser.NATIVE, apexParser.PRIVATE, apexParser.PROTECTED, apexParser.PUBLIC, apexParser.SHORT, apexParser.STATIC, apexParser.SYNCHRONIZED, apexParser.TRANSIENT, apexParser.GLOBAL, apexParser.WEBSERVICE, apexParser.APEX_WITH_SHARING, apexParser.APEX_WITHOUT_SHARING, apexParser.TESTMETHOD, apexParser.Identifier, apexParser.AT]:
+            if token in [ApexParser.OVERRIDE, ApexParser.VIRTUAL, ApexParser.SET, ApexParser.ABSTRACT, ApexParser.BYTE, ApexParser.CHAR, ApexParser.CLASS, ApexParser.ENUM, ApexParser.FINAL, ApexParser.FLOAT, ApexParser.INT, ApexParser.INTERFACE, ApexParser.NATIVE, ApexParser.PRIVATE, ApexParser.PROTECTED, ApexParser.PUBLIC, ApexParser.SHORT, ApexParser.STATIC, ApexParser.SYNCHRONIZED, ApexParser.TRANSIENT, ApexParser.GLOBAL, ApexParser.WEBSERVICE, ApexParser.APEX_WITH_SHARING, ApexParser.APEX_WITHOUT_SHARING, ApexParser.TESTMETHOD, ApexParser.Identifier, ApexParser.AT]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 785
                 self._errHandler.sync(self)
@@ -5274,10 +5614,10 @@ class apexParser ( Parser ):
                 self.state = 788
                 self.annotationTypeElementRest()
                 pass
-            elif token in [apexParser.SEMI]:
+            elif token in [ApexParser.SEMI]:
                 self.enterOuterAlt(localctx, 2)
                 self.state = 789
-                self.match(apexParser.SEMI)
+                self.match(ApexParser.SEMI)
                 pass
             else:
                 raise NoViableAltException(self)
@@ -5290,6 +5630,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class AnnotationTypeElementRestContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -5297,31 +5638,34 @@ class apexParser ( Parser ):
             self.parser = parser
 
         def typeType(self):
-            return self.getTypedRuleContext(apexParser.TypeTypeContext,0)
+            return self.getTypedRuleContext(ApexParser.TypeTypeContext,0)
 
 
         def annotationMethodOrConstantRest(self):
-            return self.getTypedRuleContext(apexParser.AnnotationMethodOrConstantRestContext,0)
+            return self.getTypedRuleContext(ApexParser.AnnotationMethodOrConstantRestContext,0)
 
+
+        def SEMI(self):
+            return self.getToken(ApexParser.SEMI, 0)
 
         def classDeclaration(self):
-            return self.getTypedRuleContext(apexParser.ClassDeclarationContext,0)
+            return self.getTypedRuleContext(ApexParser.ClassDeclarationContext,0)
 
 
         def interfaceDeclaration(self):
-            return self.getTypedRuleContext(apexParser.InterfaceDeclarationContext,0)
+            return self.getTypedRuleContext(ApexParser.InterfaceDeclarationContext,0)
 
 
         def enumDeclaration(self):
-            return self.getTypedRuleContext(apexParser.EnumDeclarationContext,0)
+            return self.getTypedRuleContext(ApexParser.EnumDeclarationContext,0)
 
 
         def annotationTypeDeclaration(self):
-            return self.getTypedRuleContext(apexParser.AnnotationTypeDeclarationContext,0)
+            return self.getTypedRuleContext(ApexParser.AnnotationTypeDeclarationContext,0)
 
 
         def getRuleIndex(self):
-            return apexParser.RULE_annotationTypeElementRest
+            return ApexParser.RULE_annotationTypeElementRest
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterAnnotationTypeElementRest" ):
@@ -5336,22 +5680,22 @@ class apexParser ( Parser ):
 
     def annotationTypeElementRest(self):
 
-        localctx = apexParser.AnnotationTypeElementRestContext(self, self._ctx, self.state)
+        localctx = ApexParser.AnnotationTypeElementRestContext(self, self._ctx, self.state)
         self.enterRule(localctx, 126, self.RULE_annotationTypeElementRest)
         try:
             self.state = 812
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [apexParser.SET, apexParser.BYTE, apexParser.CHAR, apexParser.FLOAT, apexParser.INT, apexParser.SHORT, apexParser.Identifier]:
+            if token in [ApexParser.SET, ApexParser.BYTE, ApexParser.CHAR, ApexParser.FLOAT, ApexParser.INT, ApexParser.SHORT, ApexParser.Identifier]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 792
                 self.typeType()
                 self.state = 793
                 self.annotationMethodOrConstantRest()
                 self.state = 794
-                self.match(apexParser.SEMI)
+                self.match(ApexParser.SEMI)
                 pass
-            elif token in [apexParser.CLASS]:
+            elif token in [ApexParser.CLASS]:
                 self.enterOuterAlt(localctx, 2)
                 self.state = 796
                 self.classDeclaration()
@@ -5360,11 +5704,11 @@ class apexParser ( Parser ):
                 la_ = self._interp.adaptivePredict(self._input,88,self._ctx)
                 if la_ == 1:
                     self.state = 797
-                    self.match(apexParser.SEMI)
+                    self.match(ApexParser.SEMI)
 
 
                 pass
-            elif token in [apexParser.INTERFACE]:
+            elif token in [ApexParser.INTERFACE]:
                 self.enterOuterAlt(localctx, 3)
                 self.state = 800
                 self.interfaceDeclaration()
@@ -5373,11 +5717,11 @@ class apexParser ( Parser ):
                 la_ = self._interp.adaptivePredict(self._input,89,self._ctx)
                 if la_ == 1:
                     self.state = 801
-                    self.match(apexParser.SEMI)
+                    self.match(ApexParser.SEMI)
 
 
                 pass
-            elif token in [apexParser.ENUM]:
+            elif token in [ApexParser.ENUM]:
                 self.enterOuterAlt(localctx, 4)
                 self.state = 804
                 self.enumDeclaration()
@@ -5386,11 +5730,11 @@ class apexParser ( Parser ):
                 la_ = self._interp.adaptivePredict(self._input,90,self._ctx)
                 if la_ == 1:
                     self.state = 805
-                    self.match(apexParser.SEMI)
+                    self.match(ApexParser.SEMI)
 
 
                 pass
-            elif token in [apexParser.AT]:
+            elif token in [ApexParser.AT]:
                 self.enterOuterAlt(localctx, 5)
                 self.state = 808
                 self.annotationTypeDeclaration()
@@ -5399,7 +5743,7 @@ class apexParser ( Parser ):
                 la_ = self._interp.adaptivePredict(self._input,91,self._ctx)
                 if la_ == 1:
                     self.state = 809
-                    self.match(apexParser.SEMI)
+                    self.match(ApexParser.SEMI)
 
 
                 pass
@@ -5414,6 +5758,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class AnnotationMethodOrConstantRestContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -5421,15 +5766,15 @@ class apexParser ( Parser ):
             self.parser = parser
 
         def annotationMethodRest(self):
-            return self.getTypedRuleContext(apexParser.AnnotationMethodRestContext,0)
+            return self.getTypedRuleContext(ApexParser.AnnotationMethodRestContext,0)
 
 
         def annotationConstantRest(self):
-            return self.getTypedRuleContext(apexParser.AnnotationConstantRestContext,0)
+            return self.getTypedRuleContext(ApexParser.AnnotationConstantRestContext,0)
 
 
         def getRuleIndex(self):
-            return apexParser.RULE_annotationMethodOrConstantRest
+            return ApexParser.RULE_annotationMethodOrConstantRest
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterAnnotationMethodOrConstantRest" ):
@@ -5444,7 +5789,7 @@ class apexParser ( Parser ):
 
     def annotationMethodOrConstantRest(self):
 
-        localctx = apexParser.AnnotationMethodOrConstantRestContext(self, self._ctx, self.state)
+        localctx = ApexParser.AnnotationMethodOrConstantRestContext(self, self._ctx, self.state)
         self.enterRule(localctx, 128, self.RULE_annotationMethodOrConstantRest)
         try:
             self.state = 816
@@ -5471,6 +5816,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class AnnotationMethodRestContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -5478,14 +5824,20 @@ class apexParser ( Parser ):
             self.parser = parser
 
         def Identifier(self):
-            return self.getToken(apexParser.Identifier, 0)
+            return self.getToken(ApexParser.Identifier, 0)
+
+        def LPAREN(self):
+            return self.getToken(ApexParser.LPAREN, 0)
+
+        def RPAREN(self):
+            return self.getToken(ApexParser.RPAREN, 0)
 
         def defaultValue(self):
-            return self.getTypedRuleContext(apexParser.DefaultValueContext,0)
+            return self.getTypedRuleContext(ApexParser.DefaultValueContext,0)
 
 
         def getRuleIndex(self):
-            return apexParser.RULE_annotationMethodRest
+            return ApexParser.RULE_annotationMethodRest
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterAnnotationMethodRest" ):
@@ -5500,21 +5852,21 @@ class apexParser ( Parser ):
 
     def annotationMethodRest(self):
 
-        localctx = apexParser.AnnotationMethodRestContext(self, self._ctx, self.state)
+        localctx = ApexParser.AnnotationMethodRestContext(self, self._ctx, self.state)
         self.enterRule(localctx, 130, self.RULE_annotationMethodRest)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 818
-            self.match(apexParser.Identifier)
+            self.match(ApexParser.Identifier)
             self.state = 819
-            self.match(apexParser.LPAREN)
+            self.match(ApexParser.LPAREN)
             self.state = 820
-            self.match(apexParser.RPAREN)
+            self.match(ApexParser.RPAREN)
             self.state = 822
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==apexParser.DEFAULT:
+            if _la==ApexParser.DEFAULT:
                 self.state = 821
                 self.defaultValue()
 
@@ -5527,6 +5879,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class AnnotationConstantRestContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -5534,11 +5887,11 @@ class apexParser ( Parser ):
             self.parser = parser
 
         def variableDeclarators(self):
-            return self.getTypedRuleContext(apexParser.VariableDeclaratorsContext,0)
+            return self.getTypedRuleContext(ApexParser.VariableDeclaratorsContext,0)
 
 
         def getRuleIndex(self):
-            return apexParser.RULE_annotationConstantRest
+            return ApexParser.RULE_annotationConstantRest
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterAnnotationConstantRest" ):
@@ -5553,7 +5906,7 @@ class apexParser ( Parser ):
 
     def annotationConstantRest(self):
 
-        localctx = apexParser.AnnotationConstantRestContext(self, self._ctx, self.state)
+        localctx = ApexParser.AnnotationConstantRestContext(self, self._ctx, self.state)
         self.enterRule(localctx, 132, self.RULE_annotationConstantRest)
         try:
             self.enterOuterAlt(localctx, 1)
@@ -5567,6 +5920,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class DefaultValueContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -5574,14 +5928,14 @@ class apexParser ( Parser ):
             self.parser = parser
 
         def DEFAULT(self):
-            return self.getToken(apexParser.DEFAULT, 0)
+            return self.getToken(ApexParser.DEFAULT, 0)
 
         def elementValue(self):
-            return self.getTypedRuleContext(apexParser.ElementValueContext,0)
+            return self.getTypedRuleContext(ApexParser.ElementValueContext,0)
 
 
         def getRuleIndex(self):
-            return apexParser.RULE_defaultValue
+            return ApexParser.RULE_defaultValue
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterDefaultValue" ):
@@ -5596,12 +5950,12 @@ class apexParser ( Parser ):
 
     def defaultValue(self):
 
-        localctx = apexParser.DefaultValueContext(self, self._ctx, self.state)
+        localctx = ApexParser.DefaultValueContext(self, self._ctx, self.state)
         self.enterRule(localctx, 134, self.RULE_defaultValue)
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 826
-            self.match(apexParser.DEFAULT)
+            self.match(ApexParser.DEFAULT)
             self.state = 827
             self.elementValue()
         except RecognitionException as re:
@@ -5612,21 +5966,28 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class BlockContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def LBRACE(self):
+            return self.getToken(ApexParser.LBRACE, 0)
+
+        def RBRACE(self):
+            return self.getToken(ApexParser.RBRACE, 0)
+
         def blockStatement(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(apexParser.BlockStatementContext)
+                return self.getTypedRuleContexts(ApexParser.BlockStatementContext)
             else:
-                return self.getTypedRuleContext(apexParser.BlockStatementContext,i)
+                return self.getTypedRuleContext(ApexParser.BlockStatementContext,i)
 
 
         def getRuleIndex(self):
-            return apexParser.RULE_block
+            return ApexParser.RULE_block
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterBlock" ):
@@ -5641,17 +6002,17 @@ class apexParser ( Parser ):
 
     def block(self):
 
-        localctx = apexParser.BlockContext(self, self._ctx, self.state)
+        localctx = ApexParser.BlockContext(self, self._ctx, self.state)
         self.enterRule(localctx, 136, self.RULE_block)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 829
-            self.match(apexParser.LBRACE)
+            self.match(ApexParser.LBRACE)
             self.state = 833
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << apexParser.SoqlLiteral) | (1 << apexParser.OVERRIDE) | (1 << apexParser.VIRTUAL) | (1 << apexParser.SET) | (1 << apexParser.ABSTRACT) | (1 << apexParser.BREAK) | (1 << apexParser.BYTE) | (1 << apexParser.CHAR) | (1 << apexParser.CLASS) | (1 << apexParser.CONTINUE) | (1 << apexParser.DO) | (1 << apexParser.ENUM) | (1 << apexParser.FINAL) | (1 << apexParser.FLOAT) | (1 << apexParser.FOR) | (1 << apexParser.IF) | (1 << apexParser.INT) | (1 << apexParser.INTERFACE) | (1 << apexParser.NEW) | (1 << apexParser.PRIVATE) | (1 << apexParser.PROTECTED) | (1 << apexParser.PUBLIC) | (1 << apexParser.RETURN) | (1 << apexParser.SHORT) | (1 << apexParser.STATIC) | (1 << apexParser.SUPER) | (1 << apexParser.THIS) | (1 << apexParser.THROW) | (1 << apexParser.TRY) | (1 << apexParser.VOID) | (1 << apexParser.WHILE) | (1 << apexParser.GLOBAL) | (1 << apexParser.WEBSERVICE) | (1 << apexParser.APEX_WITH_SHARING) | (1 << apexParser.APEX_WITHOUT_SHARING) | (1 << apexParser.DB_INSERT) | (1 << apexParser.DB_UPSERT) | (1 << apexParser.DB_UPDATE) | (1 << apexParser.DB_DELETE) | (1 << apexParser.DB_UNDELETE) | (1 << apexParser.TESTMETHOD) | (1 << apexParser.RUNAS) | (1 << apexParser.IntegerLiteral) | (1 << apexParser.FloatingPointLiteral))) != 0) or ((((_la - 64)) & ~0x3f) == 0 and ((1 << (_la - 64)) & ((1 << (apexParser.BooleanLiteral - 64)) | (1 << (apexParser.CharacterLiteral - 64)) | (1 << (apexParser.StringLiteral - 64)) | (1 << (apexParser.NullLiteral - 64)) | (1 << (apexParser.LPAREN - 64)) | (1 << (apexParser.LBRACE - 64)) | (1 << (apexParser.SEMI - 64)) | (1 << (apexParser.LT - 64)) | (1 << (apexParser.BANG - 64)) | (1 << (apexParser.TILDE - 64)) | (1 << (apexParser.INC - 64)) | (1 << (apexParser.DEC - 64)) | (1 << (apexParser.ADD - 64)) | (1 << (apexParser.SUB - 64)) | (1 << (apexParser.Identifier - 64)) | (1 << (apexParser.AT - 64)))) != 0):
+            while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ApexParser.SoqlLiteral) | (1 << ApexParser.OVERRIDE) | (1 << ApexParser.VIRTUAL) | (1 << ApexParser.SET) | (1 << ApexParser.ABSTRACT) | (1 << ApexParser.BREAK) | (1 << ApexParser.BYTE) | (1 << ApexParser.CHAR) | (1 << ApexParser.CLASS) | (1 << ApexParser.CONTINUE) | (1 << ApexParser.DO) | (1 << ApexParser.ENUM) | (1 << ApexParser.FINAL) | (1 << ApexParser.FLOAT) | (1 << ApexParser.FOR) | (1 << ApexParser.IF) | (1 << ApexParser.INT) | (1 << ApexParser.INTERFACE) | (1 << ApexParser.NEW) | (1 << ApexParser.PRIVATE) | (1 << ApexParser.PROTECTED) | (1 << ApexParser.PUBLIC) | (1 << ApexParser.RETURN) | (1 << ApexParser.SHORT) | (1 << ApexParser.STATIC) | (1 << ApexParser.SUPER) | (1 << ApexParser.THIS) | (1 << ApexParser.THROW) | (1 << ApexParser.TRY) | (1 << ApexParser.VOID) | (1 << ApexParser.WHILE) | (1 << ApexParser.GLOBAL) | (1 << ApexParser.WEBSERVICE) | (1 << ApexParser.APEX_WITH_SHARING) | (1 << ApexParser.APEX_WITHOUT_SHARING) | (1 << ApexParser.DB_INSERT) | (1 << ApexParser.DB_UPSERT) | (1 << ApexParser.DB_UPDATE) | (1 << ApexParser.DB_DELETE) | (1 << ApexParser.DB_UNDELETE) | (1 << ApexParser.TESTMETHOD) | (1 << ApexParser.RUNAS) | (1 << ApexParser.IntegerLiteral) | (1 << ApexParser.FloatingPointLiteral))) != 0) or ((((_la - 64)) & ~0x3f) == 0 and ((1 << (_la - 64)) & ((1 << (ApexParser.BooleanLiteral - 64)) | (1 << (ApexParser.CharacterLiteral - 64)) | (1 << (ApexParser.StringLiteral - 64)) | (1 << (ApexParser.NullLiteral - 64)) | (1 << (ApexParser.LPAREN - 64)) | (1 << (ApexParser.LBRACE - 64)) | (1 << (ApexParser.SEMI - 64)) | (1 << (ApexParser.LT - 64)) | (1 << (ApexParser.BANG - 64)) | (1 << (ApexParser.TILDE - 64)) | (1 << (ApexParser.INC - 64)) | (1 << (ApexParser.DEC - 64)) | (1 << (ApexParser.ADD - 64)) | (1 << (ApexParser.SUB - 64)) | (1 << (ApexParser.Identifier - 64)) | (1 << (ApexParser.AT - 64)))) != 0):
                 self.state = 830
                 self.blockStatement()
                 self.state = 835
@@ -5659,7 +6020,7 @@ class apexParser ( Parser ):
                 _la = self._input.LA(1)
 
             self.state = 836
-            self.match(apexParser.RBRACE)
+            self.match(ApexParser.RBRACE)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -5668,6 +6029,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class BlockStatementContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -5675,19 +6037,19 @@ class apexParser ( Parser ):
             self.parser = parser
 
         def localVariableDeclarationStatement(self):
-            return self.getTypedRuleContext(apexParser.LocalVariableDeclarationStatementContext,0)
+            return self.getTypedRuleContext(ApexParser.LocalVariableDeclarationStatementContext,0)
 
 
         def statement(self):
-            return self.getTypedRuleContext(apexParser.StatementContext,0)
+            return self.getTypedRuleContext(ApexParser.StatementContext,0)
 
 
         def typeDeclaration(self):
-            return self.getTypedRuleContext(apexParser.TypeDeclarationContext,0)
+            return self.getTypedRuleContext(ApexParser.TypeDeclarationContext,0)
 
 
         def getRuleIndex(self):
-            return apexParser.RULE_blockStatement
+            return ApexParser.RULE_blockStatement
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterBlockStatement" ):
@@ -5702,7 +6064,7 @@ class apexParser ( Parser ):
 
     def blockStatement(self):
 
-        localctx = apexParser.BlockStatementContext(self, self._ctx, self.state)
+        localctx = ApexParser.BlockStatementContext(self, self._ctx, self.state)
         self.enterRule(localctx, 138, self.RULE_blockStatement)
         try:
             self.state = 841
@@ -5735,6 +6097,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class LocalVariableDeclarationStatementContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -5742,11 +6105,14 @@ class apexParser ( Parser ):
             self.parser = parser
 
         def localVariableDeclaration(self):
-            return self.getTypedRuleContext(apexParser.LocalVariableDeclarationContext,0)
+            return self.getTypedRuleContext(ApexParser.LocalVariableDeclarationContext,0)
 
+
+        def SEMI(self):
+            return self.getToken(ApexParser.SEMI, 0)
 
         def getRuleIndex(self):
-            return apexParser.RULE_localVariableDeclarationStatement
+            return ApexParser.RULE_localVariableDeclarationStatement
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterLocalVariableDeclarationStatement" ):
@@ -5761,14 +6127,14 @@ class apexParser ( Parser ):
 
     def localVariableDeclarationStatement(self):
 
-        localctx = apexParser.LocalVariableDeclarationStatementContext(self, self._ctx, self.state)
+        localctx = ApexParser.LocalVariableDeclarationStatementContext(self, self._ctx, self.state)
         self.enterRule(localctx, 140, self.RULE_localVariableDeclarationStatement)
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 843
             self.localVariableDeclaration()
             self.state = 844
-            self.match(apexParser.SEMI)
+            self.match(ApexParser.SEMI)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -5777,6 +6143,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class LocalVariableDeclarationContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -5784,22 +6151,22 @@ class apexParser ( Parser ):
             self.parser = parser
 
         def typeType(self):
-            return self.getTypedRuleContext(apexParser.TypeTypeContext,0)
+            return self.getTypedRuleContext(ApexParser.TypeTypeContext,0)
 
 
         def variableDeclarators(self):
-            return self.getTypedRuleContext(apexParser.VariableDeclaratorsContext,0)
+            return self.getTypedRuleContext(ApexParser.VariableDeclaratorsContext,0)
 
 
         def variableModifier(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(apexParser.VariableModifierContext)
+                return self.getTypedRuleContexts(ApexParser.VariableModifierContext)
             else:
-                return self.getTypedRuleContext(apexParser.VariableModifierContext,i)
+                return self.getTypedRuleContext(ApexParser.VariableModifierContext,i)
 
 
         def getRuleIndex(self):
-            return apexParser.RULE_localVariableDeclaration
+            return ApexParser.RULE_localVariableDeclaration
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterLocalVariableDeclaration" ):
@@ -5814,7 +6181,7 @@ class apexParser ( Parser ):
 
     def localVariableDeclaration(self):
 
-        localctx = apexParser.LocalVariableDeclarationContext(self, self._ctx, self.state)
+        localctx = ApexParser.LocalVariableDeclarationContext(self, self._ctx, self.state)
         self.enterRule(localctx, 142, self.RULE_localVariableDeclaration)
         self._la = 0 # Token type
         try:
@@ -5822,7 +6189,7 @@ class apexParser ( Parser ):
             self.state = 849
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==apexParser.FINAL or _la==apexParser.AT:
+            while _la==ApexParser.FINAL or _la==ApexParser.AT:
                 self.state = 846
                 self.variableModifier()
                 self.state = 851
@@ -5841,6 +6208,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class StatementContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -5848,89 +6216,101 @@ class apexParser ( Parser ):
             self.parser = parser
 
         def block(self):
-            return self.getTypedRuleContext(apexParser.BlockContext,0)
+            return self.getTypedRuleContext(ApexParser.BlockContext,0)
 
 
         def IF(self):
-            return self.getToken(apexParser.IF, 0)
+            return self.getToken(ApexParser.IF, 0)
 
         def parExpression(self):
-            return self.getTypedRuleContext(apexParser.ParExpressionContext,0)
+            return self.getTypedRuleContext(ApexParser.ParExpressionContext,0)
 
 
         def statement(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(apexParser.StatementContext)
+                return self.getTypedRuleContexts(ApexParser.StatementContext)
             else:
-                return self.getTypedRuleContext(apexParser.StatementContext,i)
+                return self.getTypedRuleContext(ApexParser.StatementContext,i)
 
 
         def ELSE(self):
-            return self.getToken(apexParser.ELSE, 0)
+            return self.getToken(ApexParser.ELSE, 0)
 
         def FOR(self):
-            return self.getToken(apexParser.FOR, 0)
+            return self.getToken(ApexParser.FOR, 0)
+
+        def LPAREN(self):
+            return self.getToken(ApexParser.LPAREN, 0)
 
         def forControl(self):
-            return self.getTypedRuleContext(apexParser.ForControlContext,0)
+            return self.getTypedRuleContext(ApexParser.ForControlContext,0)
 
+
+        def RPAREN(self):
+            return self.getToken(ApexParser.RPAREN, 0)
 
         def WHILE(self):
-            return self.getToken(apexParser.WHILE, 0)
+            return self.getToken(ApexParser.WHILE, 0)
 
         def DO(self):
-            return self.getToken(apexParser.DO, 0)
+            return self.getToken(ApexParser.DO, 0)
+
+        def SEMI(self):
+            return self.getToken(ApexParser.SEMI, 0)
 
         def RUNAS(self):
-            return self.getToken(apexParser.RUNAS, 0)
+            return self.getToken(ApexParser.RUNAS, 0)
 
         def expression(self):
-            return self.getTypedRuleContext(apexParser.ExpressionContext,0)
+            return self.getTypedRuleContext(ApexParser.ExpressionContext,0)
 
 
         def TRY(self):
-            return self.getToken(apexParser.TRY, 0)
+            return self.getToken(ApexParser.TRY, 0)
 
         def finallyBlock(self):
-            return self.getTypedRuleContext(apexParser.FinallyBlockContext,0)
+            return self.getTypedRuleContext(ApexParser.FinallyBlockContext,0)
 
 
         def catchClause(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(apexParser.CatchClauseContext)
+                return self.getTypedRuleContexts(ApexParser.CatchClauseContext)
             else:
-                return self.getTypedRuleContext(apexParser.CatchClauseContext,i)
+                return self.getTypedRuleContext(ApexParser.CatchClauseContext,i)
 
 
         def resourceSpecification(self):
-            return self.getTypedRuleContext(apexParser.ResourceSpecificationContext,0)
+            return self.getTypedRuleContext(ApexParser.ResourceSpecificationContext,0)
 
 
         def RETURN(self):
-            return self.getToken(apexParser.RETURN, 0)
+            return self.getToken(ApexParser.RETURN, 0)
 
         def THROW(self):
-            return self.getToken(apexParser.THROW, 0)
+            return self.getToken(ApexParser.THROW, 0)
 
         def BREAK(self):
-            return self.getToken(apexParser.BREAK, 0)
+            return self.getToken(ApexParser.BREAK, 0)
 
         def Identifier(self):
-            return self.getToken(apexParser.Identifier, 0)
+            return self.getToken(ApexParser.Identifier, 0)
 
         def CONTINUE(self):
-            return self.getToken(apexParser.CONTINUE, 0)
+            return self.getToken(ApexParser.CONTINUE, 0)
 
         def statementExpression(self):
-            return self.getTypedRuleContext(apexParser.StatementExpressionContext,0)
+            return self.getTypedRuleContext(ApexParser.StatementExpressionContext,0)
 
+
+        def COLON(self):
+            return self.getToken(ApexParser.COLON, 0)
 
         def apexDbExpression(self):
-            return self.getTypedRuleContext(apexParser.ApexDbExpressionContext,0)
+            return self.getTypedRuleContext(ApexParser.ApexDbExpressionContext,0)
 
 
         def getRuleIndex(self):
-            return apexParser.RULE_statement
+            return ApexParser.RULE_statement
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterStatement" ):
@@ -5945,7 +6325,7 @@ class apexParser ( Parser ):
 
     def statement(self):
 
-        localctx = apexParser.StatementContext(self, self._ctx, self.state)
+        localctx = ApexParser.StatementContext(self, self._ctx, self.state)
         self.enterRule(localctx, 144, self.RULE_statement)
         self._la = 0 # Token type
         try:
@@ -5961,7 +6341,7 @@ class apexParser ( Parser ):
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
                 self.state = 856
-                self.match(apexParser.IF)
+                self.match(ApexParser.IF)
                 self.state = 857
                 self.parExpression()
                 self.state = 858
@@ -5971,7 +6351,7 @@ class apexParser ( Parser ):
                 la_ = self._interp.adaptivePredict(self._input,98,self._ctx)
                 if la_ == 1:
                     self.state = 859
-                    self.match(apexParser.ELSE)
+                    self.match(ApexParser.ELSE)
                     self.state = 860
                     self.statement()
 
@@ -5981,13 +6361,13 @@ class apexParser ( Parser ):
             elif la_ == 3:
                 self.enterOuterAlt(localctx, 3)
                 self.state = 863
-                self.match(apexParser.FOR)
+                self.match(ApexParser.FOR)
                 self.state = 864
-                self.match(apexParser.LPAREN)
+                self.match(ApexParser.LPAREN)
                 self.state = 865
                 self.forControl()
                 self.state = 866
-                self.match(apexParser.RPAREN)
+                self.match(ApexParser.RPAREN)
                 self.state = 867
                 self.statement()
                 pass
@@ -5995,7 +6375,7 @@ class apexParser ( Parser ):
             elif la_ == 4:
                 self.enterOuterAlt(localctx, 4)
                 self.state = 869
-                self.match(apexParser.WHILE)
+                self.match(ApexParser.WHILE)
                 self.state = 870
                 self.parExpression()
                 self.state = 871
@@ -6005,27 +6385,27 @@ class apexParser ( Parser ):
             elif la_ == 5:
                 self.enterOuterAlt(localctx, 5)
                 self.state = 873
-                self.match(apexParser.DO)
+                self.match(ApexParser.DO)
                 self.state = 874
                 self.statement()
                 self.state = 875
-                self.match(apexParser.WHILE)
+                self.match(ApexParser.WHILE)
                 self.state = 876
                 self.parExpression()
                 self.state = 877
-                self.match(apexParser.SEMI)
+                self.match(ApexParser.SEMI)
                 pass
 
             elif la_ == 6:
                 self.enterOuterAlt(localctx, 6)
                 self.state = 879
-                self.match(apexParser.RUNAS)
+                self.match(ApexParser.RUNAS)
                 self.state = 880
-                self.match(apexParser.LPAREN)
+                self.match(ApexParser.LPAREN)
                 self.state = 881
                 self.expression(0)
                 self.state = 882
-                self.match(apexParser.RPAREN)
+                self.match(ApexParser.RPAREN)
                 self.state = 883
                 self.statement()
                 pass
@@ -6033,13 +6413,13 @@ class apexParser ( Parser ):
             elif la_ == 7:
                 self.enterOuterAlt(localctx, 7)
                 self.state = 885
-                self.match(apexParser.TRY)
+                self.match(ApexParser.TRY)
                 self.state = 886
                 self.block()
                 self.state = 896
                 self._errHandler.sync(self)
                 token = self._input.LA(1)
-                if token in [apexParser.CATCH]:
+                if token in [ApexParser.CATCH]:
                     self.state = 888 
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
@@ -6049,19 +6429,19 @@ class apexParser ( Parser ):
                         self.state = 890 
                         self._errHandler.sync(self)
                         _la = self._input.LA(1)
-                        if not (_la==apexParser.CATCH):
+                        if not (_la==ApexParser.CATCH):
                             break
 
                     self.state = 893
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
-                    if _la==apexParser.FINALLY:
+                    if _la==ApexParser.FINALLY:
                         self.state = 892
                         self.finallyBlock()
 
 
                     pass
-                elif token in [apexParser.FINALLY]:
+                elif token in [ApexParser.FINALLY]:
                     self.state = 895
                     self.finallyBlock()
                     pass
@@ -6073,7 +6453,7 @@ class apexParser ( Parser ):
             elif la_ == 8:
                 self.enterOuterAlt(localctx, 8)
                 self.state = 898
-                self.match(apexParser.TRY)
+                self.match(ApexParser.TRY)
                 self.state = 899
                 self.resourceSpecification()
                 self.state = 900
@@ -6081,7 +6461,7 @@ class apexParser ( Parser ):
                 self.state = 904
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                while _la==apexParser.CATCH:
+                while _la==ApexParser.CATCH:
                     self.state = 901
                     self.catchClause()
                     self.state = 906
@@ -6091,7 +6471,7 @@ class apexParser ( Parser ):
                 self.state = 908
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if _la==apexParser.FINALLY:
+                if _la==ApexParser.FINALLY:
                     self.state = 907
                     self.finallyBlock()
 
@@ -6101,65 +6481,65 @@ class apexParser ( Parser ):
             elif la_ == 9:
                 self.enterOuterAlt(localctx, 9)
                 self.state = 910
-                self.match(apexParser.RETURN)
+                self.match(ApexParser.RETURN)
                 self.state = 912
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << apexParser.SoqlLiteral) | (1 << apexParser.SET) | (1 << apexParser.BYTE) | (1 << apexParser.CHAR) | (1 << apexParser.FLOAT) | (1 << apexParser.INT) | (1 << apexParser.NEW) | (1 << apexParser.SHORT) | (1 << apexParser.SUPER) | (1 << apexParser.THIS) | (1 << apexParser.VOID) | (1 << apexParser.IntegerLiteral) | (1 << apexParser.FloatingPointLiteral))) != 0) or ((((_la - 64)) & ~0x3f) == 0 and ((1 << (_la - 64)) & ((1 << (apexParser.BooleanLiteral - 64)) | (1 << (apexParser.CharacterLiteral - 64)) | (1 << (apexParser.StringLiteral - 64)) | (1 << (apexParser.NullLiteral - 64)) | (1 << (apexParser.LPAREN - 64)) | (1 << (apexParser.LT - 64)) | (1 << (apexParser.BANG - 64)) | (1 << (apexParser.TILDE - 64)) | (1 << (apexParser.INC - 64)) | (1 << (apexParser.DEC - 64)) | (1 << (apexParser.ADD - 64)) | (1 << (apexParser.SUB - 64)) | (1 << (apexParser.Identifier - 64)))) != 0):
+                if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ApexParser.SoqlLiteral) | (1 << ApexParser.SET) | (1 << ApexParser.BYTE) | (1 << ApexParser.CHAR) | (1 << ApexParser.FLOAT) | (1 << ApexParser.INT) | (1 << ApexParser.NEW) | (1 << ApexParser.SHORT) | (1 << ApexParser.SUPER) | (1 << ApexParser.THIS) | (1 << ApexParser.VOID) | (1 << ApexParser.IntegerLiteral) | (1 << ApexParser.FloatingPointLiteral))) != 0) or ((((_la - 64)) & ~0x3f) == 0 and ((1 << (_la - 64)) & ((1 << (ApexParser.BooleanLiteral - 64)) | (1 << (ApexParser.CharacterLiteral - 64)) | (1 << (ApexParser.StringLiteral - 64)) | (1 << (ApexParser.NullLiteral - 64)) | (1 << (ApexParser.LPAREN - 64)) | (1 << (ApexParser.LT - 64)) | (1 << (ApexParser.BANG - 64)) | (1 << (ApexParser.TILDE - 64)) | (1 << (ApexParser.INC - 64)) | (1 << (ApexParser.DEC - 64)) | (1 << (ApexParser.ADD - 64)) | (1 << (ApexParser.SUB - 64)) | (1 << (ApexParser.Identifier - 64)))) != 0):
                     self.state = 911
                     self.expression(0)
 
 
                 self.state = 914
-                self.match(apexParser.SEMI)
+                self.match(ApexParser.SEMI)
                 pass
 
             elif la_ == 10:
                 self.enterOuterAlt(localctx, 10)
                 self.state = 915
-                self.match(apexParser.THROW)
+                self.match(ApexParser.THROW)
                 self.state = 916
                 self.expression(0)
                 self.state = 917
-                self.match(apexParser.SEMI)
+                self.match(ApexParser.SEMI)
                 pass
 
             elif la_ == 11:
                 self.enterOuterAlt(localctx, 11)
                 self.state = 919
-                self.match(apexParser.BREAK)
+                self.match(ApexParser.BREAK)
                 self.state = 921
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if _la==apexParser.Identifier:
+                if _la==ApexParser.Identifier:
                     self.state = 920
-                    self.match(apexParser.Identifier)
+                    self.match(ApexParser.Identifier)
 
 
                 self.state = 923
-                self.match(apexParser.SEMI)
+                self.match(ApexParser.SEMI)
                 pass
 
             elif la_ == 12:
                 self.enterOuterAlt(localctx, 12)
                 self.state = 924
-                self.match(apexParser.CONTINUE)
+                self.match(ApexParser.CONTINUE)
                 self.state = 926
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if _la==apexParser.Identifier:
+                if _la==ApexParser.Identifier:
                     self.state = 925
-                    self.match(apexParser.Identifier)
+                    self.match(ApexParser.Identifier)
 
 
                 self.state = 928
-                self.match(apexParser.SEMI)
+                self.match(ApexParser.SEMI)
                 pass
 
             elif la_ == 13:
                 self.enterOuterAlt(localctx, 13)
                 self.state = 929
-                self.match(apexParser.SEMI)
+                self.match(ApexParser.SEMI)
                 pass
 
             elif la_ == 14:
@@ -6167,15 +6547,15 @@ class apexParser ( Parser ):
                 self.state = 930
                 self.statementExpression()
                 self.state = 931
-                self.match(apexParser.SEMI)
+                self.match(ApexParser.SEMI)
                 pass
 
             elif la_ == 15:
                 self.enterOuterAlt(localctx, 15)
                 self.state = 933
-                self.match(apexParser.Identifier)
+                self.match(ApexParser.Identifier)
                 self.state = 934
-                self.match(apexParser.COLON)
+                self.match(ApexParser.COLON)
                 self.state = 935
                 self.statement()
                 pass
@@ -6185,7 +6565,7 @@ class apexParser ( Parser ):
                 self.state = 936
                 self.apexDbExpression()
                 self.state = 937
-                self.match(apexParser.SEMI)
+                self.match(ApexParser.SEMI)
                 pass
 
 
@@ -6197,6 +6577,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class PropertyBlockContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -6204,22 +6585,22 @@ class apexParser ( Parser ):
             self.parser = parser
 
         def getter(self):
-            return self.getTypedRuleContext(apexParser.GetterContext,0)
+            return self.getTypedRuleContext(ApexParser.GetterContext,0)
 
 
         def setter(self):
-            return self.getTypedRuleContext(apexParser.SetterContext,0)
+            return self.getTypedRuleContext(ApexParser.SetterContext,0)
 
 
         def modifier(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(apexParser.ModifierContext)
+                return self.getTypedRuleContexts(ApexParser.ModifierContext)
             else:
-                return self.getTypedRuleContext(apexParser.ModifierContext,i)
+                return self.getTypedRuleContext(ApexParser.ModifierContext,i)
 
 
         def getRuleIndex(self):
-            return apexParser.RULE_propertyBlock
+            return ApexParser.RULE_propertyBlock
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterPropertyBlock" ):
@@ -6234,7 +6615,7 @@ class apexParser ( Parser ):
 
     def propertyBlock(self):
 
-        localctx = apexParser.PropertyBlockContext(self, self._ctx, self.state)
+        localctx = ApexParser.PropertyBlockContext(self, self._ctx, self.state)
         self.enterRule(localctx, 146, self.RULE_propertyBlock)
         self._la = 0 # Token type
         try:
@@ -6242,7 +6623,7 @@ class apexParser ( Parser ):
             self.state = 944
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << apexParser.OVERRIDE) | (1 << apexParser.VIRTUAL) | (1 << apexParser.ABSTRACT) | (1 << apexParser.FINAL) | (1 << apexParser.NATIVE) | (1 << apexParser.PRIVATE) | (1 << apexParser.PROTECTED) | (1 << apexParser.PUBLIC) | (1 << apexParser.STATIC) | (1 << apexParser.SYNCHRONIZED) | (1 << apexParser.TRANSIENT) | (1 << apexParser.GLOBAL) | (1 << apexParser.WEBSERVICE) | (1 << apexParser.APEX_WITH_SHARING) | (1 << apexParser.APEX_WITHOUT_SHARING) | (1 << apexParser.TESTMETHOD))) != 0) or _la==apexParser.AT:
+            while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ApexParser.OVERRIDE) | (1 << ApexParser.VIRTUAL) | (1 << ApexParser.ABSTRACT) | (1 << ApexParser.FINAL) | (1 << ApexParser.NATIVE) | (1 << ApexParser.PRIVATE) | (1 << ApexParser.PROTECTED) | (1 << ApexParser.PUBLIC) | (1 << ApexParser.STATIC) | (1 << ApexParser.SYNCHRONIZED) | (1 << ApexParser.TRANSIENT) | (1 << ApexParser.GLOBAL) | (1 << ApexParser.WEBSERVICE) | (1 << ApexParser.APEX_WITH_SHARING) | (1 << ApexParser.APEX_WITHOUT_SHARING) | (1 << ApexParser.TESTMETHOD))) != 0) or _la==ApexParser.AT:
                 self.state = 941
                 self.modifier()
                 self.state = 946
@@ -6252,11 +6633,11 @@ class apexParser ( Parser ):
             self.state = 949
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [apexParser.GET]:
+            if token in [ApexParser.GET]:
                 self.state = 947
                 self.getter()
                 pass
-            elif token in [apexParser.SET]:
+            elif token in [ApexParser.SET]:
                 self.state = 948
                 self.setter()
                 pass
@@ -6271,6 +6652,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class GetterContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -6278,14 +6660,17 @@ class apexParser ( Parser ):
             self.parser = parser
 
         def GET(self):
-            return self.getToken(apexParser.GET, 0)
+            return self.getToken(ApexParser.GET, 0)
+
+        def SEMI(self):
+            return self.getToken(ApexParser.SEMI, 0)
 
         def methodBody(self):
-            return self.getTypedRuleContext(apexParser.MethodBodyContext,0)
+            return self.getTypedRuleContext(ApexParser.MethodBodyContext,0)
 
 
         def getRuleIndex(self):
-            return apexParser.RULE_getter
+            return ApexParser.RULE_getter
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterGetter" ):
@@ -6300,20 +6685,20 @@ class apexParser ( Parser ):
 
     def getter(self):
 
-        localctx = apexParser.GetterContext(self, self._ctx, self.state)
+        localctx = ApexParser.GetterContext(self, self._ctx, self.state)
         self.enterRule(localctx, 148, self.RULE_getter)
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 951
-            self.match(apexParser.GET)
+            self.match(ApexParser.GET)
             self.state = 954
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [apexParser.SEMI]:
+            if token in [ApexParser.SEMI]:
                 self.state = 952
-                self.match(apexParser.SEMI)
+                self.match(ApexParser.SEMI)
                 pass
-            elif token in [apexParser.LBRACE]:
+            elif token in [ApexParser.LBRACE]:
                 self.state = 953
                 self.methodBody()
                 pass
@@ -6328,6 +6713,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class SetterContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -6335,14 +6721,17 @@ class apexParser ( Parser ):
             self.parser = parser
 
         def SET(self):
-            return self.getToken(apexParser.SET, 0)
+            return self.getToken(ApexParser.SET, 0)
+
+        def SEMI(self):
+            return self.getToken(ApexParser.SEMI, 0)
 
         def methodBody(self):
-            return self.getTypedRuleContext(apexParser.MethodBodyContext,0)
+            return self.getTypedRuleContext(ApexParser.MethodBodyContext,0)
 
 
         def getRuleIndex(self):
-            return apexParser.RULE_setter
+            return ApexParser.RULE_setter
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterSetter" ):
@@ -6357,20 +6746,20 @@ class apexParser ( Parser ):
 
     def setter(self):
 
-        localctx = apexParser.SetterContext(self, self._ctx, self.state)
+        localctx = ApexParser.SetterContext(self, self._ctx, self.state)
         self.enterRule(localctx, 150, self.RULE_setter)
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 956
-            self.match(apexParser.SET)
+            self.match(ApexParser.SET)
             self.state = 959
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [apexParser.SEMI]:
+            if token in [ApexParser.SEMI]:
                 self.state = 957
-                self.match(apexParser.SEMI)
+                self.match(ApexParser.SEMI)
                 pass
-            elif token in [apexParser.LBRACE]:
+            elif token in [ApexParser.LBRACE]:
                 self.state = 958
                 self.methodBody()
                 pass
@@ -6385,6 +6774,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class CatchClauseContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -6392,28 +6782,34 @@ class apexParser ( Parser ):
             self.parser = parser
 
         def CATCH(self):
-            return self.getToken(apexParser.CATCH, 0)
+            return self.getToken(ApexParser.CATCH, 0)
+
+        def LPAREN(self):
+            return self.getToken(ApexParser.LPAREN, 0)
 
         def catchType(self):
-            return self.getTypedRuleContext(apexParser.CatchTypeContext,0)
+            return self.getTypedRuleContext(ApexParser.CatchTypeContext,0)
 
 
         def Identifier(self):
-            return self.getToken(apexParser.Identifier, 0)
+            return self.getToken(ApexParser.Identifier, 0)
+
+        def RPAREN(self):
+            return self.getToken(ApexParser.RPAREN, 0)
 
         def block(self):
-            return self.getTypedRuleContext(apexParser.BlockContext,0)
+            return self.getTypedRuleContext(ApexParser.BlockContext,0)
 
 
         def variableModifier(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(apexParser.VariableModifierContext)
+                return self.getTypedRuleContexts(ApexParser.VariableModifierContext)
             else:
-                return self.getTypedRuleContext(apexParser.VariableModifierContext,i)
+                return self.getTypedRuleContext(ApexParser.VariableModifierContext,i)
 
 
         def getRuleIndex(self):
-            return apexParser.RULE_catchClause
+            return ApexParser.RULE_catchClause
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterCatchClause" ):
@@ -6428,19 +6824,19 @@ class apexParser ( Parser ):
 
     def catchClause(self):
 
-        localctx = apexParser.CatchClauseContext(self, self._ctx, self.state)
+        localctx = ApexParser.CatchClauseContext(self, self._ctx, self.state)
         self.enterRule(localctx, 152, self.RULE_catchClause)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 961
-            self.match(apexParser.CATCH)
+            self.match(ApexParser.CATCH)
             self.state = 962
-            self.match(apexParser.LPAREN)
+            self.match(ApexParser.LPAREN)
             self.state = 966
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==apexParser.FINAL or _la==apexParser.AT:
+            while _la==ApexParser.FINAL or _la==ApexParser.AT:
                 self.state = 963
                 self.variableModifier()
                 self.state = 968
@@ -6450,9 +6846,9 @@ class apexParser ( Parser ):
             self.state = 969
             self.catchType()
             self.state = 970
-            self.match(apexParser.Identifier)
+            self.match(ApexParser.Identifier)
             self.state = 971
-            self.match(apexParser.RPAREN)
+            self.match(ApexParser.RPAREN)
             self.state = 972
             self.block()
         except RecognitionException as re:
@@ -6463,6 +6859,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class CatchTypeContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -6471,13 +6868,19 @@ class apexParser ( Parser ):
 
         def qualifiedName(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(apexParser.QualifiedNameContext)
+                return self.getTypedRuleContexts(ApexParser.QualifiedNameContext)
             else:
-                return self.getTypedRuleContext(apexParser.QualifiedNameContext,i)
+                return self.getTypedRuleContext(ApexParser.QualifiedNameContext,i)
 
+
+        def BITOR(self, i:int=None):
+            if i is None:
+                return self.getTokens(ApexParser.BITOR)
+            else:
+                return self.getToken(ApexParser.BITOR, i)
 
         def getRuleIndex(self):
-            return apexParser.RULE_catchType
+            return ApexParser.RULE_catchType
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterCatchType" ):
@@ -6492,7 +6895,7 @@ class apexParser ( Parser ):
 
     def catchType(self):
 
-        localctx = apexParser.CatchTypeContext(self, self._ctx, self.state)
+        localctx = ApexParser.CatchTypeContext(self, self._ctx, self.state)
         self.enterRule(localctx, 154, self.RULE_catchType)
         self._la = 0 # Token type
         try:
@@ -6502,9 +6905,9 @@ class apexParser ( Parser ):
             self.state = 979
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==apexParser.BITOR:
+            while _la==ApexParser.BITOR:
                 self.state = 975
-                self.match(apexParser.BITOR)
+                self.match(ApexParser.BITOR)
                 self.state = 976
                 self.qualifiedName()
                 self.state = 981
@@ -6519,6 +6922,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class FinallyBlockContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -6526,14 +6930,14 @@ class apexParser ( Parser ):
             self.parser = parser
 
         def FINALLY(self):
-            return self.getToken(apexParser.FINALLY, 0)
+            return self.getToken(ApexParser.FINALLY, 0)
 
         def block(self):
-            return self.getTypedRuleContext(apexParser.BlockContext,0)
+            return self.getTypedRuleContext(ApexParser.BlockContext,0)
 
 
         def getRuleIndex(self):
-            return apexParser.RULE_finallyBlock
+            return ApexParser.RULE_finallyBlock
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterFinallyBlock" ):
@@ -6548,12 +6952,12 @@ class apexParser ( Parser ):
 
     def finallyBlock(self):
 
-        localctx = apexParser.FinallyBlockContext(self, self._ctx, self.state)
+        localctx = ApexParser.FinallyBlockContext(self, self._ctx, self.state)
         self.enterRule(localctx, 156, self.RULE_finallyBlock)
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 982
-            self.match(apexParser.FINALLY)
+            self.match(ApexParser.FINALLY)
             self.state = 983
             self.block()
         except RecognitionException as re:
@@ -6564,18 +6968,28 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class ResourceSpecificationContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def resources(self):
-            return self.getTypedRuleContext(apexParser.ResourcesContext,0)
+        def LPAREN(self):
+            return self.getToken(ApexParser.LPAREN, 0)
 
+        def resources(self):
+            return self.getTypedRuleContext(ApexParser.ResourcesContext,0)
+
+
+        def RPAREN(self):
+            return self.getToken(ApexParser.RPAREN, 0)
+
+        def SEMI(self):
+            return self.getToken(ApexParser.SEMI, 0)
 
         def getRuleIndex(self):
-            return apexParser.RULE_resourceSpecification
+            return ApexParser.RULE_resourceSpecification
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterResourceSpecification" ):
@@ -6590,25 +7004,25 @@ class apexParser ( Parser ):
 
     def resourceSpecification(self):
 
-        localctx = apexParser.ResourceSpecificationContext(self, self._ctx, self.state)
+        localctx = ApexParser.ResourceSpecificationContext(self, self._ctx, self.state)
         self.enterRule(localctx, 158, self.RULE_resourceSpecification)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 985
-            self.match(apexParser.LPAREN)
+            self.match(ApexParser.LPAREN)
             self.state = 986
             self.resources()
             self.state = 988
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==apexParser.SEMI:
+            if _la==ApexParser.SEMI:
                 self.state = 987
-                self.match(apexParser.SEMI)
+                self.match(ApexParser.SEMI)
 
 
             self.state = 990
-            self.match(apexParser.RPAREN)
+            self.match(ApexParser.RPAREN)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -6616,6 +7030,7 @@ class apexParser ( Parser ):
         finally:
             self.exitRule()
         return localctx
+
 
     class ResourcesContext(ParserRuleContext):
 
@@ -6625,13 +7040,19 @@ class apexParser ( Parser ):
 
         def resource(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(apexParser.ResourceContext)
+                return self.getTypedRuleContexts(ApexParser.ResourceContext)
             else:
-                return self.getTypedRuleContext(apexParser.ResourceContext,i)
+                return self.getTypedRuleContext(ApexParser.ResourceContext,i)
 
+
+        def SEMI(self, i:int=None):
+            if i is None:
+                return self.getTokens(ApexParser.SEMI)
+            else:
+                return self.getToken(ApexParser.SEMI, i)
 
         def getRuleIndex(self):
-            return apexParser.RULE_resources
+            return ApexParser.RULE_resources
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterResources" ):
@@ -6646,7 +7067,7 @@ class apexParser ( Parser ):
 
     def resources(self):
 
-        localctx = apexParser.ResourcesContext(self, self._ctx, self.state)
+        localctx = ApexParser.ResourcesContext(self, self._ctx, self.state)
         self.enterRule(localctx, 160, self.RULE_resources)
         try:
             self.enterOuterAlt(localctx, 1)
@@ -6658,7 +7079,7 @@ class apexParser ( Parser ):
             while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                 if _alt==1:
                     self.state = 993
-                    self.match(apexParser.SEMI)
+                    self.match(ApexParser.SEMI)
                     self.state = 994
                     self.resource() 
                 self.state = 999
@@ -6673,6 +7094,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class ResourceContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -6680,26 +7102,29 @@ class apexParser ( Parser ):
             self.parser = parser
 
         def classOrInterfaceType(self):
-            return self.getTypedRuleContext(apexParser.ClassOrInterfaceTypeContext,0)
+            return self.getTypedRuleContext(ApexParser.ClassOrInterfaceTypeContext,0)
 
 
         def variableDeclaratorId(self):
-            return self.getTypedRuleContext(apexParser.VariableDeclaratorIdContext,0)
+            return self.getTypedRuleContext(ApexParser.VariableDeclaratorIdContext,0)
 
+
+        def ASSIGN(self):
+            return self.getToken(ApexParser.ASSIGN, 0)
 
         def expression(self):
-            return self.getTypedRuleContext(apexParser.ExpressionContext,0)
+            return self.getTypedRuleContext(ApexParser.ExpressionContext,0)
 
 
         def variableModifier(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(apexParser.VariableModifierContext)
+                return self.getTypedRuleContexts(ApexParser.VariableModifierContext)
             else:
-                return self.getTypedRuleContext(apexParser.VariableModifierContext,i)
+                return self.getTypedRuleContext(ApexParser.VariableModifierContext,i)
 
 
         def getRuleIndex(self):
-            return apexParser.RULE_resource
+            return ApexParser.RULE_resource
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterResource" ):
@@ -6714,7 +7139,7 @@ class apexParser ( Parser ):
 
     def resource(self):
 
-        localctx = apexParser.ResourceContext(self, self._ctx, self.state)
+        localctx = ApexParser.ResourceContext(self, self._ctx, self.state)
         self.enterRule(localctx, 162, self.RULE_resource)
         self._la = 0 # Token type
         try:
@@ -6722,7 +7147,7 @@ class apexParser ( Parser ):
             self.state = 1003
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==apexParser.FINAL or _la==apexParser.AT:
+            while _la==ApexParser.FINAL or _la==ApexParser.AT:
                 self.state = 1000
                 self.variableModifier()
                 self.state = 1005
@@ -6734,7 +7159,7 @@ class apexParser ( Parser ):
             self.state = 1007
             self.variableDeclaratorId()
             self.state = 1008
-            self.match(apexParser.ASSIGN)
+            self.match(ApexParser.ASSIGN)
             self.state = 1009
             self.expression(0)
         except RecognitionException as re:
@@ -6745,6 +7170,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class ForControlContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -6752,23 +7178,29 @@ class apexParser ( Parser ):
             self.parser = parser
 
         def enhancedForControl(self):
-            return self.getTypedRuleContext(apexParser.EnhancedForControlContext,0)
+            return self.getTypedRuleContext(ApexParser.EnhancedForControlContext,0)
 
+
+        def SEMI(self, i:int=None):
+            if i is None:
+                return self.getTokens(ApexParser.SEMI)
+            else:
+                return self.getToken(ApexParser.SEMI, i)
 
         def forInit(self):
-            return self.getTypedRuleContext(apexParser.ForInitContext,0)
+            return self.getTypedRuleContext(ApexParser.ForInitContext,0)
 
 
         def expression(self):
-            return self.getTypedRuleContext(apexParser.ExpressionContext,0)
+            return self.getTypedRuleContext(ApexParser.ExpressionContext,0)
 
 
         def forUpdate(self):
-            return self.getTypedRuleContext(apexParser.ForUpdateContext,0)
+            return self.getTypedRuleContext(ApexParser.ForUpdateContext,0)
 
 
         def getRuleIndex(self):
-            return apexParser.RULE_forControl
+            return ApexParser.RULE_forControl
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterForControl" ):
@@ -6783,7 +7215,7 @@ class apexParser ( Parser ):
 
     def forControl(self):
 
-        localctx = apexParser.ForControlContext(self, self._ctx, self.state)
+        localctx = ApexParser.ForControlContext(self, self._ctx, self.state)
         self.enterRule(localctx, 164, self.RULE_forControl)
         self._la = 0 # Token type
         try:
@@ -6801,27 +7233,27 @@ class apexParser ( Parser ):
                 self.state = 1013
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << apexParser.SoqlLiteral) | (1 << apexParser.SET) | (1 << apexParser.BYTE) | (1 << apexParser.CHAR) | (1 << apexParser.FINAL) | (1 << apexParser.FLOAT) | (1 << apexParser.INT) | (1 << apexParser.NEW) | (1 << apexParser.SHORT) | (1 << apexParser.SUPER) | (1 << apexParser.THIS) | (1 << apexParser.VOID) | (1 << apexParser.IntegerLiteral) | (1 << apexParser.FloatingPointLiteral))) != 0) or ((((_la - 64)) & ~0x3f) == 0 and ((1 << (_la - 64)) & ((1 << (apexParser.BooleanLiteral - 64)) | (1 << (apexParser.CharacterLiteral - 64)) | (1 << (apexParser.StringLiteral - 64)) | (1 << (apexParser.NullLiteral - 64)) | (1 << (apexParser.LPAREN - 64)) | (1 << (apexParser.LT - 64)) | (1 << (apexParser.BANG - 64)) | (1 << (apexParser.TILDE - 64)) | (1 << (apexParser.INC - 64)) | (1 << (apexParser.DEC - 64)) | (1 << (apexParser.ADD - 64)) | (1 << (apexParser.SUB - 64)) | (1 << (apexParser.Identifier - 64)) | (1 << (apexParser.AT - 64)))) != 0):
+                if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ApexParser.SoqlLiteral) | (1 << ApexParser.SET) | (1 << ApexParser.BYTE) | (1 << ApexParser.CHAR) | (1 << ApexParser.FINAL) | (1 << ApexParser.FLOAT) | (1 << ApexParser.INT) | (1 << ApexParser.NEW) | (1 << ApexParser.SHORT) | (1 << ApexParser.SUPER) | (1 << ApexParser.THIS) | (1 << ApexParser.VOID) | (1 << ApexParser.IntegerLiteral) | (1 << ApexParser.FloatingPointLiteral))) != 0) or ((((_la - 64)) & ~0x3f) == 0 and ((1 << (_la - 64)) & ((1 << (ApexParser.BooleanLiteral - 64)) | (1 << (ApexParser.CharacterLiteral - 64)) | (1 << (ApexParser.StringLiteral - 64)) | (1 << (ApexParser.NullLiteral - 64)) | (1 << (ApexParser.LPAREN - 64)) | (1 << (ApexParser.LT - 64)) | (1 << (ApexParser.BANG - 64)) | (1 << (ApexParser.TILDE - 64)) | (1 << (ApexParser.INC - 64)) | (1 << (ApexParser.DEC - 64)) | (1 << (ApexParser.ADD - 64)) | (1 << (ApexParser.SUB - 64)) | (1 << (ApexParser.Identifier - 64)) | (1 << (ApexParser.AT - 64)))) != 0):
                     self.state = 1012
                     self.forInit()
 
 
                 self.state = 1015
-                self.match(apexParser.SEMI)
+                self.match(ApexParser.SEMI)
                 self.state = 1017
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << apexParser.SoqlLiteral) | (1 << apexParser.SET) | (1 << apexParser.BYTE) | (1 << apexParser.CHAR) | (1 << apexParser.FLOAT) | (1 << apexParser.INT) | (1 << apexParser.NEW) | (1 << apexParser.SHORT) | (1 << apexParser.SUPER) | (1 << apexParser.THIS) | (1 << apexParser.VOID) | (1 << apexParser.IntegerLiteral) | (1 << apexParser.FloatingPointLiteral))) != 0) or ((((_la - 64)) & ~0x3f) == 0 and ((1 << (_la - 64)) & ((1 << (apexParser.BooleanLiteral - 64)) | (1 << (apexParser.CharacterLiteral - 64)) | (1 << (apexParser.StringLiteral - 64)) | (1 << (apexParser.NullLiteral - 64)) | (1 << (apexParser.LPAREN - 64)) | (1 << (apexParser.LT - 64)) | (1 << (apexParser.BANG - 64)) | (1 << (apexParser.TILDE - 64)) | (1 << (apexParser.INC - 64)) | (1 << (apexParser.DEC - 64)) | (1 << (apexParser.ADD - 64)) | (1 << (apexParser.SUB - 64)) | (1 << (apexParser.Identifier - 64)))) != 0):
+                if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ApexParser.SoqlLiteral) | (1 << ApexParser.SET) | (1 << ApexParser.BYTE) | (1 << ApexParser.CHAR) | (1 << ApexParser.FLOAT) | (1 << ApexParser.INT) | (1 << ApexParser.NEW) | (1 << ApexParser.SHORT) | (1 << ApexParser.SUPER) | (1 << ApexParser.THIS) | (1 << ApexParser.VOID) | (1 << ApexParser.IntegerLiteral) | (1 << ApexParser.FloatingPointLiteral))) != 0) or ((((_la - 64)) & ~0x3f) == 0 and ((1 << (_la - 64)) & ((1 << (ApexParser.BooleanLiteral - 64)) | (1 << (ApexParser.CharacterLiteral - 64)) | (1 << (ApexParser.StringLiteral - 64)) | (1 << (ApexParser.NullLiteral - 64)) | (1 << (ApexParser.LPAREN - 64)) | (1 << (ApexParser.LT - 64)) | (1 << (ApexParser.BANG - 64)) | (1 << (ApexParser.TILDE - 64)) | (1 << (ApexParser.INC - 64)) | (1 << (ApexParser.DEC - 64)) | (1 << (ApexParser.ADD - 64)) | (1 << (ApexParser.SUB - 64)) | (1 << (ApexParser.Identifier - 64)))) != 0):
                     self.state = 1016
                     self.expression(0)
 
 
                 self.state = 1019
-                self.match(apexParser.SEMI)
+                self.match(ApexParser.SEMI)
                 self.state = 1021
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << apexParser.SoqlLiteral) | (1 << apexParser.SET) | (1 << apexParser.BYTE) | (1 << apexParser.CHAR) | (1 << apexParser.FLOAT) | (1 << apexParser.INT) | (1 << apexParser.NEW) | (1 << apexParser.SHORT) | (1 << apexParser.SUPER) | (1 << apexParser.THIS) | (1 << apexParser.VOID) | (1 << apexParser.IntegerLiteral) | (1 << apexParser.FloatingPointLiteral))) != 0) or ((((_la - 64)) & ~0x3f) == 0 and ((1 << (_la - 64)) & ((1 << (apexParser.BooleanLiteral - 64)) | (1 << (apexParser.CharacterLiteral - 64)) | (1 << (apexParser.StringLiteral - 64)) | (1 << (apexParser.NullLiteral - 64)) | (1 << (apexParser.LPAREN - 64)) | (1 << (apexParser.LT - 64)) | (1 << (apexParser.BANG - 64)) | (1 << (apexParser.TILDE - 64)) | (1 << (apexParser.INC - 64)) | (1 << (apexParser.DEC - 64)) | (1 << (apexParser.ADD - 64)) | (1 << (apexParser.SUB - 64)) | (1 << (apexParser.Identifier - 64)))) != 0):
+                if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ApexParser.SoqlLiteral) | (1 << ApexParser.SET) | (1 << ApexParser.BYTE) | (1 << ApexParser.CHAR) | (1 << ApexParser.FLOAT) | (1 << ApexParser.INT) | (1 << ApexParser.NEW) | (1 << ApexParser.SHORT) | (1 << ApexParser.SUPER) | (1 << ApexParser.THIS) | (1 << ApexParser.VOID) | (1 << ApexParser.IntegerLiteral) | (1 << ApexParser.FloatingPointLiteral))) != 0) or ((((_la - 64)) & ~0x3f) == 0 and ((1 << (_la - 64)) & ((1 << (ApexParser.BooleanLiteral - 64)) | (1 << (ApexParser.CharacterLiteral - 64)) | (1 << (ApexParser.StringLiteral - 64)) | (1 << (ApexParser.NullLiteral - 64)) | (1 << (ApexParser.LPAREN - 64)) | (1 << (ApexParser.LT - 64)) | (1 << (ApexParser.BANG - 64)) | (1 << (ApexParser.TILDE - 64)) | (1 << (ApexParser.INC - 64)) | (1 << (ApexParser.DEC - 64)) | (1 << (ApexParser.ADD - 64)) | (1 << (ApexParser.SUB - 64)) | (1 << (ApexParser.Identifier - 64)))) != 0):
                     self.state = 1020
                     self.forUpdate()
 
@@ -6837,6 +7269,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class ForInitContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -6844,15 +7277,15 @@ class apexParser ( Parser ):
             self.parser = parser
 
         def localVariableDeclaration(self):
-            return self.getTypedRuleContext(apexParser.LocalVariableDeclarationContext,0)
+            return self.getTypedRuleContext(ApexParser.LocalVariableDeclarationContext,0)
 
 
         def expressionList(self):
-            return self.getTypedRuleContext(apexParser.ExpressionListContext,0)
+            return self.getTypedRuleContext(ApexParser.ExpressionListContext,0)
 
 
         def getRuleIndex(self):
-            return apexParser.RULE_forInit
+            return ApexParser.RULE_forInit
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterForInit" ):
@@ -6867,7 +7300,7 @@ class apexParser ( Parser ):
 
     def forInit(self):
 
-        localctx = apexParser.ForInitContext(self, self._ctx, self.state)
+        localctx = ApexParser.ForInitContext(self, self._ctx, self.state)
         self.enterRule(localctx, 166, self.RULE_forInit)
         try:
             self.state = 1027
@@ -6894,6 +7327,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class EnhancedForControlContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -6901,26 +7335,29 @@ class apexParser ( Parser ):
             self.parser = parser
 
         def typeType(self):
-            return self.getTypedRuleContext(apexParser.TypeTypeContext,0)
+            return self.getTypedRuleContext(ApexParser.TypeTypeContext,0)
 
 
         def variableDeclaratorId(self):
-            return self.getTypedRuleContext(apexParser.VariableDeclaratorIdContext,0)
+            return self.getTypedRuleContext(ApexParser.VariableDeclaratorIdContext,0)
 
+
+        def COLON(self):
+            return self.getToken(ApexParser.COLON, 0)
 
         def expression(self):
-            return self.getTypedRuleContext(apexParser.ExpressionContext,0)
+            return self.getTypedRuleContext(ApexParser.ExpressionContext,0)
 
 
         def variableModifier(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(apexParser.VariableModifierContext)
+                return self.getTypedRuleContexts(ApexParser.VariableModifierContext)
             else:
-                return self.getTypedRuleContext(apexParser.VariableModifierContext,i)
+                return self.getTypedRuleContext(ApexParser.VariableModifierContext,i)
 
 
         def getRuleIndex(self):
-            return apexParser.RULE_enhancedForControl
+            return ApexParser.RULE_enhancedForControl
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterEnhancedForControl" ):
@@ -6935,7 +7372,7 @@ class apexParser ( Parser ):
 
     def enhancedForControl(self):
 
-        localctx = apexParser.EnhancedForControlContext(self, self._ctx, self.state)
+        localctx = ApexParser.EnhancedForControlContext(self, self._ctx, self.state)
         self.enterRule(localctx, 168, self.RULE_enhancedForControl)
         self._la = 0 # Token type
         try:
@@ -6943,7 +7380,7 @@ class apexParser ( Parser ):
             self.state = 1032
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==apexParser.FINAL or _la==apexParser.AT:
+            while _la==ApexParser.FINAL or _la==ApexParser.AT:
                 self.state = 1029
                 self.variableModifier()
                 self.state = 1034
@@ -6955,7 +7392,7 @@ class apexParser ( Parser ):
             self.state = 1036
             self.variableDeclaratorId()
             self.state = 1037
-            self.match(apexParser.COLON)
+            self.match(ApexParser.COLON)
             self.state = 1038
             self.expression(0)
         except RecognitionException as re:
@@ -6966,6 +7403,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class ForUpdateContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -6973,11 +7411,11 @@ class apexParser ( Parser ):
             self.parser = parser
 
         def expressionList(self):
-            return self.getTypedRuleContext(apexParser.ExpressionListContext,0)
+            return self.getTypedRuleContext(ApexParser.ExpressionListContext,0)
 
 
         def getRuleIndex(self):
-            return apexParser.RULE_forUpdate
+            return ApexParser.RULE_forUpdate
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterForUpdate" ):
@@ -6992,7 +7430,7 @@ class apexParser ( Parser ):
 
     def forUpdate(self):
 
-        localctx = apexParser.ForUpdateContext(self, self._ctx, self.state)
+        localctx = ApexParser.ForUpdateContext(self, self._ctx, self.state)
         self.enterRule(localctx, 170, self.RULE_forUpdate)
         try:
             self.enterOuterAlt(localctx, 1)
@@ -7006,18 +7444,25 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class ParExpressionContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def expression(self):
-            return self.getTypedRuleContext(apexParser.ExpressionContext,0)
+        def LPAREN(self):
+            return self.getToken(ApexParser.LPAREN, 0)
 
+        def expression(self):
+            return self.getTypedRuleContext(ApexParser.ExpressionContext,0)
+
+
+        def RPAREN(self):
+            return self.getToken(ApexParser.RPAREN, 0)
 
         def getRuleIndex(self):
-            return apexParser.RULE_parExpression
+            return ApexParser.RULE_parExpression
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterParExpression" ):
@@ -7032,16 +7477,16 @@ class apexParser ( Parser ):
 
     def parExpression(self):
 
-        localctx = apexParser.ParExpressionContext(self, self._ctx, self.state)
+        localctx = ApexParser.ParExpressionContext(self, self._ctx, self.state)
         self.enterRule(localctx, 172, self.RULE_parExpression)
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 1042
-            self.match(apexParser.LPAREN)
+            self.match(ApexParser.LPAREN)
             self.state = 1043
             self.expression(0)
             self.state = 1044
-            self.match(apexParser.RPAREN)
+            self.match(ApexParser.RPAREN)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -7049,6 +7494,7 @@ class apexParser ( Parser ):
         finally:
             self.exitRule()
         return localctx
+
 
     class ExpressionListContext(ParserRuleContext):
 
@@ -7058,13 +7504,19 @@ class apexParser ( Parser ):
 
         def expression(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(apexParser.ExpressionContext)
+                return self.getTypedRuleContexts(ApexParser.ExpressionContext)
             else:
-                return self.getTypedRuleContext(apexParser.ExpressionContext,i)
+                return self.getTypedRuleContext(ApexParser.ExpressionContext,i)
 
+
+        def COMMA(self, i:int=None):
+            if i is None:
+                return self.getTokens(ApexParser.COMMA)
+            else:
+                return self.getToken(ApexParser.COMMA, i)
 
         def getRuleIndex(self):
-            return apexParser.RULE_expressionList
+            return ApexParser.RULE_expressionList
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterExpressionList" ):
@@ -7079,7 +7531,7 @@ class apexParser ( Parser ):
 
     def expressionList(self):
 
-        localctx = apexParser.ExpressionListContext(self, self._ctx, self.state)
+        localctx = ApexParser.ExpressionListContext(self, self._ctx, self.state)
         self.enterRule(localctx, 174, self.RULE_expressionList)
         self._la = 0 # Token type
         try:
@@ -7089,9 +7541,9 @@ class apexParser ( Parser ):
             self.state = 1051
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==apexParser.COMMA:
+            while _la==ApexParser.COMMA:
                 self.state = 1047
-                self.match(apexParser.COMMA)
+                self.match(ApexParser.COMMA)
                 self.state = 1048
                 self.expression(0)
                 self.state = 1053
@@ -7106,6 +7558,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class StatementExpressionContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -7113,11 +7566,11 @@ class apexParser ( Parser ):
             self.parser = parser
 
         def expression(self):
-            return self.getTypedRuleContext(apexParser.ExpressionContext,0)
+            return self.getTypedRuleContext(ApexParser.ExpressionContext,0)
 
 
         def getRuleIndex(self):
-            return apexParser.RULE_statementExpression
+            return ApexParser.RULE_statementExpression
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterStatementExpression" ):
@@ -7132,7 +7585,7 @@ class apexParser ( Parser ):
 
     def statementExpression(self):
 
-        localctx = apexParser.StatementExpressionContext(self, self._ctx, self.state)
+        localctx = ApexParser.StatementExpressionContext(self, self._ctx, self.state)
         self.enterRule(localctx, 176, self.RULE_statementExpression)
         try:
             self.enterOuterAlt(localctx, 1)
@@ -7146,6 +7599,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class ConstantExpressionContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -7153,11 +7607,11 @@ class apexParser ( Parser ):
             self.parser = parser
 
         def expression(self):
-            return self.getTypedRuleContext(apexParser.ExpressionContext,0)
+            return self.getTypedRuleContext(ApexParser.ExpressionContext,0)
 
 
         def getRuleIndex(self):
-            return apexParser.RULE_constantExpression
+            return ApexParser.RULE_constantExpression
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterConstantExpression" ):
@@ -7172,7 +7626,7 @@ class apexParser ( Parser ):
 
     def constantExpression(self):
 
-        localctx = apexParser.ConstantExpressionContext(self, self._ctx, self.state)
+        localctx = ApexParser.ConstantExpressionContext(self, self._ctx, self.state)
         self.enterRule(localctx, 178, self.RULE_constantExpression)
         try:
             self.enterOuterAlt(localctx, 1)
@@ -7186,6 +7640,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class ApexDbUpsertExpressionContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -7193,17 +7648,17 @@ class apexParser ( Parser ):
             self.parser = parser
 
         def DB_UPSERT(self):
-            return self.getToken(apexParser.DB_UPSERT, 0)
+            return self.getToken(ApexParser.DB_UPSERT, 0)
 
         def expression(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(apexParser.ExpressionContext)
+                return self.getTypedRuleContexts(ApexParser.ExpressionContext)
             else:
-                return self.getTypedRuleContext(apexParser.ExpressionContext,i)
+                return self.getTypedRuleContext(ApexParser.ExpressionContext,i)
 
 
         def getRuleIndex(self):
-            return apexParser.RULE_apexDbUpsertExpression
+            return ApexParser.RULE_apexDbUpsertExpression
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterApexDbUpsertExpression" ):
@@ -7218,19 +7673,19 @@ class apexParser ( Parser ):
 
     def apexDbUpsertExpression(self):
 
-        localctx = apexParser.ApexDbUpsertExpressionContext(self, self._ctx, self.state)
+        localctx = ApexParser.ApexDbUpsertExpressionContext(self, self._ctx, self.state)
         self.enterRule(localctx, 180, self.RULE_apexDbUpsertExpression)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 1058
-            self.match(apexParser.DB_UPSERT)
+            self.match(ApexParser.DB_UPSERT)
             self.state = 1059
             self.expression(0)
             self.state = 1063
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << apexParser.SoqlLiteral) | (1 << apexParser.SET) | (1 << apexParser.BYTE) | (1 << apexParser.CHAR) | (1 << apexParser.FLOAT) | (1 << apexParser.INT) | (1 << apexParser.NEW) | (1 << apexParser.SHORT) | (1 << apexParser.SUPER) | (1 << apexParser.THIS) | (1 << apexParser.VOID) | (1 << apexParser.IntegerLiteral) | (1 << apexParser.FloatingPointLiteral))) != 0) or ((((_la - 64)) & ~0x3f) == 0 and ((1 << (_la - 64)) & ((1 << (apexParser.BooleanLiteral - 64)) | (1 << (apexParser.CharacterLiteral - 64)) | (1 << (apexParser.StringLiteral - 64)) | (1 << (apexParser.NullLiteral - 64)) | (1 << (apexParser.LPAREN - 64)) | (1 << (apexParser.LT - 64)) | (1 << (apexParser.BANG - 64)) | (1 << (apexParser.TILDE - 64)) | (1 << (apexParser.INC - 64)) | (1 << (apexParser.DEC - 64)) | (1 << (apexParser.ADD - 64)) | (1 << (apexParser.SUB - 64)) | (1 << (apexParser.Identifier - 64)))) != 0):
+            while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ApexParser.SoqlLiteral) | (1 << ApexParser.SET) | (1 << ApexParser.BYTE) | (1 << ApexParser.CHAR) | (1 << ApexParser.FLOAT) | (1 << ApexParser.INT) | (1 << ApexParser.NEW) | (1 << ApexParser.SHORT) | (1 << ApexParser.SUPER) | (1 << ApexParser.THIS) | (1 << ApexParser.VOID) | (1 << ApexParser.IntegerLiteral) | (1 << ApexParser.FloatingPointLiteral))) != 0) or ((((_la - 64)) & ~0x3f) == 0 and ((1 << (_la - 64)) & ((1 << (ApexParser.BooleanLiteral - 64)) | (1 << (ApexParser.CharacterLiteral - 64)) | (1 << (ApexParser.StringLiteral - 64)) | (1 << (ApexParser.NullLiteral - 64)) | (1 << (ApexParser.LPAREN - 64)) | (1 << (ApexParser.LT - 64)) | (1 << (ApexParser.BANG - 64)) | (1 << (ApexParser.TILDE - 64)) | (1 << (ApexParser.INC - 64)) | (1 << (ApexParser.DEC - 64)) | (1 << (ApexParser.ADD - 64)) | (1 << (ApexParser.SUB - 64)) | (1 << (ApexParser.Identifier - 64)))) != 0):
                 self.state = 1060
                 self.expression(0)
                 self.state = 1065
@@ -7245,6 +7700,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class ApexDbExpressionContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -7252,27 +7708,27 @@ class apexParser ( Parser ):
             self.parser = parser
 
         def expression(self):
-            return self.getTypedRuleContext(apexParser.ExpressionContext,0)
+            return self.getTypedRuleContext(ApexParser.ExpressionContext,0)
 
 
         def DB_INSERT(self):
-            return self.getToken(apexParser.DB_INSERT, 0)
+            return self.getToken(ApexParser.DB_INSERT, 0)
 
         def DB_UPDATE(self):
-            return self.getToken(apexParser.DB_UPDATE, 0)
+            return self.getToken(ApexParser.DB_UPDATE, 0)
 
         def DB_DELETE(self):
-            return self.getToken(apexParser.DB_DELETE, 0)
+            return self.getToken(ApexParser.DB_DELETE, 0)
 
         def DB_UNDELETE(self):
-            return self.getToken(apexParser.DB_UNDELETE, 0)
+            return self.getToken(ApexParser.DB_UNDELETE, 0)
 
         def apexDbUpsertExpression(self):
-            return self.getTypedRuleContext(apexParser.ApexDbUpsertExpressionContext,0)
+            return self.getTypedRuleContext(ApexParser.ApexDbUpsertExpressionContext,0)
 
 
         def getRuleIndex(self):
-            return apexParser.RULE_apexDbExpression
+            return ApexParser.RULE_apexDbExpression
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterApexDbExpression" ):
@@ -7287,18 +7743,18 @@ class apexParser ( Parser ):
 
     def apexDbExpression(self):
 
-        localctx = apexParser.ApexDbExpressionContext(self, self._ctx, self.state)
+        localctx = ApexParser.ApexDbExpressionContext(self, self._ctx, self.state)
         self.enterRule(localctx, 182, self.RULE_apexDbExpression)
         self._la = 0 # Token type
         try:
             self.state = 1069
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [apexParser.DB_INSERT, apexParser.DB_UPDATE, apexParser.DB_DELETE, apexParser.DB_UNDELETE]:
+            if token in [ApexParser.DB_INSERT, ApexParser.DB_UPDATE, ApexParser.DB_DELETE, ApexParser.DB_UNDELETE]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 1066
                 _la = self._input.LA(1)
-                if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << apexParser.DB_INSERT) | (1 << apexParser.DB_UPDATE) | (1 << apexParser.DB_DELETE) | (1 << apexParser.DB_UNDELETE))) != 0)):
+                if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ApexParser.DB_INSERT) | (1 << ApexParser.DB_UPDATE) | (1 << ApexParser.DB_DELETE) | (1 << ApexParser.DB_UNDELETE))) != 0)):
                     self._errHandler.recoverInline(self)
                 else:
                     self._errHandler.reportMatch(self)
@@ -7306,7 +7762,7 @@ class apexParser ( Parser ):
                 self.state = 1067
                 self.expression(0)
                 pass
-            elif token in [apexParser.DB_UPSERT]:
+            elif token in [ApexParser.DB_UPSERT]:
                 self.enterOuterAlt(localctx, 2)
                 self.state = 1068
                 self.apexDbUpsertExpression()
@@ -7322,6 +7778,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class ExpressionContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -7329,74 +7786,197 @@ class apexParser ( Parser ):
             self.parser = parser
 
         def primary(self):
-            return self.getTypedRuleContext(apexParser.PrimaryContext,0)
+            return self.getTypedRuleContext(ApexParser.PrimaryContext,0)
 
 
         def NEW(self):
-            return self.getToken(apexParser.NEW, 0)
+            return self.getToken(ApexParser.NEW, 0)
 
         def creator(self):
-            return self.getTypedRuleContext(apexParser.CreatorContext,0)
+            return self.getTypedRuleContext(ApexParser.CreatorContext,0)
 
+
+        def LPAREN(self):
+            return self.getToken(ApexParser.LPAREN, 0)
 
         def typeType(self):
-            return self.getTypedRuleContext(apexParser.TypeTypeContext,0)
+            return self.getTypedRuleContext(ApexParser.TypeTypeContext,0)
 
+
+        def RPAREN(self):
+            return self.getToken(ApexParser.RPAREN, 0)
 
         def expression(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(apexParser.ExpressionContext)
+                return self.getTypedRuleContexts(ApexParser.ExpressionContext)
             else:
-                return self.getTypedRuleContext(apexParser.ExpressionContext,i)
+                return self.getTypedRuleContext(ApexParser.ExpressionContext,i)
 
+
+        def ADD(self):
+            return self.getToken(ApexParser.ADD, 0)
+
+        def SUB(self):
+            return self.getToken(ApexParser.SUB, 0)
+
+        def INC(self):
+            return self.getToken(ApexParser.INC, 0)
+
+        def DEC(self):
+            return self.getToken(ApexParser.DEC, 0)
+
+        def TILDE(self):
+            return self.getToken(ApexParser.TILDE, 0)
+
+        def BANG(self):
+            return self.getToken(ApexParser.BANG, 0)
+
+        def MUL(self):
+            return self.getToken(ApexParser.MUL, 0)
+
+        def DIV(self):
+            return self.getToken(ApexParser.DIV, 0)
+
+        def MOD(self):
+            return self.getToken(ApexParser.MOD, 0)
+
+        def LT(self, i:int=None):
+            if i is None:
+                return self.getTokens(ApexParser.LT)
+            else:
+                return self.getToken(ApexParser.LT, i)
+
+        def GT(self, i:int=None):
+            if i is None:
+                return self.getTokens(ApexParser.GT)
+            else:
+                return self.getToken(ApexParser.GT, i)
+
+        def LE(self):
+            return self.getToken(ApexParser.LE, 0)
+
+        def GE(self):
+            return self.getToken(ApexParser.GE, 0)
+
+        def EQUAL(self):
+            return self.getToken(ApexParser.EQUAL, 0)
+
+        def NOTEQUAL(self):
+            return self.getToken(ApexParser.NOTEQUAL, 0)
+
+        def BITAND(self):
+            return self.getToken(ApexParser.BITAND, 0)
+
+        def CARET(self):
+            return self.getToken(ApexParser.CARET, 0)
+
+        def BITOR(self):
+            return self.getToken(ApexParser.BITOR, 0)
+
+        def AND(self):
+            return self.getToken(ApexParser.AND, 0)
+
+        def OR(self):
+            return self.getToken(ApexParser.OR, 0)
+
+        def QUESTION(self):
+            return self.getToken(ApexParser.QUESTION, 0)
+
+        def COLON(self):
+            return self.getToken(ApexParser.COLON, 0)
+
+        def ASSIGN(self):
+            return self.getToken(ApexParser.ASSIGN, 0)
+
+        def ADD_ASSIGN(self):
+            return self.getToken(ApexParser.ADD_ASSIGN, 0)
+
+        def SUB_ASSIGN(self):
+            return self.getToken(ApexParser.SUB_ASSIGN, 0)
+
+        def MUL_ASSIGN(self):
+            return self.getToken(ApexParser.MUL_ASSIGN, 0)
+
+        def DIV_ASSIGN(self):
+            return self.getToken(ApexParser.DIV_ASSIGN, 0)
+
+        def AND_ASSIGN(self):
+            return self.getToken(ApexParser.AND_ASSIGN, 0)
+
+        def OR_ASSIGN(self):
+            return self.getToken(ApexParser.OR_ASSIGN, 0)
+
+        def XOR_ASSIGN(self):
+            return self.getToken(ApexParser.XOR_ASSIGN, 0)
+
+        def RSHIFT_ASSIGN(self):
+            return self.getToken(ApexParser.RSHIFT_ASSIGN, 0)
+
+        def URSHIFT_ASSIGN(self):
+            return self.getToken(ApexParser.URSHIFT_ASSIGN, 0)
+
+        def LSHIFT_ASSIGN(self):
+            return self.getToken(ApexParser.LSHIFT_ASSIGN, 0)
+
+        def MOD_ASSIGN(self):
+            return self.getToken(ApexParser.MOD_ASSIGN, 0)
+
+        def DOT(self):
+            return self.getToken(ApexParser.DOT, 0)
 
         def GET(self):
-            return self.getToken(apexParser.GET, 0)
+            return self.getToken(ApexParser.GET, 0)
 
         def expressionList(self):
-            return self.getTypedRuleContext(apexParser.ExpressionListContext,0)
+            return self.getTypedRuleContext(ApexParser.ExpressionListContext,0)
 
 
         def SET(self):
-            return self.getToken(apexParser.SET, 0)
+            return self.getToken(ApexParser.SET, 0)
 
         def Identifier(self):
-            return self.getToken(apexParser.Identifier, 0)
+            return self.getToken(ApexParser.Identifier, 0)
 
         def THIS(self):
-            return self.getToken(apexParser.THIS, 0)
+            return self.getToken(ApexParser.THIS, 0)
 
         def DB_INSERT(self):
-            return self.getToken(apexParser.DB_INSERT, 0)
+            return self.getToken(ApexParser.DB_INSERT, 0)
 
         def DB_UPSERT(self):
-            return self.getToken(apexParser.DB_UPSERT, 0)
+            return self.getToken(ApexParser.DB_UPSERT, 0)
 
         def DB_UPDATE(self):
-            return self.getToken(apexParser.DB_UPDATE, 0)
+            return self.getToken(ApexParser.DB_UPDATE, 0)
 
         def DB_DELETE(self):
-            return self.getToken(apexParser.DB_DELETE, 0)
+            return self.getToken(ApexParser.DB_DELETE, 0)
 
         def DB_UNDELETE(self):
-            return self.getToken(apexParser.DB_UNDELETE, 0)
+            return self.getToken(ApexParser.DB_UNDELETE, 0)
 
         def SUPER(self):
-            return self.getToken(apexParser.SUPER, 0)
+            return self.getToken(ApexParser.SUPER, 0)
 
         def superSuffix(self):
-            return self.getTypedRuleContext(apexParser.SuperSuffixContext,0)
+            return self.getTypedRuleContext(ApexParser.SuperSuffixContext,0)
 
 
         def explicitGenericInvocation(self):
-            return self.getTypedRuleContext(apexParser.ExplicitGenericInvocationContext,0)
+            return self.getTypedRuleContext(ApexParser.ExplicitGenericInvocationContext,0)
 
+
+        def LBRACK(self):
+            return self.getToken(ApexParser.LBRACK, 0)
+
+        def RBRACK(self):
+            return self.getToken(ApexParser.RBRACK, 0)
 
         def INSTANCEOF(self):
-            return self.getToken(apexParser.INSTANCEOF, 0)
+            return self.getToken(ApexParser.INSTANCEOF, 0)
 
         def getRuleIndex(self):
-            return apexParser.RULE_expression
+            return ApexParser.RULE_expression
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterExpression" ):
@@ -7411,7 +7991,7 @@ class apexParser ( Parser ):
     def expression(self, _p:int=0):
         _parentctx = self._ctx
         _parentState = self.state
-        localctx = apexParser.ExpressionContext(self, self._ctx, _parentState)
+        localctx = ApexParser.ExpressionContext(self, self._ctx, _parentState)
         _prevctx = localctx
         _startState = 184
         self.enterRecursionRule(localctx, 184, self.RULE_expression, _p)
@@ -7428,18 +8008,18 @@ class apexParser ( Parser ):
 
             elif la_ == 2:
                 self.state = 1073
-                self.match(apexParser.NEW)
+                self.match(ApexParser.NEW)
                 self.state = 1074
                 self.creator()
                 pass
 
             elif la_ == 3:
                 self.state = 1075
-                self.match(apexParser.LPAREN)
+                self.match(ApexParser.LPAREN)
                 self.state = 1076
                 self.typeType()
                 self.state = 1077
-                self.match(apexParser.RPAREN)
+                self.match(ApexParser.RPAREN)
                 self.state = 1078
                 self.expression(17)
                 pass
@@ -7447,7 +8027,7 @@ class apexParser ( Parser ):
             elif la_ == 4:
                 self.state = 1080
                 _la = self._input.LA(1)
-                if not(((((_la - 90)) & ~0x3f) == 0 and ((1 << (_la - 90)) & ((1 << (apexParser.INC - 90)) | (1 << (apexParser.DEC - 90)) | (1 << (apexParser.ADD - 90)) | (1 << (apexParser.SUB - 90)))) != 0)):
+                if not(((((_la - 90)) & ~0x3f) == 0 and ((1 << (_la - 90)) & ((1 << (ApexParser.INC - 90)) | (1 << (ApexParser.DEC - 90)) | (1 << (ApexParser.ADD - 90)) | (1 << (ApexParser.SUB - 90)))) != 0)):
                     self._errHandler.recoverInline(self)
                 else:
                     self._errHandler.reportMatch(self)
@@ -7459,7 +8039,7 @@ class apexParser ( Parser ):
             elif la_ == 5:
                 self.state = 1082
                 _la = self._input.LA(1)
-                if not(_la==apexParser.BANG or _la==apexParser.TILDE):
+                if not(_la==ApexParser.BANG or _la==ApexParser.TILDE):
                     self._errHandler.recoverInline(self)
                 else:
                     self._errHandler.reportMatch(self)
@@ -7482,7 +8062,7 @@ class apexParser ( Parser ):
                     self._errHandler.sync(self)
                     la_ = self._interp.adaptivePredict(self._input,131,self._ctx)
                     if la_ == 1:
-                        localctx = apexParser.ExpressionContext(self, _parentctx, _parentState)
+                        localctx = ApexParser.ExpressionContext(self, _parentctx, _parentState)
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expression)
                         self.state = 1086
                         if not self.precpred(self._ctx, 13):
@@ -7490,7 +8070,7 @@ class apexParser ( Parser ):
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 13)")
                         self.state = 1087
                         _la = self._input.LA(1)
-                        if not(((((_la - 94)) & ~0x3f) == 0 and ((1 << (_la - 94)) & ((1 << (apexParser.MUL - 94)) | (1 << (apexParser.DIV - 94)) | (1 << (apexParser.MOD - 94)))) != 0)):
+                        if not(((((_la - 94)) & ~0x3f) == 0 and ((1 << (_la - 94)) & ((1 << (ApexParser.MUL - 94)) | (1 << (ApexParser.DIV - 94)) | (1 << (ApexParser.MOD - 94)))) != 0)):
                             self._errHandler.recoverInline(self)
                         else:
                             self._errHandler.reportMatch(self)
@@ -7500,7 +8080,7 @@ class apexParser ( Parser ):
                         pass
 
                     elif la_ == 2:
-                        localctx = apexParser.ExpressionContext(self, _parentctx, _parentState)
+                        localctx = ApexParser.ExpressionContext(self, _parentctx, _parentState)
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expression)
                         self.state = 1089
                         if not self.precpred(self._ctx, 12):
@@ -7508,7 +8088,7 @@ class apexParser ( Parser ):
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 12)")
                         self.state = 1090
                         _la = self._input.LA(1)
-                        if not(_la==apexParser.ADD or _la==apexParser.SUB):
+                        if not(_la==ApexParser.ADD or _la==ApexParser.SUB):
                             self._errHandler.recoverInline(self)
                         else:
                             self._errHandler.reportMatch(self)
@@ -7518,7 +8098,7 @@ class apexParser ( Parser ):
                         pass
 
                     elif la_ == 3:
-                        localctx = apexParser.ExpressionContext(self, _parentctx, _parentState)
+                        localctx = ApexParser.ExpressionContext(self, _parentctx, _parentState)
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expression)
                         self.state = 1092
                         if not self.precpred(self._ctx, 11):
@@ -7529,25 +8109,25 @@ class apexParser ( Parser ):
                         la_ = self._interp.adaptivePredict(self._input,127,self._ctx)
                         if la_ == 1:
                             self.state = 1093
-                            self.match(apexParser.LT)
+                            self.match(ApexParser.LT)
                             self.state = 1094
-                            self.match(apexParser.LT)
+                            self.match(ApexParser.LT)
                             pass
 
                         elif la_ == 2:
                             self.state = 1095
-                            self.match(apexParser.GT)
+                            self.match(ApexParser.GT)
                             self.state = 1096
-                            self.match(apexParser.GT)
+                            self.match(ApexParser.GT)
                             self.state = 1097
-                            self.match(apexParser.GT)
+                            self.match(ApexParser.GT)
                             pass
 
                         elif la_ == 3:
                             self.state = 1098
-                            self.match(apexParser.GT)
+                            self.match(ApexParser.GT)
                             self.state = 1099
-                            self.match(apexParser.GT)
+                            self.match(ApexParser.GT)
                             pass
 
 
@@ -7556,7 +8136,7 @@ class apexParser ( Parser ):
                         pass
 
                     elif la_ == 4:
-                        localctx = apexParser.ExpressionContext(self, _parentctx, _parentState)
+                        localctx = ApexParser.ExpressionContext(self, _parentctx, _parentState)
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expression)
                         self.state = 1103
                         if not self.precpred(self._ctx, 10):
@@ -7564,7 +8144,7 @@ class apexParser ( Parser ):
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 10)")
                         self.state = 1104
                         _la = self._input.LA(1)
-                        if not(((((_la - 78)) & ~0x3f) == 0 and ((1 << (_la - 78)) & ((1 << (apexParser.GT - 78)) | (1 << (apexParser.LT - 78)) | (1 << (apexParser.LE - 78)) | (1 << (apexParser.GE - 78)))) != 0)):
+                        if not(((((_la - 78)) & ~0x3f) == 0 and ((1 << (_la - 78)) & ((1 << (ApexParser.GT - 78)) | (1 << (ApexParser.LT - 78)) | (1 << (ApexParser.LE - 78)) | (1 << (ApexParser.GE - 78)))) != 0)):
                             self._errHandler.recoverInline(self)
                         else:
                             self._errHandler.reportMatch(self)
@@ -7574,7 +8154,7 @@ class apexParser ( Parser ):
                         pass
 
                     elif la_ == 5:
-                        localctx = apexParser.ExpressionContext(self, _parentctx, _parentState)
+                        localctx = ApexParser.ExpressionContext(self, _parentctx, _parentState)
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expression)
                         self.state = 1106
                         if not self.precpred(self._ctx, 8):
@@ -7582,7 +8162,7 @@ class apexParser ( Parser ):
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 8)")
                         self.state = 1107
                         _la = self._input.LA(1)
-                        if not(_la==apexParser.T__0 or _la==apexParser.EQUAL or _la==apexParser.NOTEQUAL):
+                        if not(_la==ApexParser.T__0 or _la==ApexParser.EQUAL or _la==ApexParser.NOTEQUAL):
                             self._errHandler.recoverInline(self)
                         else:
                             self._errHandler.reportMatch(self)
@@ -7592,89 +8172,89 @@ class apexParser ( Parser ):
                         pass
 
                     elif la_ == 6:
-                        localctx = apexParser.ExpressionContext(self, _parentctx, _parentState)
+                        localctx = ApexParser.ExpressionContext(self, _parentctx, _parentState)
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expression)
                         self.state = 1109
                         if not self.precpred(self._ctx, 7):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 7)")
                         self.state = 1110
-                        self.match(apexParser.BITAND)
+                        self.match(ApexParser.BITAND)
                         self.state = 1111
                         self.expression(8)
                         pass
 
                     elif la_ == 7:
-                        localctx = apexParser.ExpressionContext(self, _parentctx, _parentState)
+                        localctx = ApexParser.ExpressionContext(self, _parentctx, _parentState)
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expression)
                         self.state = 1112
                         if not self.precpred(self._ctx, 6):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 6)")
                         self.state = 1113
-                        self.match(apexParser.CARET)
+                        self.match(ApexParser.CARET)
                         self.state = 1114
                         self.expression(7)
                         pass
 
                     elif la_ == 8:
-                        localctx = apexParser.ExpressionContext(self, _parentctx, _parentState)
+                        localctx = ApexParser.ExpressionContext(self, _parentctx, _parentState)
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expression)
                         self.state = 1115
                         if not self.precpred(self._ctx, 5):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 5)")
                         self.state = 1116
-                        self.match(apexParser.BITOR)
+                        self.match(ApexParser.BITOR)
                         self.state = 1117
                         self.expression(6)
                         pass
 
                     elif la_ == 9:
-                        localctx = apexParser.ExpressionContext(self, _parentctx, _parentState)
+                        localctx = ApexParser.ExpressionContext(self, _parentctx, _parentState)
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expression)
                         self.state = 1118
                         if not self.precpred(self._ctx, 4):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 4)")
                         self.state = 1119
-                        self.match(apexParser.AND)
+                        self.match(ApexParser.AND)
                         self.state = 1120
                         self.expression(5)
                         pass
 
                     elif la_ == 10:
-                        localctx = apexParser.ExpressionContext(self, _parentctx, _parentState)
+                        localctx = ApexParser.ExpressionContext(self, _parentctx, _parentState)
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expression)
                         self.state = 1121
                         if not self.precpred(self._ctx, 3):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 3)")
                         self.state = 1122
-                        self.match(apexParser.OR)
+                        self.match(ApexParser.OR)
                         self.state = 1123
                         self.expression(4)
                         pass
 
                     elif la_ == 11:
-                        localctx = apexParser.ExpressionContext(self, _parentctx, _parentState)
+                        localctx = ApexParser.ExpressionContext(self, _parentctx, _parentState)
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expression)
                         self.state = 1124
                         if not self.precpred(self._ctx, 2):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 2)")
                         self.state = 1125
-                        self.match(apexParser.QUESTION)
+                        self.match(ApexParser.QUESTION)
                         self.state = 1126
                         self.expression(0)
                         self.state = 1127
-                        self.match(apexParser.COLON)
+                        self.match(ApexParser.COLON)
                         self.state = 1128
                         self.expression(3)
                         pass
 
                     elif la_ == 12:
-                        localctx = apexParser.ExpressionContext(self, _parentctx, _parentState)
+                        localctx = ApexParser.ExpressionContext(self, _parentctx, _parentState)
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expression)
                         self.state = 1130
                         if not self.precpred(self._ctx, 1):
@@ -7682,7 +8262,7 @@ class apexParser ( Parser ):
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 1)")
                         self.state = 1131
                         _la = self._input.LA(1)
-                        if not(((((_la - 77)) & ~0x3f) == 0 and ((1 << (_la - 77)) & ((1 << (apexParser.ASSIGN - 77)) | (1 << (apexParser.ADD_ASSIGN - 77)) | (1 << (apexParser.SUB_ASSIGN - 77)) | (1 << (apexParser.MUL_ASSIGN - 77)) | (1 << (apexParser.DIV_ASSIGN - 77)) | (1 << (apexParser.AND_ASSIGN - 77)) | (1 << (apexParser.OR_ASSIGN - 77)) | (1 << (apexParser.XOR_ASSIGN - 77)) | (1 << (apexParser.MOD_ASSIGN - 77)) | (1 << (apexParser.LSHIFT_ASSIGN - 77)) | (1 << (apexParser.RSHIFT_ASSIGN - 77)) | (1 << (apexParser.URSHIFT_ASSIGN - 77)))) != 0)):
+                        if not(((((_la - 77)) & ~0x3f) == 0 and ((1 << (_la - 77)) & ((1 << (ApexParser.ASSIGN - 77)) | (1 << (ApexParser.ADD_ASSIGN - 77)) | (1 << (ApexParser.SUB_ASSIGN - 77)) | (1 << (ApexParser.MUL_ASSIGN - 77)) | (1 << (ApexParser.DIV_ASSIGN - 77)) | (1 << (ApexParser.AND_ASSIGN - 77)) | (1 << (ApexParser.OR_ASSIGN - 77)) | (1 << (ApexParser.XOR_ASSIGN - 77)) | (1 << (ApexParser.MOD_ASSIGN - 77)) | (1 << (ApexParser.LSHIFT_ASSIGN - 77)) | (1 << (ApexParser.RSHIFT_ASSIGN - 77)) | (1 << (ApexParser.URSHIFT_ASSIGN - 77)))) != 0)):
                             self._errHandler.recoverInline(self)
                         else:
                             self._errHandler.reportMatch(self)
@@ -7692,106 +8272,106 @@ class apexParser ( Parser ):
                         pass
 
                     elif la_ == 13:
-                        localctx = apexParser.ExpressionContext(self, _parentctx, _parentState)
+                        localctx = ApexParser.ExpressionContext(self, _parentctx, _parentState)
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expression)
                         self.state = 1133
                         if not self.precpred(self._ctx, 28):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 28)")
                         self.state = 1134
-                        self.match(apexParser.DOT)
+                        self.match(ApexParser.DOT)
                         self.state = 1135
-                        self.match(apexParser.GET)
+                        self.match(ApexParser.GET)
                         self.state = 1136
-                        self.match(apexParser.LPAREN)
+                        self.match(ApexParser.LPAREN)
                         self.state = 1138
                         self._errHandler.sync(self)
                         _la = self._input.LA(1)
-                        if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << apexParser.SoqlLiteral) | (1 << apexParser.SET) | (1 << apexParser.BYTE) | (1 << apexParser.CHAR) | (1 << apexParser.FLOAT) | (1 << apexParser.INT) | (1 << apexParser.NEW) | (1 << apexParser.SHORT) | (1 << apexParser.SUPER) | (1 << apexParser.THIS) | (1 << apexParser.VOID) | (1 << apexParser.IntegerLiteral) | (1 << apexParser.FloatingPointLiteral))) != 0) or ((((_la - 64)) & ~0x3f) == 0 and ((1 << (_la - 64)) & ((1 << (apexParser.BooleanLiteral - 64)) | (1 << (apexParser.CharacterLiteral - 64)) | (1 << (apexParser.StringLiteral - 64)) | (1 << (apexParser.NullLiteral - 64)) | (1 << (apexParser.LPAREN - 64)) | (1 << (apexParser.LT - 64)) | (1 << (apexParser.BANG - 64)) | (1 << (apexParser.TILDE - 64)) | (1 << (apexParser.INC - 64)) | (1 << (apexParser.DEC - 64)) | (1 << (apexParser.ADD - 64)) | (1 << (apexParser.SUB - 64)) | (1 << (apexParser.Identifier - 64)))) != 0):
+                        if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ApexParser.SoqlLiteral) | (1 << ApexParser.SET) | (1 << ApexParser.BYTE) | (1 << ApexParser.CHAR) | (1 << ApexParser.FLOAT) | (1 << ApexParser.INT) | (1 << ApexParser.NEW) | (1 << ApexParser.SHORT) | (1 << ApexParser.SUPER) | (1 << ApexParser.THIS) | (1 << ApexParser.VOID) | (1 << ApexParser.IntegerLiteral) | (1 << ApexParser.FloatingPointLiteral))) != 0) or ((((_la - 64)) & ~0x3f) == 0 and ((1 << (_la - 64)) & ((1 << (ApexParser.BooleanLiteral - 64)) | (1 << (ApexParser.CharacterLiteral - 64)) | (1 << (ApexParser.StringLiteral - 64)) | (1 << (ApexParser.NullLiteral - 64)) | (1 << (ApexParser.LPAREN - 64)) | (1 << (ApexParser.LT - 64)) | (1 << (ApexParser.BANG - 64)) | (1 << (ApexParser.TILDE - 64)) | (1 << (ApexParser.INC - 64)) | (1 << (ApexParser.DEC - 64)) | (1 << (ApexParser.ADD - 64)) | (1 << (ApexParser.SUB - 64)) | (1 << (ApexParser.Identifier - 64)))) != 0):
                             self.state = 1137
                             self.expressionList()
 
 
                         self.state = 1140
-                        self.match(apexParser.RPAREN)
+                        self.match(ApexParser.RPAREN)
                         pass
 
                     elif la_ == 14:
-                        localctx = apexParser.ExpressionContext(self, _parentctx, _parentState)
+                        localctx = ApexParser.ExpressionContext(self, _parentctx, _parentState)
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expression)
                         self.state = 1141
                         if not self.precpred(self._ctx, 27):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 27)")
                         self.state = 1142
-                        self.match(apexParser.DOT)
+                        self.match(ApexParser.DOT)
                         self.state = 1143
-                        self.match(apexParser.SET)
+                        self.match(ApexParser.SET)
                         self.state = 1144
-                        self.match(apexParser.LPAREN)
+                        self.match(ApexParser.LPAREN)
                         self.state = 1146
                         self._errHandler.sync(self)
                         _la = self._input.LA(1)
-                        if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << apexParser.SoqlLiteral) | (1 << apexParser.SET) | (1 << apexParser.BYTE) | (1 << apexParser.CHAR) | (1 << apexParser.FLOAT) | (1 << apexParser.INT) | (1 << apexParser.NEW) | (1 << apexParser.SHORT) | (1 << apexParser.SUPER) | (1 << apexParser.THIS) | (1 << apexParser.VOID) | (1 << apexParser.IntegerLiteral) | (1 << apexParser.FloatingPointLiteral))) != 0) or ((((_la - 64)) & ~0x3f) == 0 and ((1 << (_la - 64)) & ((1 << (apexParser.BooleanLiteral - 64)) | (1 << (apexParser.CharacterLiteral - 64)) | (1 << (apexParser.StringLiteral - 64)) | (1 << (apexParser.NullLiteral - 64)) | (1 << (apexParser.LPAREN - 64)) | (1 << (apexParser.LT - 64)) | (1 << (apexParser.BANG - 64)) | (1 << (apexParser.TILDE - 64)) | (1 << (apexParser.INC - 64)) | (1 << (apexParser.DEC - 64)) | (1 << (apexParser.ADD - 64)) | (1 << (apexParser.SUB - 64)) | (1 << (apexParser.Identifier - 64)))) != 0):
+                        if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ApexParser.SoqlLiteral) | (1 << ApexParser.SET) | (1 << ApexParser.BYTE) | (1 << ApexParser.CHAR) | (1 << ApexParser.FLOAT) | (1 << ApexParser.INT) | (1 << ApexParser.NEW) | (1 << ApexParser.SHORT) | (1 << ApexParser.SUPER) | (1 << ApexParser.THIS) | (1 << ApexParser.VOID) | (1 << ApexParser.IntegerLiteral) | (1 << ApexParser.FloatingPointLiteral))) != 0) or ((((_la - 64)) & ~0x3f) == 0 and ((1 << (_la - 64)) & ((1 << (ApexParser.BooleanLiteral - 64)) | (1 << (ApexParser.CharacterLiteral - 64)) | (1 << (ApexParser.StringLiteral - 64)) | (1 << (ApexParser.NullLiteral - 64)) | (1 << (ApexParser.LPAREN - 64)) | (1 << (ApexParser.LT - 64)) | (1 << (ApexParser.BANG - 64)) | (1 << (ApexParser.TILDE - 64)) | (1 << (ApexParser.INC - 64)) | (1 << (ApexParser.DEC - 64)) | (1 << (ApexParser.ADD - 64)) | (1 << (ApexParser.SUB - 64)) | (1 << (ApexParser.Identifier - 64)))) != 0):
                             self.state = 1145
                             self.expressionList()
 
 
                         self.state = 1148
-                        self.match(apexParser.RPAREN)
+                        self.match(ApexParser.RPAREN)
                         pass
 
                     elif la_ == 15:
-                        localctx = apexParser.ExpressionContext(self, _parentctx, _parentState)
+                        localctx = ApexParser.ExpressionContext(self, _parentctx, _parentState)
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expression)
                         self.state = 1149
                         if not self.precpred(self._ctx, 26):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 26)")
                         self.state = 1150
-                        self.match(apexParser.DOT)
+                        self.match(ApexParser.DOT)
                         self.state = 1151
-                        self.match(apexParser.Identifier)
+                        self.match(ApexParser.Identifier)
                         pass
 
                     elif la_ == 16:
-                        localctx = apexParser.ExpressionContext(self, _parentctx, _parentState)
+                        localctx = ApexParser.ExpressionContext(self, _parentctx, _parentState)
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expression)
                         self.state = 1152
                         if not self.precpred(self._ctx, 25):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 25)")
                         self.state = 1153
-                        self.match(apexParser.DOT)
+                        self.match(ApexParser.DOT)
                         self.state = 1154
-                        self.match(apexParser.THIS)
+                        self.match(ApexParser.THIS)
                         pass
 
                     elif la_ == 17:
-                        localctx = apexParser.ExpressionContext(self, _parentctx, _parentState)
+                        localctx = ApexParser.ExpressionContext(self, _parentctx, _parentState)
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expression)
                         self.state = 1155
                         if not self.precpred(self._ctx, 24):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 24)")
                         self.state = 1156
-                        self.match(apexParser.DOT)
+                        self.match(ApexParser.DOT)
                         self.state = 1157
-                        self.match(apexParser.NEW)
+                        self.match(ApexParser.NEW)
                         pass
 
                     elif la_ == 18:
-                        localctx = apexParser.ExpressionContext(self, _parentctx, _parentState)
+                        localctx = ApexParser.ExpressionContext(self, _parentctx, _parentState)
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expression)
                         self.state = 1158
                         if not self.precpred(self._ctx, 23):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 23)")
                         self.state = 1159
-                        self.match(apexParser.DOT)
+                        self.match(ApexParser.DOT)
                         self.state = 1160
                         _la = self._input.LA(1)
-                        if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << apexParser.DB_INSERT) | (1 << apexParser.DB_UPSERT) | (1 << apexParser.DB_UPDATE) | (1 << apexParser.DB_DELETE) | (1 << apexParser.DB_UNDELETE))) != 0)):
+                        if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ApexParser.DB_INSERT) | (1 << ApexParser.DB_UPSERT) | (1 << ApexParser.DB_UPDATE) | (1 << ApexParser.DB_DELETE) | (1 << ApexParser.DB_UNDELETE))) != 0)):
                             self._errHandler.recoverInline(self)
                         else:
                             self._errHandler.reportMatch(self)
@@ -7799,71 +8379,71 @@ class apexParser ( Parser ):
                         pass
 
                     elif la_ == 19:
-                        localctx = apexParser.ExpressionContext(self, _parentctx, _parentState)
+                        localctx = ApexParser.ExpressionContext(self, _parentctx, _parentState)
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expression)
                         self.state = 1161
                         if not self.precpred(self._ctx, 22):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 22)")
                         self.state = 1162
-                        self.match(apexParser.DOT)
+                        self.match(ApexParser.DOT)
                         self.state = 1163
-                        self.match(apexParser.SUPER)
+                        self.match(ApexParser.SUPER)
                         self.state = 1164
                         self.superSuffix()
                         pass
 
                     elif la_ == 20:
-                        localctx = apexParser.ExpressionContext(self, _parentctx, _parentState)
+                        localctx = ApexParser.ExpressionContext(self, _parentctx, _parentState)
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expression)
                         self.state = 1165
                         if not self.precpred(self._ctx, 21):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 21)")
                         self.state = 1166
-                        self.match(apexParser.DOT)
+                        self.match(ApexParser.DOT)
                         self.state = 1167
                         self.explicitGenericInvocation()
                         pass
 
                     elif la_ == 21:
-                        localctx = apexParser.ExpressionContext(self, _parentctx, _parentState)
+                        localctx = ApexParser.ExpressionContext(self, _parentctx, _parentState)
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expression)
                         self.state = 1168
                         if not self.precpred(self._ctx, 20):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 20)")
                         self.state = 1169
-                        self.match(apexParser.LBRACK)
+                        self.match(ApexParser.LBRACK)
                         self.state = 1170
                         self.expression(0)
                         self.state = 1171
-                        self.match(apexParser.RBRACK)
+                        self.match(ApexParser.RBRACK)
                         pass
 
                     elif la_ == 22:
-                        localctx = apexParser.ExpressionContext(self, _parentctx, _parentState)
+                        localctx = ApexParser.ExpressionContext(self, _parentctx, _parentState)
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expression)
                         self.state = 1173
                         if not self.precpred(self._ctx, 19):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 19)")
                         self.state = 1174
-                        self.match(apexParser.LPAREN)
+                        self.match(ApexParser.LPAREN)
                         self.state = 1176
                         self._errHandler.sync(self)
                         _la = self._input.LA(1)
-                        if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << apexParser.SoqlLiteral) | (1 << apexParser.SET) | (1 << apexParser.BYTE) | (1 << apexParser.CHAR) | (1 << apexParser.FLOAT) | (1 << apexParser.INT) | (1 << apexParser.NEW) | (1 << apexParser.SHORT) | (1 << apexParser.SUPER) | (1 << apexParser.THIS) | (1 << apexParser.VOID) | (1 << apexParser.IntegerLiteral) | (1 << apexParser.FloatingPointLiteral))) != 0) or ((((_la - 64)) & ~0x3f) == 0 and ((1 << (_la - 64)) & ((1 << (apexParser.BooleanLiteral - 64)) | (1 << (apexParser.CharacterLiteral - 64)) | (1 << (apexParser.StringLiteral - 64)) | (1 << (apexParser.NullLiteral - 64)) | (1 << (apexParser.LPAREN - 64)) | (1 << (apexParser.LT - 64)) | (1 << (apexParser.BANG - 64)) | (1 << (apexParser.TILDE - 64)) | (1 << (apexParser.INC - 64)) | (1 << (apexParser.DEC - 64)) | (1 << (apexParser.ADD - 64)) | (1 << (apexParser.SUB - 64)) | (1 << (apexParser.Identifier - 64)))) != 0):
+                        if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ApexParser.SoqlLiteral) | (1 << ApexParser.SET) | (1 << ApexParser.BYTE) | (1 << ApexParser.CHAR) | (1 << ApexParser.FLOAT) | (1 << ApexParser.INT) | (1 << ApexParser.NEW) | (1 << ApexParser.SHORT) | (1 << ApexParser.SUPER) | (1 << ApexParser.THIS) | (1 << ApexParser.VOID) | (1 << ApexParser.IntegerLiteral) | (1 << ApexParser.FloatingPointLiteral))) != 0) or ((((_la - 64)) & ~0x3f) == 0 and ((1 << (_la - 64)) & ((1 << (ApexParser.BooleanLiteral - 64)) | (1 << (ApexParser.CharacterLiteral - 64)) | (1 << (ApexParser.StringLiteral - 64)) | (1 << (ApexParser.NullLiteral - 64)) | (1 << (ApexParser.LPAREN - 64)) | (1 << (ApexParser.LT - 64)) | (1 << (ApexParser.BANG - 64)) | (1 << (ApexParser.TILDE - 64)) | (1 << (ApexParser.INC - 64)) | (1 << (ApexParser.DEC - 64)) | (1 << (ApexParser.ADD - 64)) | (1 << (ApexParser.SUB - 64)) | (1 << (ApexParser.Identifier - 64)))) != 0):
                             self.state = 1175
                             self.expressionList()
 
 
                         self.state = 1178
-                        self.match(apexParser.RPAREN)
+                        self.match(ApexParser.RPAREN)
                         pass
 
                     elif la_ == 23:
-                        localctx = apexParser.ExpressionContext(self, _parentctx, _parentState)
+                        localctx = ApexParser.ExpressionContext(self, _parentctx, _parentState)
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expression)
                         self.state = 1179
                         if not self.precpred(self._ctx, 16):
@@ -7871,7 +8451,7 @@ class apexParser ( Parser ):
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 16)")
                         self.state = 1180
                         _la = self._input.LA(1)
-                        if not(_la==apexParser.INC or _la==apexParser.DEC):
+                        if not(_la==ApexParser.INC or _la==ApexParser.DEC):
                             self._errHandler.recoverInline(self)
                         else:
                             self._errHandler.reportMatch(self)
@@ -7879,14 +8459,14 @@ class apexParser ( Parser ):
                         pass
 
                     elif la_ == 24:
-                        localctx = apexParser.ExpressionContext(self, _parentctx, _parentState)
+                        localctx = ApexParser.ExpressionContext(self, _parentctx, _parentState)
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expression)
                         self.state = 1181
                         if not self.precpred(self._ctx, 9):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 9)")
                         self.state = 1182
-                        self.match(apexParser.INSTANCEOF)
+                        self.match(ApexParser.INSTANCEOF)
                         self.state = 1183
                         self.typeType()
                         pass
@@ -7904,56 +8484,66 @@ class apexParser ( Parser ):
             self.unrollRecursionContexts(_parentctx)
         return localctx
 
+
     class PrimaryContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def expression(self):
-            return self.getTypedRuleContext(apexParser.ExpressionContext,0)
+        def LPAREN(self):
+            return self.getToken(ApexParser.LPAREN, 0)
 
+        def expression(self):
+            return self.getTypedRuleContext(ApexParser.ExpressionContext,0)
+
+
+        def RPAREN(self):
+            return self.getToken(ApexParser.RPAREN, 0)
 
         def THIS(self):
-            return self.getToken(apexParser.THIS, 0)
+            return self.getToken(ApexParser.THIS, 0)
 
         def SUPER(self):
-            return self.getToken(apexParser.SUPER, 0)
+            return self.getToken(ApexParser.SUPER, 0)
 
         def literal(self):
-            return self.getTypedRuleContext(apexParser.LiteralContext,0)
+            return self.getTypedRuleContext(ApexParser.LiteralContext,0)
 
 
         def Identifier(self):
-            return self.getToken(apexParser.Identifier, 0)
+            return self.getToken(ApexParser.Identifier, 0)
 
         def typeType(self):
-            return self.getTypedRuleContext(apexParser.TypeTypeContext,0)
+            return self.getTypedRuleContext(ApexParser.TypeTypeContext,0)
 
+
+        def DOT(self):
+            return self.getToken(ApexParser.DOT, 0)
 
         def CLASS(self):
-            return self.getToken(apexParser.CLASS, 0)
+            return self.getToken(ApexParser.CLASS, 0)
 
         def VOID(self):
-            return self.getToken(apexParser.VOID, 0)
+            return self.getToken(ApexParser.VOID, 0)
 
         def nonWildcardTypeArguments(self):
-            return self.getTypedRuleContext(apexParser.NonWildcardTypeArgumentsContext,0)
+            return self.getTypedRuleContext(ApexParser.NonWildcardTypeArgumentsContext,0)
 
 
         def explicitGenericInvocationSuffix(self):
-            return self.getTypedRuleContext(apexParser.ExplicitGenericInvocationSuffixContext,0)
+            return self.getTypedRuleContext(ApexParser.ExplicitGenericInvocationSuffixContext,0)
 
 
         def arguments(self):
-            return self.getTypedRuleContext(apexParser.ArgumentsContext,0)
+            return self.getTypedRuleContext(ApexParser.ArgumentsContext,0)
 
 
         def SoqlLiteral(self):
-            return self.getToken(apexParser.SoqlLiteral, 0)
+            return self.getToken(ApexParser.SoqlLiteral, 0)
 
         def getRuleIndex(self):
-            return apexParser.RULE_primary
+            return ApexParser.RULE_primary
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterPrimary" ):
@@ -7968,7 +8558,7 @@ class apexParser ( Parser ):
 
     def primary(self):
 
-        localctx = apexParser.PrimaryContext(self, self._ctx, self.state)
+        localctx = ApexParser.PrimaryContext(self, self._ctx, self.state)
         self.enterRule(localctx, 186, self.RULE_primary)
         try:
             self.state = 1211
@@ -7977,23 +8567,23 @@ class apexParser ( Parser ):
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 1189
-                self.match(apexParser.LPAREN)
+                self.match(ApexParser.LPAREN)
                 self.state = 1190
                 self.expression(0)
                 self.state = 1191
-                self.match(apexParser.RPAREN)
+                self.match(ApexParser.RPAREN)
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
                 self.state = 1193
-                self.match(apexParser.THIS)
+                self.match(ApexParser.THIS)
                 pass
 
             elif la_ == 3:
                 self.enterOuterAlt(localctx, 3)
                 self.state = 1194
-                self.match(apexParser.SUPER)
+                self.match(ApexParser.SUPER)
                 pass
 
             elif la_ == 4:
@@ -8005,7 +8595,7 @@ class apexParser ( Parser ):
             elif la_ == 5:
                 self.enterOuterAlt(localctx, 5)
                 self.state = 1196
-                self.match(apexParser.Identifier)
+                self.match(ApexParser.Identifier)
                 pass
 
             elif la_ == 6:
@@ -8013,19 +8603,19 @@ class apexParser ( Parser ):
                 self.state = 1197
                 self.typeType()
                 self.state = 1198
-                self.match(apexParser.DOT)
+                self.match(ApexParser.DOT)
                 self.state = 1199
-                self.match(apexParser.CLASS)
+                self.match(ApexParser.CLASS)
                 pass
 
             elif la_ == 7:
                 self.enterOuterAlt(localctx, 7)
                 self.state = 1201
-                self.match(apexParser.VOID)
+                self.match(ApexParser.VOID)
                 self.state = 1202
-                self.match(apexParser.DOT)
+                self.match(ApexParser.DOT)
                 self.state = 1203
-                self.match(apexParser.CLASS)
+                self.match(ApexParser.CLASS)
                 pass
 
             elif la_ == 8:
@@ -8035,13 +8625,13 @@ class apexParser ( Parser ):
                 self.state = 1208
                 self._errHandler.sync(self)
                 token = self._input.LA(1)
-                if token in [apexParser.SUPER, apexParser.Identifier]:
+                if token in [ApexParser.SUPER, ApexParser.Identifier]:
                     self.state = 1205
                     self.explicitGenericInvocationSuffix()
                     pass
-                elif token in [apexParser.THIS]:
+                elif token in [ApexParser.THIS]:
                     self.state = 1206
-                    self.match(apexParser.THIS)
+                    self.match(ApexParser.THIS)
                     self.state = 1207
                     self.arguments()
                     pass
@@ -8053,7 +8643,7 @@ class apexParser ( Parser ):
             elif la_ == 9:
                 self.enterOuterAlt(localctx, 9)
                 self.state = 1210
-                self.match(apexParser.SoqlLiteral)
+                self.match(ApexParser.SoqlLiteral)
                 pass
 
 
@@ -8065,6 +8655,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class CreatorContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -8072,31 +8663,31 @@ class apexParser ( Parser ):
             self.parser = parser
 
         def nonWildcardTypeArguments(self):
-            return self.getTypedRuleContext(apexParser.NonWildcardTypeArgumentsContext,0)
+            return self.getTypedRuleContext(ApexParser.NonWildcardTypeArgumentsContext,0)
 
 
         def createdName(self):
-            return self.getTypedRuleContext(apexParser.CreatedNameContext,0)
+            return self.getTypedRuleContext(ApexParser.CreatedNameContext,0)
 
 
         def classCreatorRest(self):
-            return self.getTypedRuleContext(apexParser.ClassCreatorRestContext,0)
+            return self.getTypedRuleContext(ApexParser.ClassCreatorRestContext,0)
 
 
         def arrayCreatorRest(self):
-            return self.getTypedRuleContext(apexParser.ArrayCreatorRestContext,0)
+            return self.getTypedRuleContext(ApexParser.ArrayCreatorRestContext,0)
 
 
         def mapCreatorRest(self):
-            return self.getTypedRuleContext(apexParser.MapCreatorRestContext,0)
+            return self.getTypedRuleContext(ApexParser.MapCreatorRestContext,0)
 
 
         def setCreatorRest(self):
-            return self.getTypedRuleContext(apexParser.SetCreatorRestContext,0)
+            return self.getTypedRuleContext(ApexParser.SetCreatorRestContext,0)
 
 
         def getRuleIndex(self):
-            return apexParser.RULE_creator
+            return ApexParser.RULE_creator
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterCreator" ):
@@ -8111,13 +8702,13 @@ class apexParser ( Parser ):
 
     def creator(self):
 
-        localctx = apexParser.CreatorContext(self, self._ctx, self.state)
+        localctx = ApexParser.CreatorContext(self, self._ctx, self.state)
         self.enterRule(localctx, 188, self.RULE_creator)
         try:
             self.state = 1224
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [apexParser.LT]:
+            if token in [ApexParser.LT]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 1213
                 self.nonWildcardTypeArguments()
@@ -8126,7 +8717,7 @@ class apexParser ( Parser ):
                 self.state = 1215
                 self.classCreatorRest()
                 pass
-            elif token in [apexParser.SET, apexParser.BYTE, apexParser.CHAR, apexParser.FLOAT, apexParser.INT, apexParser.SHORT, apexParser.Identifier]:
+            elif token in [ApexParser.SET, ApexParser.BYTE, ApexParser.CHAR, ApexParser.FLOAT, ApexParser.INT, ApexParser.SHORT, ApexParser.Identifier]:
                 self.enterOuterAlt(localctx, 2)
                 self.state = 1217
                 self.createdName()
@@ -8166,6 +8757,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class CreatedNameContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -8174,26 +8766,32 @@ class apexParser ( Parser ):
 
         def Identifier(self, i:int=None):
             if i is None:
-                return self.getTokens(apexParser.Identifier)
+                return self.getTokens(ApexParser.Identifier)
             else:
-                return self.getToken(apexParser.Identifier, i)
+                return self.getToken(ApexParser.Identifier, i)
 
         def typeArgumentsOrDiamond(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(apexParser.TypeArgumentsOrDiamondContext)
+                return self.getTypedRuleContexts(ApexParser.TypeArgumentsOrDiamondContext)
             else:
-                return self.getTypedRuleContext(apexParser.TypeArgumentsOrDiamondContext,i)
+                return self.getTypedRuleContext(ApexParser.TypeArgumentsOrDiamondContext,i)
 
+
+        def DOT(self, i:int=None):
+            if i is None:
+                return self.getTokens(ApexParser.DOT)
+            else:
+                return self.getToken(ApexParser.DOT, i)
 
         def primitiveType(self):
-            return self.getTypedRuleContext(apexParser.PrimitiveTypeContext,0)
+            return self.getTypedRuleContext(ApexParser.PrimitiveTypeContext,0)
 
 
         def SET(self):
-            return self.getToken(apexParser.SET, 0)
+            return self.getToken(ApexParser.SET, 0)
 
         def getRuleIndex(self):
-            return apexParser.RULE_createdName
+            return ApexParser.RULE_createdName
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterCreatedName" ):
@@ -8208,21 +8806,21 @@ class apexParser ( Parser ):
 
     def createdName(self):
 
-        localctx = apexParser.CreatedNameContext(self, self._ctx, self.state)
+        localctx = ApexParser.CreatedNameContext(self, self._ctx, self.state)
         self.enterRule(localctx, 190, self.RULE_createdName)
         self._la = 0 # Token type
         try:
             self.state = 1243
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [apexParser.Identifier]:
+            if token in [ApexParser.Identifier]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 1226
-                self.match(apexParser.Identifier)
+                self.match(ApexParser.Identifier)
                 self.state = 1228
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if _la==apexParser.LT:
+                if _la==ApexParser.LT:
                     self.state = 1227
                     self.typeArgumentsOrDiamond()
 
@@ -8230,15 +8828,15 @@ class apexParser ( Parser ):
                 self.state = 1237
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                while _la==apexParser.DOT:
+                while _la==ApexParser.DOT:
                     self.state = 1230
-                    self.match(apexParser.DOT)
+                    self.match(ApexParser.DOT)
                     self.state = 1231
-                    self.match(apexParser.Identifier)
+                    self.match(ApexParser.Identifier)
                     self.state = 1233
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
-                    if _la==apexParser.LT:
+                    if _la==ApexParser.LT:
                         self.state = 1232
                         self.typeArgumentsOrDiamond()
 
@@ -8248,15 +8846,15 @@ class apexParser ( Parser ):
                     _la = self._input.LA(1)
 
                 pass
-            elif token in [apexParser.BYTE, apexParser.CHAR, apexParser.FLOAT, apexParser.INT, apexParser.SHORT]:
+            elif token in [ApexParser.BYTE, ApexParser.CHAR, ApexParser.FLOAT, ApexParser.INT, ApexParser.SHORT]:
                 self.enterOuterAlt(localctx, 2)
                 self.state = 1240
                 self.primitiveType()
                 pass
-            elif token in [apexParser.SET]:
+            elif token in [ApexParser.SET]:
                 self.enterOuterAlt(localctx, 3)
                 self.state = 1241
-                self.match(apexParser.SET)
+                self.match(ApexParser.SET)
                 self.state = 1242
                 self.typeArgumentsOrDiamond()
                 pass
@@ -8271,6 +8869,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class InnerCreatorContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -8278,18 +8877,18 @@ class apexParser ( Parser ):
             self.parser = parser
 
         def Identifier(self):
-            return self.getToken(apexParser.Identifier, 0)
+            return self.getToken(ApexParser.Identifier, 0)
 
         def classCreatorRest(self):
-            return self.getTypedRuleContext(apexParser.ClassCreatorRestContext,0)
+            return self.getTypedRuleContext(ApexParser.ClassCreatorRestContext,0)
 
 
         def nonWildcardTypeArgumentsOrDiamond(self):
-            return self.getTypedRuleContext(apexParser.NonWildcardTypeArgumentsOrDiamondContext,0)
+            return self.getTypedRuleContext(ApexParser.NonWildcardTypeArgumentsOrDiamondContext,0)
 
 
         def getRuleIndex(self):
-            return apexParser.RULE_innerCreator
+            return ApexParser.RULE_innerCreator
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterInnerCreator" ):
@@ -8304,17 +8903,17 @@ class apexParser ( Parser ):
 
     def innerCreator(self):
 
-        localctx = apexParser.InnerCreatorContext(self, self._ctx, self.state)
+        localctx = ApexParser.InnerCreatorContext(self, self._ctx, self.state)
         self.enterRule(localctx, 192, self.RULE_innerCreator)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 1245
-            self.match(apexParser.Identifier)
+            self.match(ApexParser.Identifier)
             self.state = 1247
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==apexParser.LT:
+            if _la==ApexParser.LT:
                 self.state = 1246
                 self.nonWildcardTypeArgumentsOrDiamond()
 
@@ -8329,25 +8928,38 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class ArrayCreatorRestContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def LBRACK(self, i:int=None):
+            if i is None:
+                return self.getTokens(ApexParser.LBRACK)
+            else:
+                return self.getToken(ApexParser.LBRACK, i)
+
+        def RBRACK(self, i:int=None):
+            if i is None:
+                return self.getTokens(ApexParser.RBRACK)
+            else:
+                return self.getToken(ApexParser.RBRACK, i)
+
         def arrayInitializer(self):
-            return self.getTypedRuleContext(apexParser.ArrayInitializerContext,0)
+            return self.getTypedRuleContext(ApexParser.ArrayInitializerContext,0)
 
 
         def expression(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(apexParser.ExpressionContext)
+                return self.getTypedRuleContexts(ApexParser.ExpressionContext)
             else:
-                return self.getTypedRuleContext(apexParser.ExpressionContext,i)
+                return self.getTypedRuleContext(ApexParser.ExpressionContext,i)
 
 
         def getRuleIndex(self):
-            return apexParser.RULE_arrayCreatorRest
+            return ApexParser.RULE_arrayCreatorRest
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterArrayCreatorRest" ):
@@ -8362,27 +8974,27 @@ class apexParser ( Parser ):
 
     def arrayCreatorRest(self):
 
-        localctx = apexParser.ArrayCreatorRestContext(self, self._ctx, self.state)
+        localctx = ApexParser.ArrayCreatorRestContext(self, self._ctx, self.state)
         self.enterRule(localctx, 194, self.RULE_arrayCreatorRest)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 1251
-            self.match(apexParser.LBRACK)
+            self.match(ApexParser.LBRACK)
             self.state = 1279
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [apexParser.RBRACK]:
+            if token in [ApexParser.RBRACK]:
                 self.state = 1252
-                self.match(apexParser.RBRACK)
+                self.match(ApexParser.RBRACK)
                 self.state = 1257
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                while _la==apexParser.LBRACK:
+                while _la==ApexParser.LBRACK:
                     self.state = 1253
-                    self.match(apexParser.LBRACK)
+                    self.match(ApexParser.LBRACK)
                     self.state = 1254
-                    self.match(apexParser.RBRACK)
+                    self.match(ApexParser.RBRACK)
                     self.state = 1259
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
@@ -8390,22 +9002,22 @@ class apexParser ( Parser ):
                 self.state = 1260
                 self.arrayInitializer()
                 pass
-            elif token in [apexParser.SoqlLiteral, apexParser.SET, apexParser.BYTE, apexParser.CHAR, apexParser.FLOAT, apexParser.INT, apexParser.NEW, apexParser.SHORT, apexParser.SUPER, apexParser.THIS, apexParser.VOID, apexParser.IntegerLiteral, apexParser.FloatingPointLiteral, apexParser.BooleanLiteral, apexParser.CharacterLiteral, apexParser.StringLiteral, apexParser.NullLiteral, apexParser.LPAREN, apexParser.LT, apexParser.BANG, apexParser.TILDE, apexParser.INC, apexParser.DEC, apexParser.ADD, apexParser.SUB, apexParser.Identifier]:
+            elif token in [ApexParser.SoqlLiteral, ApexParser.SET, ApexParser.BYTE, ApexParser.CHAR, ApexParser.FLOAT, ApexParser.INT, ApexParser.NEW, ApexParser.SHORT, ApexParser.SUPER, ApexParser.THIS, ApexParser.VOID, ApexParser.IntegerLiteral, ApexParser.FloatingPointLiteral, ApexParser.BooleanLiteral, ApexParser.CharacterLiteral, ApexParser.StringLiteral, ApexParser.NullLiteral, ApexParser.LPAREN, ApexParser.LT, ApexParser.BANG, ApexParser.TILDE, ApexParser.INC, ApexParser.DEC, ApexParser.ADD, ApexParser.SUB, ApexParser.Identifier]:
                 self.state = 1261
                 self.expression(0)
                 self.state = 1262
-                self.match(apexParser.RBRACK)
+                self.match(ApexParser.RBRACK)
                 self.state = 1269
                 self._errHandler.sync(self)
                 _alt = self._interp.adaptivePredict(self._input,143,self._ctx)
                 while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                     if _alt==1:
                         self.state = 1263
-                        self.match(apexParser.LBRACK)
+                        self.match(ApexParser.LBRACK)
                         self.state = 1264
                         self.expression(0)
                         self.state = 1265
-                        self.match(apexParser.RBRACK) 
+                        self.match(ApexParser.RBRACK) 
                     self.state = 1271
                     self._errHandler.sync(self)
                     _alt = self._interp.adaptivePredict(self._input,143,self._ctx)
@@ -8416,9 +9028,9 @@ class apexParser ( Parser ):
                 while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                     if _alt==1:
                         self.state = 1272
-                        self.match(apexParser.LBRACK)
+                        self.match(ApexParser.LBRACK)
                         self.state = 1273
-                        self.match(apexParser.RBRACK) 
+                        self.match(ApexParser.RBRACK) 
                     self.state = 1278
                     self._errHandler.sync(self)
                     _alt = self._interp.adaptivePredict(self._input,144,self._ctx)
@@ -8435,34 +9047,53 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class MapCreatorRestContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def LBRACE(self):
+            return self.getToken(ApexParser.LBRACE, 0)
+
+        def RBRACE(self):
+            return self.getToken(ApexParser.RBRACE, 0)
+
+        def LAMBDA_LIKE(self, i:int=None):
+            if i is None:
+                return self.getTokens(ApexParser.LAMBDA_LIKE)
+            else:
+                return self.getToken(ApexParser.LAMBDA_LIKE, i)
+
         def Identifier(self, i:int=None):
             if i is None:
-                return self.getTokens(apexParser.Identifier)
+                return self.getTokens(ApexParser.Identifier)
             else:
-                return self.getToken(apexParser.Identifier, i)
+                return self.getToken(ApexParser.Identifier, i)
 
         def expression(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(apexParser.ExpressionContext)
+                return self.getTypedRuleContexts(ApexParser.ExpressionContext)
             else:
-                return self.getTypedRuleContext(apexParser.ExpressionContext,i)
+                return self.getTypedRuleContext(ApexParser.ExpressionContext,i)
 
 
         def literal(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(apexParser.LiteralContext)
+                return self.getTypedRuleContexts(ApexParser.LiteralContext)
             else:
-                return self.getTypedRuleContext(apexParser.LiteralContext,i)
+                return self.getTypedRuleContext(ApexParser.LiteralContext,i)
 
+
+        def COMMA(self, i:int=None):
+            if i is None:
+                return self.getTokens(ApexParser.COMMA)
+            else:
+                return self.getToken(ApexParser.COMMA, i)
 
         def getRuleIndex(self):
-            return apexParser.RULE_mapCreatorRest
+            return ApexParser.RULE_mapCreatorRest
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterMapCreatorRest" ):
@@ -8477,27 +9108,27 @@ class apexParser ( Parser ):
 
     def mapCreatorRest(self):
 
-        localctx = apexParser.MapCreatorRestContext(self, self._ctx, self.state)
+        localctx = ApexParser.MapCreatorRestContext(self, self._ctx, self.state)
         self.enterRule(localctx, 196, self.RULE_mapCreatorRest)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 1281
-            self.match(apexParser.LBRACE)
+            self.match(ApexParser.LBRACE)
             self.state = 1309
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [apexParser.RBRACE]:
+            if token in [ApexParser.RBRACE]:
                 self.state = 1282
-                self.match(apexParser.RBRACE)
+                self.match(ApexParser.RBRACE)
                 pass
-            elif token in [apexParser.SoqlLiteral, apexParser.SET, apexParser.BYTE, apexParser.CHAR, apexParser.FLOAT, apexParser.INT, apexParser.NEW, apexParser.SHORT, apexParser.SUPER, apexParser.THIS, apexParser.VOID, apexParser.IntegerLiteral, apexParser.FloatingPointLiteral, apexParser.BooleanLiteral, apexParser.CharacterLiteral, apexParser.StringLiteral, apexParser.NullLiteral, apexParser.LPAREN, apexParser.LT, apexParser.BANG, apexParser.TILDE, apexParser.INC, apexParser.DEC, apexParser.ADD, apexParser.SUB, apexParser.Identifier]:
+            elif token in [ApexParser.SoqlLiteral, ApexParser.SET, ApexParser.BYTE, ApexParser.CHAR, ApexParser.FLOAT, ApexParser.INT, ApexParser.NEW, ApexParser.SHORT, ApexParser.SUPER, ApexParser.THIS, ApexParser.VOID, ApexParser.IntegerLiteral, ApexParser.FloatingPointLiteral, ApexParser.BooleanLiteral, ApexParser.CharacterLiteral, ApexParser.StringLiteral, ApexParser.NullLiteral, ApexParser.LPAREN, ApexParser.LT, ApexParser.BANG, ApexParser.TILDE, ApexParser.INC, ApexParser.DEC, ApexParser.ADD, ApexParser.SUB, ApexParser.Identifier]:
                 self.state = 1285
                 self._errHandler.sync(self)
                 la_ = self._interp.adaptivePredict(self._input,146,self._ctx)
                 if la_ == 1:
                     self.state = 1283
-                    self.match(apexParser.Identifier)
+                    self.match(ApexParser.Identifier)
                     pass
 
                 elif la_ == 2:
@@ -8507,7 +9138,7 @@ class apexParser ( Parser ):
 
 
                 self.state = 1287
-                self.match(apexParser.LAMBDA_LIKE)
+                self.match(ApexParser.LAMBDA_LIKE)
                 self.state = 1290
                 self._errHandler.sync(self)
                 la_ = self._interp.adaptivePredict(self._input,147,self._ctx)
@@ -8525,15 +9156,15 @@ class apexParser ( Parser ):
                 self.state = 1304
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                while _la==apexParser.COMMA:
+                while _la==ApexParser.COMMA:
                     self.state = 1292
-                    self.match(apexParser.COMMA)
+                    self.match(ApexParser.COMMA)
                     self.state = 1295
                     self._errHandler.sync(self)
                     la_ = self._interp.adaptivePredict(self._input,148,self._ctx)
                     if la_ == 1:
                         self.state = 1293
-                        self.match(apexParser.Identifier)
+                        self.match(ApexParser.Identifier)
                         pass
 
                     elif la_ == 2:
@@ -8543,7 +9174,7 @@ class apexParser ( Parser ):
 
 
                     self.state = 1297
-                    self.match(apexParser.LAMBDA_LIKE)
+                    self.match(ApexParser.LAMBDA_LIKE)
                     self.state = 1300
                     self._errHandler.sync(self)
                     la_ = self._interp.adaptivePredict(self._input,149,self._ctx)
@@ -8563,7 +9194,7 @@ class apexParser ( Parser ):
                     _la = self._input.LA(1)
 
                 self.state = 1307
-                self.match(apexParser.RBRACE)
+                self.match(ApexParser.RBRACE)
                 pass
             else:
                 raise NoViableAltException(self)
@@ -8576,28 +9207,41 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class SetCreatorRestContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def LBRACE(self):
+            return self.getToken(ApexParser.LBRACE, 0)
+
+        def RBRACE(self):
+            return self.getToken(ApexParser.RBRACE, 0)
+
         def literal(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(apexParser.LiteralContext)
+                return self.getTypedRuleContexts(ApexParser.LiteralContext)
             else:
-                return self.getTypedRuleContext(apexParser.LiteralContext,i)
+                return self.getTypedRuleContext(ApexParser.LiteralContext,i)
 
 
         def expression(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(apexParser.ExpressionContext)
+                return self.getTypedRuleContexts(ApexParser.ExpressionContext)
             else:
-                return self.getTypedRuleContext(apexParser.ExpressionContext,i)
+                return self.getTypedRuleContext(ApexParser.ExpressionContext,i)
 
+
+        def COMMA(self, i:int=None):
+            if i is None:
+                return self.getTokens(ApexParser.COMMA)
+            else:
+                return self.getToken(ApexParser.COMMA, i)
 
         def getRuleIndex(self):
-            return apexParser.RULE_setCreatorRest
+            return ApexParser.RULE_setCreatorRest
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterSetCreatorRest" ):
@@ -8612,21 +9256,21 @@ class apexParser ( Parser ):
 
     def setCreatorRest(self):
 
-        localctx = apexParser.SetCreatorRestContext(self, self._ctx, self.state)
+        localctx = ApexParser.SetCreatorRestContext(self, self._ctx, self.state)
         self.enterRule(localctx, 198, self.RULE_setCreatorRest)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 1311
-            self.match(apexParser.LBRACE)
+            self.match(ApexParser.LBRACE)
             self.state = 1329
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [apexParser.RBRACE]:
+            if token in [ApexParser.RBRACE]:
                 self.state = 1312
-                self.match(apexParser.RBRACE)
+                self.match(ApexParser.RBRACE)
                 pass
-            elif token in [apexParser.SoqlLiteral, apexParser.SET, apexParser.BYTE, apexParser.CHAR, apexParser.FLOAT, apexParser.INT, apexParser.NEW, apexParser.SHORT, apexParser.SUPER, apexParser.THIS, apexParser.VOID, apexParser.IntegerLiteral, apexParser.FloatingPointLiteral, apexParser.BooleanLiteral, apexParser.CharacterLiteral, apexParser.StringLiteral, apexParser.NullLiteral, apexParser.LPAREN, apexParser.LT, apexParser.BANG, apexParser.TILDE, apexParser.INC, apexParser.DEC, apexParser.ADD, apexParser.SUB, apexParser.Identifier]:
+            elif token in [ApexParser.SoqlLiteral, ApexParser.SET, ApexParser.BYTE, ApexParser.CHAR, ApexParser.FLOAT, ApexParser.INT, ApexParser.NEW, ApexParser.SHORT, ApexParser.SUPER, ApexParser.THIS, ApexParser.VOID, ApexParser.IntegerLiteral, ApexParser.FloatingPointLiteral, ApexParser.BooleanLiteral, ApexParser.CharacterLiteral, ApexParser.StringLiteral, ApexParser.NullLiteral, ApexParser.LPAREN, ApexParser.LT, ApexParser.BANG, ApexParser.TILDE, ApexParser.INC, ApexParser.DEC, ApexParser.ADD, ApexParser.SUB, ApexParser.Identifier]:
                 self.state = 1315
                 self._errHandler.sync(self)
                 la_ = self._interp.adaptivePredict(self._input,152,self._ctx)
@@ -8644,9 +9288,9 @@ class apexParser ( Parser ):
                 self.state = 1324
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                while _la==apexParser.COMMA:
+                while _la==ApexParser.COMMA:
                     self.state = 1317
-                    self.match(apexParser.COMMA)
+                    self.match(ApexParser.COMMA)
                     self.state = 1320
                     self._errHandler.sync(self)
                     la_ = self._interp.adaptivePredict(self._input,153,self._ctx)
@@ -8666,7 +9310,7 @@ class apexParser ( Parser ):
                     _la = self._input.LA(1)
 
                 self.state = 1327
-                self.match(apexParser.RBRACE)
+                self.match(ApexParser.RBRACE)
                 pass
             else:
                 raise NoViableAltException(self)
@@ -8679,6 +9323,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class ClassCreatorRestContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -8686,15 +9331,15 @@ class apexParser ( Parser ):
             self.parser = parser
 
         def arguments(self):
-            return self.getTypedRuleContext(apexParser.ArgumentsContext,0)
+            return self.getTypedRuleContext(ApexParser.ArgumentsContext,0)
 
 
         def classBody(self):
-            return self.getTypedRuleContext(apexParser.ClassBodyContext,0)
+            return self.getTypedRuleContext(ApexParser.ClassBodyContext,0)
 
 
         def getRuleIndex(self):
-            return apexParser.RULE_classCreatorRest
+            return ApexParser.RULE_classCreatorRest
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterClassCreatorRest" ):
@@ -8709,7 +9354,7 @@ class apexParser ( Parser ):
 
     def classCreatorRest(self):
 
-        localctx = apexParser.ClassCreatorRestContext(self, self._ctx, self.state)
+        localctx = ApexParser.ClassCreatorRestContext(self, self._ctx, self.state)
         self.enterRule(localctx, 200, self.RULE_classCreatorRest)
         try:
             self.enterOuterAlt(localctx, 1)
@@ -8731,6 +9376,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class ExplicitGenericInvocationContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -8738,15 +9384,15 @@ class apexParser ( Parser ):
             self.parser = parser
 
         def nonWildcardTypeArguments(self):
-            return self.getTypedRuleContext(apexParser.NonWildcardTypeArgumentsContext,0)
+            return self.getTypedRuleContext(ApexParser.NonWildcardTypeArgumentsContext,0)
 
 
         def explicitGenericInvocationSuffix(self):
-            return self.getTypedRuleContext(apexParser.ExplicitGenericInvocationSuffixContext,0)
+            return self.getTypedRuleContext(ApexParser.ExplicitGenericInvocationSuffixContext,0)
 
 
         def getRuleIndex(self):
-            return apexParser.RULE_explicitGenericInvocation
+            return ApexParser.RULE_explicitGenericInvocation
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterExplicitGenericInvocation" ):
@@ -8761,7 +9407,7 @@ class apexParser ( Parser ):
 
     def explicitGenericInvocation(self):
 
-        localctx = apexParser.ExplicitGenericInvocationContext(self, self._ctx, self.state)
+        localctx = ApexParser.ExplicitGenericInvocationContext(self, self._ctx, self.state)
         self.enterRule(localctx, 202, self.RULE_explicitGenericInvocation)
         try:
             self.enterOuterAlt(localctx, 1)
@@ -8777,18 +9423,25 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class NonWildcardTypeArgumentsContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def typeList(self):
-            return self.getTypedRuleContext(apexParser.TypeListContext,0)
+        def LT(self):
+            return self.getToken(ApexParser.LT, 0)
 
+        def typeList(self):
+            return self.getTypedRuleContext(ApexParser.TypeListContext,0)
+
+
+        def GT(self):
+            return self.getToken(ApexParser.GT, 0)
 
         def getRuleIndex(self):
-            return apexParser.RULE_nonWildcardTypeArguments
+            return ApexParser.RULE_nonWildcardTypeArguments
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterNonWildcardTypeArguments" ):
@@ -8803,16 +9456,16 @@ class apexParser ( Parser ):
 
     def nonWildcardTypeArguments(self):
 
-        localctx = apexParser.NonWildcardTypeArgumentsContext(self, self._ctx, self.state)
+        localctx = ApexParser.NonWildcardTypeArgumentsContext(self, self._ctx, self.state)
         self.enterRule(localctx, 204, self.RULE_nonWildcardTypeArguments)
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 1338
-            self.match(apexParser.LT)
+            self.match(ApexParser.LT)
             self.state = 1339
             self.typeList()
             self.state = 1340
-            self.match(apexParser.GT)
+            self.match(ApexParser.GT)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -8821,18 +9474,25 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class TypeArgumentsOrDiamondContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def LT(self):
+            return self.getToken(ApexParser.LT, 0)
+
+        def GT(self):
+            return self.getToken(ApexParser.GT, 0)
+
         def typeArguments(self):
-            return self.getTypedRuleContext(apexParser.TypeArgumentsContext,0)
+            return self.getTypedRuleContext(ApexParser.TypeArgumentsContext,0)
 
 
         def getRuleIndex(self):
-            return apexParser.RULE_typeArgumentsOrDiamond
+            return ApexParser.RULE_typeArgumentsOrDiamond
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterTypeArgumentsOrDiamond" ):
@@ -8847,7 +9507,7 @@ class apexParser ( Parser ):
 
     def typeArgumentsOrDiamond(self):
 
-        localctx = apexParser.TypeArgumentsOrDiamondContext(self, self._ctx, self.state)
+        localctx = ApexParser.TypeArgumentsOrDiamondContext(self, self._ctx, self.state)
         self.enterRule(localctx, 206, self.RULE_typeArgumentsOrDiamond)
         try:
             self.state = 1345
@@ -8856,9 +9516,9 @@ class apexParser ( Parser ):
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 1342
-                self.match(apexParser.LT)
+                self.match(ApexParser.LT)
                 self.state = 1343
-                self.match(apexParser.GT)
+                self.match(ApexParser.GT)
                 pass
 
             elif la_ == 2:
@@ -8876,18 +9536,25 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class NonWildcardTypeArgumentsOrDiamondContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def LT(self):
+            return self.getToken(ApexParser.LT, 0)
+
+        def GT(self):
+            return self.getToken(ApexParser.GT, 0)
+
         def nonWildcardTypeArguments(self):
-            return self.getTypedRuleContext(apexParser.NonWildcardTypeArgumentsContext,0)
+            return self.getTypedRuleContext(ApexParser.NonWildcardTypeArgumentsContext,0)
 
 
         def getRuleIndex(self):
-            return apexParser.RULE_nonWildcardTypeArgumentsOrDiamond
+            return ApexParser.RULE_nonWildcardTypeArgumentsOrDiamond
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterNonWildcardTypeArgumentsOrDiamond" ):
@@ -8902,7 +9569,7 @@ class apexParser ( Parser ):
 
     def nonWildcardTypeArgumentsOrDiamond(self):
 
-        localctx = apexParser.NonWildcardTypeArgumentsOrDiamondContext(self, self._ctx, self.state)
+        localctx = ApexParser.NonWildcardTypeArgumentsOrDiamondContext(self, self._ctx, self.state)
         self.enterRule(localctx, 208, self.RULE_nonWildcardTypeArgumentsOrDiamond)
         try:
             self.state = 1350
@@ -8911,9 +9578,9 @@ class apexParser ( Parser ):
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 1347
-                self.match(apexParser.LT)
+                self.match(ApexParser.LT)
                 self.state = 1348
-                self.match(apexParser.GT)
+                self.match(ApexParser.GT)
                 pass
 
             elif la_ == 2:
@@ -8931,6 +9598,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class SuperSuffixContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -8938,14 +9606,17 @@ class apexParser ( Parser ):
             self.parser = parser
 
         def arguments(self):
-            return self.getTypedRuleContext(apexParser.ArgumentsContext,0)
+            return self.getTypedRuleContext(ApexParser.ArgumentsContext,0)
 
+
+        def DOT(self):
+            return self.getToken(ApexParser.DOT, 0)
 
         def Identifier(self):
-            return self.getToken(apexParser.Identifier, 0)
+            return self.getToken(ApexParser.Identifier, 0)
 
         def getRuleIndex(self):
-            return apexParser.RULE_superSuffix
+            return ApexParser.RULE_superSuffix
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterSuperSuffix" ):
@@ -8960,23 +9631,23 @@ class apexParser ( Parser ):
 
     def superSuffix(self):
 
-        localctx = apexParser.SuperSuffixContext(self, self._ctx, self.state)
+        localctx = ApexParser.SuperSuffixContext(self, self._ctx, self.state)
         self.enterRule(localctx, 210, self.RULE_superSuffix)
         try:
             self.state = 1358
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [apexParser.LPAREN]:
+            if token in [ApexParser.LPAREN]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 1352
                 self.arguments()
                 pass
-            elif token in [apexParser.DOT]:
+            elif token in [ApexParser.DOT]:
                 self.enterOuterAlt(localctx, 2)
                 self.state = 1353
-                self.match(apexParser.DOT)
+                self.match(ApexParser.DOT)
                 self.state = 1354
-                self.match(apexParser.Identifier)
+                self.match(ApexParser.Identifier)
                 self.state = 1356
                 self._errHandler.sync(self)
                 la_ = self._interp.adaptivePredict(self._input,159,self._ctx)
@@ -8997,6 +9668,7 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class ExplicitGenericInvocationSuffixContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -9004,21 +9676,21 @@ class apexParser ( Parser ):
             self.parser = parser
 
         def SUPER(self):
-            return self.getToken(apexParser.SUPER, 0)
+            return self.getToken(ApexParser.SUPER, 0)
 
         def superSuffix(self):
-            return self.getTypedRuleContext(apexParser.SuperSuffixContext,0)
+            return self.getTypedRuleContext(ApexParser.SuperSuffixContext,0)
 
 
         def Identifier(self):
-            return self.getToken(apexParser.Identifier, 0)
+            return self.getToken(ApexParser.Identifier, 0)
 
         def arguments(self):
-            return self.getTypedRuleContext(apexParser.ArgumentsContext,0)
+            return self.getTypedRuleContext(ApexParser.ArgumentsContext,0)
 
 
         def getRuleIndex(self):
-            return apexParser.RULE_explicitGenericInvocationSuffix
+            return ApexParser.RULE_explicitGenericInvocationSuffix
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterExplicitGenericInvocationSuffix" ):
@@ -9033,23 +9705,23 @@ class apexParser ( Parser ):
 
     def explicitGenericInvocationSuffix(self):
 
-        localctx = apexParser.ExplicitGenericInvocationSuffixContext(self, self._ctx, self.state)
+        localctx = ApexParser.ExplicitGenericInvocationSuffixContext(self, self._ctx, self.state)
         self.enterRule(localctx, 212, self.RULE_explicitGenericInvocationSuffix)
         try:
             self.state = 1364
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [apexParser.SUPER]:
+            if token in [ApexParser.SUPER]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 1360
-                self.match(apexParser.SUPER)
+                self.match(ApexParser.SUPER)
                 self.state = 1361
                 self.superSuffix()
                 pass
-            elif token in [apexParser.Identifier]:
+            elif token in [ApexParser.Identifier]:
                 self.enterOuterAlt(localctx, 2)
                 self.state = 1362
-                self.match(apexParser.Identifier)
+                self.match(ApexParser.Identifier)
                 self.state = 1363
                 self.arguments()
                 pass
@@ -9064,18 +9736,25 @@ class apexParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class ArgumentsContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def LPAREN(self):
+            return self.getToken(ApexParser.LPAREN, 0)
+
+        def RPAREN(self):
+            return self.getToken(ApexParser.RPAREN, 0)
+
         def expressionList(self):
-            return self.getTypedRuleContext(apexParser.ExpressionListContext,0)
+            return self.getTypedRuleContext(ApexParser.ExpressionListContext,0)
 
 
         def getRuleIndex(self):
-            return apexParser.RULE_arguments
+            return ApexParser.RULE_arguments
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterArguments" ):
@@ -9090,23 +9769,23 @@ class apexParser ( Parser ):
 
     def arguments(self):
 
-        localctx = apexParser.ArgumentsContext(self, self._ctx, self.state)
+        localctx = ApexParser.ArgumentsContext(self, self._ctx, self.state)
         self.enterRule(localctx, 214, self.RULE_arguments)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 1366
-            self.match(apexParser.LPAREN)
+            self.match(ApexParser.LPAREN)
             self.state = 1368
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << apexParser.SoqlLiteral) | (1 << apexParser.SET) | (1 << apexParser.BYTE) | (1 << apexParser.CHAR) | (1 << apexParser.FLOAT) | (1 << apexParser.INT) | (1 << apexParser.NEW) | (1 << apexParser.SHORT) | (1 << apexParser.SUPER) | (1 << apexParser.THIS) | (1 << apexParser.VOID) | (1 << apexParser.IntegerLiteral) | (1 << apexParser.FloatingPointLiteral))) != 0) or ((((_la - 64)) & ~0x3f) == 0 and ((1 << (_la - 64)) & ((1 << (apexParser.BooleanLiteral - 64)) | (1 << (apexParser.CharacterLiteral - 64)) | (1 << (apexParser.StringLiteral - 64)) | (1 << (apexParser.NullLiteral - 64)) | (1 << (apexParser.LPAREN - 64)) | (1 << (apexParser.LT - 64)) | (1 << (apexParser.BANG - 64)) | (1 << (apexParser.TILDE - 64)) | (1 << (apexParser.INC - 64)) | (1 << (apexParser.DEC - 64)) | (1 << (apexParser.ADD - 64)) | (1 << (apexParser.SUB - 64)) | (1 << (apexParser.Identifier - 64)))) != 0):
+            if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ApexParser.SoqlLiteral) | (1 << ApexParser.SET) | (1 << ApexParser.BYTE) | (1 << ApexParser.CHAR) | (1 << ApexParser.FLOAT) | (1 << ApexParser.INT) | (1 << ApexParser.NEW) | (1 << ApexParser.SHORT) | (1 << ApexParser.SUPER) | (1 << ApexParser.THIS) | (1 << ApexParser.VOID) | (1 << ApexParser.IntegerLiteral) | (1 << ApexParser.FloatingPointLiteral))) != 0) or ((((_la - 64)) & ~0x3f) == 0 and ((1 << (_la - 64)) & ((1 << (ApexParser.BooleanLiteral - 64)) | (1 << (ApexParser.CharacterLiteral - 64)) | (1 << (ApexParser.StringLiteral - 64)) | (1 << (ApexParser.NullLiteral - 64)) | (1 << (ApexParser.LPAREN - 64)) | (1 << (ApexParser.LT - 64)) | (1 << (ApexParser.BANG - 64)) | (1 << (ApexParser.TILDE - 64)) | (1 << (ApexParser.INC - 64)) | (1 << (ApexParser.DEC - 64)) | (1 << (ApexParser.ADD - 64)) | (1 << (ApexParser.SUB - 64)) | (1 << (ApexParser.Identifier - 64)))) != 0):
                 self.state = 1367
                 self.expressionList()
 
 
             self.state = 1370
-            self.match(apexParser.RPAREN)
+            self.match(ApexParser.RPAREN)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
