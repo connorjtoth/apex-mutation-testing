@@ -7,12 +7,12 @@ import time
 import antlr4
 from antlr4.TokenStreamRewriter import TokenStreamRewriter
 
-from src.antlr.ApexLexer import ApexLexer
-from src.antlr.ApexParser import ApexParser
-from src.decorators.BoundaryConditionMutator import BoundaryConditionMutator
-from src.decorators.DebugDecorator import DebugDecorator
-from src.decorators.OutputDecorator import OutputDecorator
-from src.Listener import Listener
+from .antlr.ApexLexer import ApexLexer
+from .antlr.ApexParser import ApexParser
+from .decorators.BoundaryConditionMutator import BoundaryConditionMutator
+from .decorators.DebugDecorator import DebugDecorator
+from .decorators.OutputDecorator import OutputDecorator
+from .Listener import Listener
 
 ROOT_OUTPUT_DIR = 'output'
 
