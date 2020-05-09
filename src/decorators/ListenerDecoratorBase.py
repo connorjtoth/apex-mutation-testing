@@ -1,4 +1,3 @@
-from antlr4 import *
 from ..Listener import Listener
 
 

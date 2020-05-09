@@ -1,7 +1,8 @@
-from antlr4 import *
-from ..antlr.ApexListener import ApexListener
+from antlr4 import TerminalNode
+
 from ..Listener import Listener
 from .ListenerDecoratorBase import ListenerDecoratorBase
+
 
 class OutputDecorator(ListenerDecoratorBase):
 

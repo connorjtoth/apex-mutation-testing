@@ -1,20 +1,18 @@
 
-from antlr4 import *
-from antlr4.TokenStreamRewriter import *
-from src.antlr.ApexLexer import ApexLexer
-from src.antlr.ApexParser import ApexParser
-from src.antlr.ApexListener import ApexListener
-from src.decorators.OutputDecorator import OutputDecorator
-from src.decorators.DebugDecorator import DebugDecorator
-from src.decorators.BoundaryConditionMutator import BoundaryConditionMutator
-from src.Listener import Listener
-import sys
 import os
 import os.path
-import shutil
-import datetime
+import sys
 import time
-import random
+
+import antlr4
+from antlr4.TokenStreamRewriter import TokenStreamRewriter
+
+from src.antlr.ApexLexer import ApexLexer
+from src.antlr.ApexParser import ApexParser
+from src.decorators.BoundaryConditionMutator import BoundaryConditionMutator
+from src.decorators.DebugDecorator import DebugDecorator
+from src.decorators.OutputDecorator import OutputDecorator
+from src.Listener import Listener
 
 ROOT_OUTPUT_DIR = 'output'
 
@@ -26,27 +24,27 @@ def main(argv):
 
     inputFileName = argv[1]
 
-
     outputDirForRunName = ROOT_OUTPUT_DIR + '/run_at_' + str(int(time.time()))
     if not os.path.isdir(ROOT_OUTPUT_DIR):
         os.mkdir(ROOT_OUTPUT_DIR)
     os.mkdir(outputDirForRunName)
 
-
-    inputFileStream = FileStream(inputFileName)
+    inputFileStream = antlr4.FileStream(inputFileName)
     lexer = ApexLexer(inputFileStream)
-    tokenStream = CommonTokenStream(lexer)
+    tokenStream = antlr4.CommonTokenStream(lexer)
     parser = ApexParser(tokenStream)
     tree = parser.compilationUnit()
-    walker = ParseTreeWalker()
+    walker = antlr4.ParseTreeWalker()
 
-    with open(outputDirForRunName + '/output.txt', 'w') as outputFile, open(outputDirForRunName + '/debug.txt', 'w') as debugFile:
+    outputFilePath = outputDirForRunName + '/output.txt'
+    debugFilePath = outputDirForRunName + '/debug.txt'
+    with open(outputFilePath, 'w') as outputFile, open(debugFilePath, 'w') as debugFile:
         listener = Listener(parser)
         listener = OutputDecorator(listener, outputFile)
         listener = DebugDecorator(listener, debugFile)
         listener = BoundaryConditionMutator(listener)
         walker.walk(listener, tree)
-    
+
     # begin running mutations
     rewriter = TokenStreamRewriter(tokenStream)
     for i, mutation in enumerate(listener._mutations):
@@ -59,6 +57,7 @@ def main(argv):
     for program in rewriter.programs:
         with open(outputDirForRunName + '/' + program + '.txt', 'w') as out:
             out.write(rewriter.getText(program, 0, streamLength))
+
 
 if __name__ == '__main__':
     main(sys.argv)

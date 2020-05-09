@@ -1,4 +1,4 @@
-from antlr4 import *
+from antlr4 import ParserRuleContext, TerminalNode
 from ..antlr.ApexListener import ApexListener
 from .ListenerDecoratorBase import ListenerDecoratorBase
 
@@ -13,12 +13,12 @@ class BoundaryConditionMutator(ListenerDecoratorBase):
 
     def __init__(self, listener: ApexListener):
         super().__init__(listener)
-    
+
     # Target rule
     # expression: expression ('<=' | '>=' | '>' | '<') expression
     def enterExpression(self, ctx: ParserRuleContext):
         self._listener.enterExpression(ctx)
-        
+
         if ctx.getChildCount() == 3 and isinstance(ctx.getChild(1), TerminalNode):
             symbol = ctx.getChild(1).symbol
 

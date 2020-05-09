@@ -1,13 +1,14 @@
-from antlr4 import *
+from antlr4 import TerminalNode, ErrorNode, ParserRuleContext
 from ..antlr.ApexListener import ApexListener
 from .ListenerDecoratorBase import ListenerDecoratorBase
+
 
 class DebugDecorator(ListenerDecoratorBase):
 
     def __init__(self, listener: ApexListener, debugFile):
         super().__init__(listener)
         self._debugFile = debugFile
-    
+
     def debugLog(self, value):
         self._debugFile.write(value + '\n')
 
@@ -33,7 +34,6 @@ class DebugDecorator(ListenerDecoratorBase):
         self.debugLog('------EXIT  RULE: ' + self._listener.lookupRuleName(ctx))
         self.debugLog("------------LT(1)=" + self._parser._input.LT(1).text)
         self.debugLog(str(list(ctx.getChildren())))
-
 
     def enterExpression(self, ctx: ParserRuleContext):
         self._listener.enterExpression(ctx)
