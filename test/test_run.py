@@ -17,4 +17,3 @@ def testTwoArgumentsPassed():
         assert(True)
     else:
         assert(False)
-
