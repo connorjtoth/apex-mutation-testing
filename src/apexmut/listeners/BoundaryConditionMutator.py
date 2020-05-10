@@ -1,5 +1,5 @@
 from antlr4 import ParserRuleContext, TerminalNode
-from apexmut.antlr.ApexListener import ApexListener
+from apexmut.listeners.Listener import Listener
 from apexmut.listeners.ListenerDecoratorBase import ListenerDecoratorBase
 
 
@@ -11,7 +11,7 @@ class BoundaryConditionMutator(ListenerDecoratorBase):
         '>=': '>'
     }
 
-    def __init__(self, listener: ApexListener):
+    def __init__(self, listener: Listener):
         super().__init__(listener)
 
     # Target rule

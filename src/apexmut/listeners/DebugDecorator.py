@@ -1,11 +1,11 @@
 from antlr4 import TerminalNode, ErrorNode, ParserRuleContext
-from apexmut.antlr.ApexListener import ApexListener
+from apexmut.listeners.Listener import Listener
 from apexmut.listeners.ListenerDecoratorBase import ListenerDecoratorBase
 
 
 class DebugDecorator(ListenerDecoratorBase):
 
-    def __init__(self, listener: ApexListener, debugFile):
+    def __init__(self, listener: Listener, debugFile):
         super().__init__(listener)
         self._debugFile = debugFile
 
