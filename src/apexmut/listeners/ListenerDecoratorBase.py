@@ -1,4 +1,4 @@
-from ..Listener import Listener
+from apexmut.listeners.Listener import Listener
 
 
 class ListenerDecoratorBase(Listener):

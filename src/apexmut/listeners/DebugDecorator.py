@@ -1,6 +1,6 @@
 from antlr4 import TerminalNode, ErrorNode, ParserRuleContext
-from ..antlr.ApexListener import ApexListener
-from .ListenerDecoratorBase import ListenerDecoratorBase
+from apexmut.antlr.ApexListener import ApexListener
+from apexmut.listeners.ListenerDecoratorBase import ListenerDecoratorBase
 
 
 class DebugDecorator(ListenerDecoratorBase):

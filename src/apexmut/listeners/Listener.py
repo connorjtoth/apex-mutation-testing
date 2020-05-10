@@ -1,6 +1,6 @@
 from antlr4 import ParserRuleContext
-from .antlr.ApexListener import ApexListener
-from .antlr.ApexParser import ApexParser
+from apexmut.antlr.ApexListener import ApexListener
+from apexmut.antlr.ApexParser import ApexParser
 
 
 class Listener(ApexListener):

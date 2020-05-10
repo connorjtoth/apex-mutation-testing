@@ -1,7 +1,7 @@
 from antlr4 import TerminalNode
 
-from ..Listener import Listener
-from .ListenerDecoratorBase import ListenerDecoratorBase
+from apexmut.listeners.Listener import Listener
+from apexmut.listeners.ListenerDecoratorBase import ListenerDecoratorBase
 
 
 class OutputDecorator(ListenerDecoratorBase):

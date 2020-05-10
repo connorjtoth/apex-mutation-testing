@@ -1,23 +1,21 @@
-
 import os
 import os.path
-import sys
 import time
 
 import antlr4
 from antlr4.TokenStreamRewriter import TokenStreamRewriter
 
-from .antlr.ApexLexer import ApexLexer
-from .antlr.ApexParser import ApexParser
-from .decorators.BoundaryConditionMutator import BoundaryConditionMutator
-from .decorators.DebugDecorator import DebugDecorator
-from .decorators.OutputDecorator import OutputDecorator
-from .Listener import Listener
+from apexmut.antlr.ApexLexer import ApexLexer
+from apexmut.antlr.ApexParser import ApexParser
+from apexmut.listeners.BoundaryConditionMutator import BoundaryConditionMutator
+from apexmut.listeners.DebugDecorator import DebugDecorator
+from apexmut.listeners.OutputDecorator import OutputDecorator
+from apexmut.listeners.Listener import Listener
 
 ROOT_OUTPUT_DIR = 'output'
 
 
-def main(argv):
+def run(argv):
 
     if len(argv) != 2:
         raise Exception('An input file must be specified!')
@@ -57,7 +55,3 @@ def main(argv):
     for program in rewriter.programs:
         with open(outputDirForRunName + '/' + program + '.txt', 'w') as out:
             out.write(rewriter.getText(program, 0, streamLength))
-
-
-if __name__ == '__main__':
-    main(sys.argv)

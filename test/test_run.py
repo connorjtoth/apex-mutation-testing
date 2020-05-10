@@ -1,9 +1,9 @@
-from src.apexmut.main import main
+from apexmut import run
 
 
 def testNoArgumentPassed():
     try:
-        main()
+        run()
     except Exception:
         assert(True)
     else:
@@ -12,8 +12,9 @@ def testNoArgumentPassed():
 
 def testTwoArgumentsPassed():
     try:
-        main()
+        run()
     except Exception:
         assert(True)
     else:
         assert(False)
+

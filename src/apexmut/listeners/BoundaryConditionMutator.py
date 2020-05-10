@@ -1,6 +1,6 @@
 from antlr4 import ParserRuleContext, TerminalNode
-from ..antlr.ApexListener import ApexListener
-from .ListenerDecoratorBase import ListenerDecoratorBase
+from apexmut.antlr.ApexListener import ApexListener
+from apexmut.listeners.ListenerDecoratorBase import ListenerDecoratorBase
 
 
 class BoundaryConditionMutator(ListenerDecoratorBase):
