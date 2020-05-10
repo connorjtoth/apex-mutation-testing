@@ -1,5 +1,8 @@
 output/
 .antlr/
+.pytest_cache/
+.sfdx/
+.vscode/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
