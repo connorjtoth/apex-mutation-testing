@@ -4,6 +4,8 @@ output/
 .sfdx/
 .vscode/
 
+antlr-*.jar
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
