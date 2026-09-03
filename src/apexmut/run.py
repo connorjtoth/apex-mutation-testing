@@ -8,6 +8,7 @@ from antlr4.TokenStreamRewriter import TokenStreamRewriter
 from apexmut.antlr.ApexLexer import ApexLexer
 from apexmut.antlr.ApexParser import ApexParser
 from apexmut.listeners.BoundaryConditionMutator import BoundaryConditionMutator
+from apexmut.listeners.NullReturnMutator import NullReturnMutator
 from apexmut.listeners.IncrementMutator import IncrementMutator
 from apexmut.listeners.DebugDecorator import DebugDecorator
 from apexmut.listeners.OutputDecorator import OutputDecorator
@@ -43,6 +44,7 @@ def run(argv):
         listener = DebugDecorator(listener, debugFile)
         listener = BoundaryConditionMutator(listener)
         listener = IncrementMutator(listener)
+        listener = NullReturnMutator(listener)
         walker.walk(listener, tree)
 
     # begin running mutations
