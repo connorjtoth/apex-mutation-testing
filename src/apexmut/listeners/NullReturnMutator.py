@@ -25,5 +25,3 @@ class NullReturnMutator(ListenerDecoratorBase):
                     self._listener._mutations.append((self.__class__, expression, 'NULL'))
 
             print('STATEMENT: ' + str(expression))
-
-            # TODO: Issue because context of an expression is different than a terminal (e.g., '++'), so need to actually do research to figure this out.

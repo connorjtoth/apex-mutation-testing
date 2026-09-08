@@ -4,6 +4,7 @@ import time
 
 import antlr4
 from antlr4.TokenStreamRewriter import TokenStreamRewriter
+from antlr4 import Token, ParserRuleContext
 
 from apexmut.antlr.ApexLexer import ApexLexer
 from apexmut.antlr.ApexParser import ApexParser
@@ -49,13 +50,27 @@ def run(argv):
 
     # begin running mutations
     rewriter = TokenStreamRewriter(tokenStream)
-    for i, mutation in enumerate(listener._mutations):
-        mutatingClass, inputToken, replacementText = mutation
-        print(i, ':', mutatingClass.__name__, 'mutating', inputToken.text, 'to', replacementText)
-        print(inputToken.tokenIndex)
-        rewriter.replace('mutation_' + str(i), inputToken.tokenIndex, inputToken.tokenIndex, replacementText)
+        for i, mutation in enumerate(listener._mutations):
+            mutatingClass, inputTokenOrContext, replacementText = mutation
+            inputText, inputIndex, startIndex, stopIndex = None, None, None, None
 
-    streamLength = len(tokenStream.tokens)
-    for program in rewriter.programs:
-        with open(outputDirForRunName + '/' + program + '.txt', 'w') as out:
-            out.write(rewriter.getText(program, 0, streamLength))
+            if isinstance(inputTokenOrContext, Token): 
+                inputIndex = inputTokenOrContext.tokenIndex
+                inputText = inputTokenOrContext.text
+                startIndex = inputTokenOrContext.tokenIndex
+                stopIndex = inputTokenOrContext.tokenIndex
+            elif isinstance(inputTokenOrContext, ParserRuleContext):
+                inputIndex = inputTokenOrContext.getRuleIndex()
+                inputText = inputTokenOrContext.getText()
+                startIndex = inputTokenOrContext.start.tokenIndex
+                stopIndex = inputTokenOrContext.stop.tokenIndex
+
+            inputToken = inputTokenOrContext
+            print(i, ':', mutatingClass.__name__, 'mutating', inputText, 'to', replacementText)
+            print(inputIndex)
+            rewriter.replace('mutation_' + str(i) + '_' + mutatingClass.__name__, startIndex, stopIndex, replacementText)
+
+        streamLength = len(tokenStream.tokens)
+        for program in rewriter.programs:
+            with open(outputDirForRunName + '/' + program + '.txt', 'w') as out:
+                out.write(rewriter.getText(program, 0, streamLength))
