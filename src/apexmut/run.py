@@ -4,14 +4,17 @@ import time
 
 import antlr4
 from antlr4.TokenStreamRewriter import TokenStreamRewriter
+from antlr4 import Token, ParserRuleContext
 
 from apexmut.antlr.ApexLexer import ApexLexer
 from apexmut.antlr.ApexParser import ApexParser
 from apexmut.listeners.BoundaryConditionMutator import BoundaryConditionMutator
+from apexmut.listeners.NullReturnMutator import NullReturnMutator
 from apexmut.listeners.IncrementMutator import IncrementMutator
 from apexmut.listeners.DebugDecorator import DebugDecorator
 from apexmut.listeners.OutputDecorator import OutputDecorator
 from apexmut.listeners.Listener import Listener
+from apexmut.listeners.ProxyParseTreeListener import ProxyParseTreeListener
 
 ROOT_OUTPUT_DIR = 'output'
 
@@ -38,20 +41,43 @@ def run(argv):
     outputFilePath = outputDirForRunName + '/output.txt'
     debugFilePath = outputDirForRunName + '/debug.txt'
     with open(outputFilePath, 'w') as outputFile, open(debugFilePath, 'w') as debugFile:
-        listener = Listener(parser)
-        listener = OutputDecorator(listener, outputFile)
-        listener = DebugDecorator(listener, debugFile)
-        listener = BoundaryConditionMutator(listener)
-        listener = IncrementMutator(listener)
-        walker.walk(listener, tree)
+        proxyListener = ProxyParseTreeListener()
+
+        baseListener = Listener(parser)
+        baseListener = OutputDecorator(baseListener, outputFile)
+        baseListener = DebugDecorator(baseListener, debugFile)
+
+        listenerClasses = [
+            BoundaryConditionMutator,
+            #IncrementMutator,
+            NullReturnMutator
+        ]
+        for listenerClass in listenerClasses:
+            proxyListener.add(listenerClass(baseListener))
+
+        walker.walk(proxyListener, tree)
 
     # begin running mutations
     rewriter = TokenStreamRewriter(tokenStream)
-    for i, mutation in enumerate(listener._mutations):
-        mutatingClass, inputToken, replacementText = mutation
-        print(i, ':', mutatingClass.__name__, 'mutating', inputToken.text, 'to', replacementText)
-        print(inputToken.tokenIndex)
-        rewriter.replace('mutation_' + str(i), inputToken.tokenIndex, inputToken.tokenIndex, replacementText)
+    for i, mutation in enumerate(baseListener._mutations):
+        mutatingClass, inputTokenOrContext, replacementText = mutation
+        inputText, inputIndex, startIndex, stopIndex = None, None, None, None
+
+        if isinstance(inputTokenOrContext, Token): 
+            inputIndex = inputTokenOrContext.tokenIndex
+            inputText = inputTokenOrContext.text
+            startIndex = inputTokenOrContext.tokenIndex
+            stopIndex = inputTokenOrContext.tokenIndex
+        elif isinstance(inputTokenOrContext, ParserRuleContext):
+            inputIndex = inputTokenOrContext.getRuleIndex()
+            inputText = inputTokenOrContext.getText()
+            startIndex = inputTokenOrContext.start.tokenIndex
+            stopIndex = inputTokenOrContext.stop.tokenIndex
+
+        inputToken = inputTokenOrContext
+        print(i, ':', mutatingClass.__name__, 'mutating', inputText, 'to', replacementText)
+        print(inputIndex)
+        rewriter.replace('mutation_' + str(i) + '_' + mutatingClass.__name__, startIndex, stopIndex, replacementText)
 
     streamLength = len(tokenStream.tokens)
     for program in rewriter.programs:
